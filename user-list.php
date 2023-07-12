@@ -1,5 +1,5 @@
 <?php
-require_once("../coffseeker_db.php");
+require_once("../db_connect.php");
 
 $coffsql = "SELECT users.* ,
 
@@ -49,6 +49,7 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                     <table class="table table-striped">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>名稱</th>
                             <th>性別</th>
                             <th>電話</th>
@@ -63,6 +64,9 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                     <tbody>
                         <?php foreach ($coffusers as $user) : ?>
                             <tr>
+                                <td>
+                                    <?= $user["id"]; ?>
+                                </td>
                                 <td>
                                     <?= $user["user_name"]; ?>
                                 </td>
