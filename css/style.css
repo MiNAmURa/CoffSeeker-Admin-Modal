@@ -1,5 +1,5 @@
 :root{
-   --milky:#CDBF97;
+   --milky:#988966;
 }
 
 .index-logo{
@@ -10,7 +10,7 @@
 .bg-milky{
     background: var(--milky);
  }
- 
+
  .logo{
      width: 100%;
  }
@@ -45,7 +45,7 @@
  /* 會員詳細資料 */
 
  .user-icon-box{
-   max-width: 300px;
+   max-width: 500px;
    border-radius: 50%;
-   margin-inline: auto;
+   margin: auto;
  }

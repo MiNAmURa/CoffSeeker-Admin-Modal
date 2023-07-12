@@ -1,10 +1,10 @@
 <?php
 
 if (!isset($_POST["coupon_name"])) {
-    header("location: /404.php");
+    header("location: ../../404.php");
 }
 
-require_once("../db_connect.php");
+require_once("../../../db_connect.php");
 
 $id = $_POST["coupon_id"];
 $name = $_POST["coupon_name"];

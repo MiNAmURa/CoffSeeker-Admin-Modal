@@ -3,7 +3,7 @@
 if (!isset($_GET["coupon_id"])) {
     die("無法作業");
 }
-require_once("../db_connect.php");
+require_once("../../../db_connect.php");
 
 $id = $_GET["coupon_id"];
 
@@ -11,7 +11,7 @@ $sql = "UPDATE coupon SET coupon_valid=0 WHERE coupon_id = '$id'";
 
 if ($conn->query($sql) === TRUE) {
 
-    header("location: Coupon-list.php");
+    header("location: ../../Coupon-list.php");
 } else {
     echo "刪除資料錯誤: " . $conn->error;
 }

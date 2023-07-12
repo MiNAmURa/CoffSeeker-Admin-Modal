@@ -66,11 +66,16 @@ $coffusers = $getuser->fetch_assoc();
                 <?php include("modal/topbar.php") ?>
 
                 <!-- ↓↓放置內容↓↓-->
-                <div class="container-fluid d-flex justify-content-between">
-                    <div class="card my-3" style="width: 40%;">
-                        <div class="user-icon-box overflow-hidden mt-5">
+                <div class="container-fluid">
+                <a href="user-list.php" class="card-link"><i class="fa-solid fa-chevron-left"></i>返回會員清單</a>
+                <div class="d-flex justify-content-center align-content-center">
+                
+                    <div class="card my-5 d-flex align-content-center" style="width: 40%;">
+                        <div class="user-icon-box overflow-hidden">
                             <img src="img/user-icon/<?=$coffusers["user_icon"]?>" class="card-img-top" alt="...">
-                        </div>
+                        </div>                    
+                    </div>
+                    <div class="card my-5" style="width: 40%;">
                         <div class="card-body">
                             <h1 class="h6 card-title">名稱 </h1>
                             <span class="h3"><?=$coffusers["user_name"]?></span>
@@ -95,9 +100,10 @@ $coffusers = $getuser->fetch_assoc();
                                 加入時間 : <?=$coffusers["user_created_at"]?>
                             </li>
                         </ul>
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between">
                             <a href="#" class="card-link btn btn-warning">編輯資料</a>
                         </div>
+                    </div>
                     </div>
                 </div>
 
