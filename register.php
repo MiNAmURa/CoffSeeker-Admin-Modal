@@ -3,13 +3,10 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>SB Admin 2 - Register</title>
+    <title>Register</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -22,7 +19,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-milky">
 
     <div class="container">
 
@@ -30,47 +27,66 @@
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-5 d-none d-lg-block overflow-hidden">
+                        <img class="bg-coffee" src="img/bg-register.svg" alt="">
+                    </div>
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user">
+                            <!-- Form -->
+                            <form action="action/users/doSignUp.php" method="post" class="user">
+                                <div class="form-group">
+                                        <input type="text" class="form-control form-control-user" id="name"
+                                            placeholder="User Name" name="name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" id="email"
+                                        placeholder="Email Address" name="email">
+                                </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="password" placeholder="Password" name="password">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="repassword" placeholder="Repeat Password" name="repassword">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="phone" class="form-control form-control-user"
+                                            id="phone" placeholder="Phone" name="phone">
+                                    </div>
+                                    <div class="col-sm-6">
+                                    <select class="form-select gender-select" aria-label="gender"  name="gender">
+                                        <option selected>Select Your Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="LGBTQIA+">LGBTQIA+</option>
+                                        <option value="Private">Private</option>
+                                    </select>
+                                        <!-- <input type="password" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" placeholder="Repeat Password" name="repassword"> -->
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
+                                    <input type="date" class="form-control form-control-user" id="birthday"
+                                    name="birthday">
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
-                                    </div>
-                                </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                <!-- <a href="login.php" class="btn btn-primary btn-user btn-block">
                                     Register Account
                                 </a>
                                 <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
+                                <a href="index.php" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
                                 </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                <a href="index.php" class="btn btn-facebook btn-user btn-block">
                                     <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a>
+                                </a> -->
+                                <button class="btn btn-user btn-block bg-milky border-0 sign-up" type="submit">Sign Up !</button>
                             </form>
                             <hr>
                             <div class="text-center">

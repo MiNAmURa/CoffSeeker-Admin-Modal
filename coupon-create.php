@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>標題</title>
+    <title>Creat Coupon</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -29,11 +29,13 @@
 
                 <?php include("modal/topbar.php") ?>
 
-            <!-- ↓↓放置內容↓↓-->
+                <!-- ↓↓放置內容↓↓-->
 
-            <h1>放你要放的東西</h1>
+                <h1 class="text-center">Creat Coupon</h1>
 
-            <!-- ↑↑放置內容↑↑ -->
+                
+
+                <!-- ↑↑放置內容↑↑ -->
             </div>
             <!-- End of Main Content -->
 
@@ -45,6 +47,9 @@
     </div>
     <!-- End of Page Wrapper -->
 
+    
+
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -55,7 +60,7 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
-    
+
 
 </body>
 

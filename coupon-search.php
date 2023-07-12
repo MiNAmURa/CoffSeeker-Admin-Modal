@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>標題</title>
+    <title>Coupon Search</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -31,7 +32,7 @@
 
             <!-- ↓↓放置內容↓↓-->
 
-            <h1>放你要放的東西</h1>
+            <h1 class="text-center">Coupon Search</h1>
 
             <!-- ↑↑放置內容↑↑ -->
             </div>

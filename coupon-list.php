@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,11 +31,11 @@
 
                 <?php include("modal/topbar.php") ?>
 
-            <!-- ↓↓放置內容↓↓-->
+                <!-- ↓↓放置內容↓↓-->
 
-            <h1>放你要放的東西</h1>
+                <h1 class="text-center">Coupon List</h1>
 
-            <!-- ↑↑放置內容↑↑ -->
+                <!-- ↑↑放置內容↑↑ -->
             </div>
             <!-- End of Main Content -->
 
@@ -55,7 +57,7 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
-    
+
 
 </body>
 
