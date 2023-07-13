@@ -65,6 +65,8 @@ $coffusers = $getuser->fetch_assoc();
                 <?php include("modal/topbar.php") ?>
 
                 <!-- ↓↓放置內容↓↓-->
+                <h1 class="text-center py-2">User_Detail</h1>
+
                 <div class="container-fluid">
                 
                         <!-- <nav aria-label="breadcrumb ps-0">
@@ -74,13 +76,13 @@ $coffusers = $getuser->fetch_assoc();
                                 <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-caret-left"></i> <?= $coffusers["user_name"] ?></li>
                             </ol>
                         </nav> -->
-                        <a href="user-list.php" class="btn btn-warning mt-4 ms-0"><i class="fa-solid fa-caret-left"></i> 返回會員清單</a>
+                        <!-- <a href="user-list.php" class="btn btn-warning mt-4 ms-0"><i class="fa-solid fa-caret-left"></i> 返回會員清單</a> -->
                 
                     <div class="row justify-content-between align-content-center">
                         
                         <div class="card col-6 my-3 d-flex align-content-center">
                             <div class="user-icon-box overflow-hidden">
-                                <img src="img/user-icon/<?= $coffusers["user_icon"] ?>" class="object-fit-cover mw-100" alt="...">
+                                <img src="img/user-icon/<?= $coffusers["user_icon"] ?>" class="" alt="...">
                             </div>
                         </div>
                         <div class="card col-6 my-3">
@@ -109,8 +111,10 @@ $coffusers = $getuser->fetch_assoc();
                                 </li>
                             </ul>
                             <div class="card-body d-flex justify-content-between">
+                                <!-- <a href="user-edit.php?id=<?= $id ?>" class="card-link btn btn-warning">編輯資料</a> -->
+                                <!-- <a href="user-list.php" class="btn btn-warning mt-4 ms-0"><i class="fa-solid fa-caret-left"></i> 返回會員清單</a> -->
+                                <a href="user-list.php" class="card-link btn btn-warning"><i class="fa-solid fa-caret-left"></i> 返回會員清單</a>
                                 <a href="user-edit.php?id=<?= $id ?>" class="card-link btn btn-warning">編輯資料</a>
-                                <a href="#" class="card-link btn btn-danger">刪除</a>
                             </div>
                         </div>
                     </div>

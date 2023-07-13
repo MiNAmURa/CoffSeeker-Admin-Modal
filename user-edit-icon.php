@@ -75,7 +75,14 @@ $coffusers = $getuser->fetch_assoc();
                                 <div class="user-icon-box overflow-hidden">
                                     <img src="img/user-icon/<?= $coffusers["user_icon"] ?>" class="object-fit-cover mw-100" alt="...">
                                 </div>
-                            <a href="user-edit-icon.php?id=<?= $coffusers["id"] ?>" class="btn btn-warning icon-upload" >變更大頭貼</a>
+                            <form action="action/users/doIconUpload.php" method="post" enctype="multipart/form-data">
+                                <div class="d-flex justify-content-center">
+                                <!-- 上傳大頭貼 -->
+                                <input type="hidden" name="id" value="<?= $coffusers["id"] ?>">
+                                <input type="file" name="icon" class="icon-select form-control" required>
+                                <button type="submit" class="icon-upload btn btn-warning">更換</button>
+                                </div>
+                            </form>
                         </div>
                         <div class="card col-6 my-3">
                             <!-- Form -->

@@ -14,7 +14,7 @@ $coffsql="UPDATE users SET user_name='$name' , user_gender='$gender' , user_phon
 if ($conn->query($coffsql) === TRUE) {
 
     $latestId=$conn->insert_id;
-    echo "修改資料完成";
+    // echo "修改資料完成";
     header("location: ../../user-detail.php?id=".$id);
 
 } else {
