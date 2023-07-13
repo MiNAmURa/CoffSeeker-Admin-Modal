@@ -19,8 +19,7 @@ $restrict = $_POST["usage_restriction"];
 $sql = "UPDATE coupon SET coupon_name='$name',coupon_valid='$valid', discount_type='$type', discount_value='$value', max_usage='$max', expries_at='$expries' ,updated_at='$now',usage_restriction='$restrict' WHERE coupon_id=$id";
 
 if ($conn->query($sql) === TRUE) {
-
-    header("location: ../../coupon-edit-list.php");
+     header("location: ../../coupon-edit-list.php");
 } else {
     echo "修改增資料錯誤: " . $conn->error;
 }
