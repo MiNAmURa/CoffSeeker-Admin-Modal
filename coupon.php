@@ -56,7 +56,7 @@ $row = $result->fetch_assoc();
 
                 <div class="container">
         <div class="py-2">
-            <a class="btn btn-success" href="Coupon-list.php">回優惠卷列表</a>
+            <a class="btn btn-warning" href="Coupon-list.php">回優惠卷列表</a>
         </div>
         <table class="table table-bordered ">
             <tr>
@@ -101,7 +101,7 @@ $row = $result->fetch_assoc();
             </tr>
         </table>
         <div class="py-2">
-            <a class="btn btn-success" href="Coupon-edit.php?coupon_id=<?=$row["coupon_id"]?>">編輯</a>
+            <a class="btn btn-warning" href="Coupon-edit.php?coupon_id=<?=$row["coupon_id"]?>">編輯</a>
         </div>
        
     </div>

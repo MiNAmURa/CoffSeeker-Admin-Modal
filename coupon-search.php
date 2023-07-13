@@ -56,7 +56,7 @@ if (isset($_GET["coupon_name"])) {
 
                 <div class="container">
                     <div class="py-2">
-                        <a class="btn btn-success" href="coupon-list.php">回優惠卷列表</a>
+                        <a class="btn btn-warning" href="coupon-list.php">回優惠卷列表</a>
                     </div>
                     <div class="py-2">
                         <form action="coupon-search.php">
@@ -65,7 +65,7 @@ if (isset($_GET["coupon_name"])) {
                                     <input type="text" class="form-control" placeholder="搜尋優惠卷" name="coupon_name">
                                 </div>
                                 <div class="col-auto">
-                                    <button class="btn btn-success" type="submit">搜尋</button>
+                                    <button class="btn btn-warning" type="submit">搜尋</button>
                                 </div>
                             </div>
                         </form>
@@ -109,7 +109,7 @@ if (isset($_GET["coupon_name"])) {
                                         <td><?= $row["max_usage"] ?></td>
                                         <td><?= $row["usage_restriction"] ?></td>
                                         <td>
-                                            <a href="Coupon.php?coupon_id=<?= $row["coupon_id"] ?>" class="btn btn-success">顯示</a>
+                                            <a href="Coupon.php?coupon_id=<?= $row["coupon_id"] ?>" class="btn btn-warning">顯示</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

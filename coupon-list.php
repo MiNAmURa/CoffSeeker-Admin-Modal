@@ -29,7 +29,7 @@ if ($type == 1) {
     header("location: 404.php");
 }
 
-$sql = "SELECT coupon_id, coupon_name, coupon_code, coupon_valid, discount_type, discount_value, created_at, expries_at, updated_at, max_usage, usage_restriction FROM coupon WHERE coupon_id $orderBy LIMIT $startItem, $perPage";
+$sql = "SELECT coupon_id, coupon_name, coupon_code, coupon_valid, discount_type, discount_value, created_at, expries_at, updated_at, max_usage, usage_restriction FROM coupon WHERE coupon_valid $orderBy LIMIT $startItem, $perPage";
 
 $result = $conn->query($sql);
 ?>
@@ -77,7 +77,7 @@ $result = $conn->query($sql);
                                     <input type="text" class="form-control" placeholder="搜尋優惠卷" name="coupon_name">
                                 </div>
                                 <div class="col-auto">
-                                    <button class="btn btn-success" type="submit">搜尋</button>
+                                    <button class="btn btn-warning" type="submit">搜尋</button>
                                 </div>
                             </div>
                         </form>
@@ -86,26 +86,26 @@ $result = $conn->query($sql);
                     $coupon_count = $result->num_rows;
                     ?>
                     <div class="py-2 d-flex justify-content-between align-items-center">
-                        <a class="btn btn-success" href="coupon-create.php">新增</a>
+                        <a class="btn btn-warning" href="coupon-create.php">新增</a>
                         <div>
                             共 <?= $totalCoupon ?> 張, 第 <?= $page ?> 頁
                         </div>
                     </div>
                     <div class="py-2 d-flex justify-content-end">
                         <div class="btn-group">
-                            <a href="Coupon-list.php?page=<?= $page ?>&type=1" class="btn btn-success 
+                            <a href="Coupon-list.php?page=<?= $page ?>&type=1" class="btn btn-warning 
         <?php
         if ($type == 1) echo "active";
         ?>">ID <i class="fa-solid fa-arrow-down-short-wide"></i></a>
-                            <a href="Coupon-list.php?page=<?= $page ?>&type=2" class="btn btn-success 
+                            <a href="Coupon-list.php?page=<?= $page ?>&type=2" class="btn btn-warning 
         <?php
         if ($type == 2) echo "active";
         ?>">ID <i class="fa-solid fa-arrow-down-wide-short"></i></i></a>
-                            <a href="Coupon-list.php?page=<?= $page ?>&type=3" class="btn btn-success 
+                            <a href="Coupon-list.php?page=<?= $page ?>&type=3" class="btn btn-warning 
         <?php
         if ($type == 3) echo "active";
         ?>">到期日 <i class="fa-solid fa-arrow-down-short-wide"></i></a>
-                            <a href="Coupon-list.php?page=<?= $page ?>&type=4" class="btn btn-success 
+                            <a href="Coupon-list.php?page=<?= $page ?>&type=4" class="btn btn-warning 
         <?php
         if ($type == 4) echo "active";
         ?>">到期日<i class="fa-solid fa-arrow-down-wide-short"></i></i></a>
@@ -147,7 +147,7 @@ $result = $conn->query($sql);
                                     <td><?= $row["max_usage"] ?></td>
                                     <td><?= $row["usage_restriction"] ?></td>
                                     <td>
-                                        <a href="Coupon.php?coupon_id=<?= $row["coupon_id"] ?>" class="btn btn-success">顯示</a>
+                                        <a href="Coupon.php?coupon_id=<?= $row["coupon_id"] ?>" class="btn btn-warning">顯示</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

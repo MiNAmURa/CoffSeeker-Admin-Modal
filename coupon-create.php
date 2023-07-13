@@ -35,7 +35,7 @@
 
                 <div class="container">
                     <div class="py-2">
-                        <a class="btn btn-success" href="coupon-list.php">回優惠卷列表</a>
+                        <a class="btn btn-warning" href="coupon-list.php">回優惠卷列表</a>
                     </div>
                     <form action="action/coupon/doCreate.php" method="post">
                         <div class="mb-3">
@@ -46,7 +46,7 @@
                             <label for="">優惠卷代碼：</label>
                             <input id="randomString" type="text" class="form-control" name="coupon_code" placeholder="例：Eda8F4s87Q" required>
                             <p>(可自定義10位大小寫英文、數字混雜字元)</p>
-                            <button class="btn btn-success" type="button" onclick="generateCouponCode()">隨機生成一組代碼</button>
+                            <button class="btn btn-warning" type="button" onclick="generateCouponCode()">隨機生成一組代碼</button>
                         </div>
                         <div class="mb-3">
                             <label for="">優惠卷狀態：</label>
@@ -97,7 +97,7 @@
                             <input type="text" class="form-control" name="usage_restriction" placeholder="例：炎炎夏日專案">
                         </div>
 
-                        <button class="btn btn-success" type="submit">送出</button>
+                        <button class="btn btn-warning" type="submit">送出</button>
                     </form>
                 </div>
 
