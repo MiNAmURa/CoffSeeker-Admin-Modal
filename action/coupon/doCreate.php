@@ -27,7 +27,7 @@ if ($conn->query($sql) === TRUE) {
 
     $latestId = $conn->insert_id;
     // echo "優惠卷 新增完成, ID 為 $latestId";
-    header("location: Coupon-list.php");
+    header("location: ../../coupon-list.php");
 } else {
     echo "新增資料錯誤: " . $conn->error;
 }

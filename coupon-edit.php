@@ -25,7 +25,7 @@ $row = $result->fetch_assoc();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>標題</title>
+    <title>編輯優惠券</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -60,7 +60,7 @@ $row = $result->fetch_assoc();
                                 確認刪除？
                             </div>
                             <div class="modal-footer">
-                                <a href="doDelete.php?coupon_id=<?= $id ?>" class="btn btn-danger">確認</a>
+                                <a href="action/coupon/doDelete.php?coupon_id=<?= $id ?>" class="btn btn-danger">確認</a>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
                             </div>
                         </div>
@@ -69,7 +69,7 @@ $row = $result->fetch_assoc();
                 <!-- modal end -->
                 <div class="container">
                     <div class="m-2">
-                        <form action="doUpdate.php" method="post">
+                        <form action="action/coupon/doUpdate.php" method="post">
                             <table class="table table-bordered ">
                                 <input type="hidden" name="coupon_id" value="<?= $row["coupon_id"] ?>">
                                 <tr>

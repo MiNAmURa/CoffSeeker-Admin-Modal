@@ -11,7 +11,7 @@ $sql = "UPDATE coupon SET coupon_valid=0 WHERE coupon_id = '$id'";
 
 if ($conn->query($sql) === TRUE) {
 
-    header("location: ../../Coupon-list.php");
+    header("location: ../../coupon-list.php");
 } else {
     echo "刪除資料錯誤: " . $conn->error;
 }

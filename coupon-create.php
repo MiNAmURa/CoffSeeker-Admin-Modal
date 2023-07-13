@@ -37,7 +37,7 @@
                     <div class="py-2">
                         <a class="btn btn-success" href="coupon-list.php">回優惠卷列表</a>
                     </div>
-                    <form action="doCreate.php" method="post">
+                    <form action="action/coupon/doCreate.php" method="post">
                         <div class="mb-3">
                             <label for="">優惠卷名稱：</label>
                             <input type="text" class="form-control" name="coupon_name" placeholder="例：炎炎夏日 外送免運卷" Required>

@@ -20,7 +20,7 @@ $sql = "UPDATE coupon SET coupon_name='$name',coupon_valid='$valid', discount_ty
 
 if ($conn->query($sql) === TRUE) {
 
-    header("location: Coupon-list.php");
+    header("location: ../../coupon-list.php");
 } else {
     echo "修改增資料錯誤: " . $conn->error;
 }
