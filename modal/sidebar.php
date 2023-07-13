@@ -34,6 +34,8 @@
 
 <?php include("coursebar.php"); ?>
 
+<?php include("oasis.php"); ?>
+
 
 
 <!-- Divider -->

@@ -46,7 +46,7 @@ if(empty($_POST["birthday"])){
 // $password=md5($password);
 // echo "$name, $phone ,$email";
 
-$coffsql="INSERT INTO users (user_name , user_password , user_gender , user_phone , user_email , user_birthday , user_created_at , user_grade_id , user_valid) VALUES ('$name' , '$password' , '$gender' , '$phone' , '$email' , '$birthday' , '$now' , 3 , 1 )";
+$coffsql="INSERT INTO users (user_name , user_password , user_gender , user_phone , user_email , user_birthday , user_icon , user_created_at , user_grade_id , user_valid) VALUES ('$name' , '$password' , '$gender' , '$phone' , '$email' , '$birthday' , 'preset-icon.png' , '$now' , 3 , 1 )";
 
 // echo $coffsql;
 
