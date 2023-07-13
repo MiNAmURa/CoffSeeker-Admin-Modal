@@ -75,7 +75,6 @@ $coffusers = $getuser->fetch_assoc();
                             </ol>
                         </nav> -->
                         <a href="user-list.php" class="btn btn-warning mt-4 ms-0"><i class="fa-solid fa-caret-left"></i> 返回會員清單</a>
-                
                     <div class="row justify-content-between align-content-center">
                         
                         <div class="card col-6 my-3 d-flex align-content-center">
@@ -84,34 +83,56 @@ $coffusers = $getuser->fetch_assoc();
                             </div>
                         </div>
                         <div class="card col-6 my-3">
+                            <!-- Form -->
+                            <form action="action/users/doEdit.php" method="post">
+                            <input type="hidden" name="id" value="<?= $coffusers["id"] ?>">
                             <div class="card-body">
                                 <h1 class="h6 card-title">名稱 </h1>
-                                <span class="h3"><?= $coffusers["user_name"] ?></span>
+                                <input class="h3 form-control" value="<?= $coffusers["user_name"] ?>" placeholder="" name="name"></input>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    性別 : <?= $coffusers["user_gender"] ?>
+                                    性別 : 
+                                    <select class="form-select form-control" aria-label="gender"  name="gender">
+                                        <option selected><?= $coffusers["user_gender"] ?></option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="LGBTQIA+">LGBTQIA+</option>
+                                        <option value="Private">Private</option>
+                                    </select>
                                 </li>
                                 <li class="list-group-item">
-                                    電話 : <?= $coffusers["user_phone"] ?>
+                                    電話 : 
+                                    <input class="form-control" value="<?= $coffusers["user_phone"] ?>" placeholder="" name="phone"></input>
                                 </li>
                                 <li class="list-group-item">
-                                    E-mail : <?= $coffusers["user_email"] ?>
+                                    E-mail : 
+                                    <input class="form-control" value="<?= $coffusers["user_email"] ?>" placeholder="" name="email"></input>
                                 </li>
                                 <li class="list-group-item">
-                                    生日 : <?= $coffusers["user_birthday"] ?>
+                                    生日 : 
+                                    <input type="date" class="form-control" value="<?= $coffusers["user_birthday"] ?>" placeholder="" name="birthday"></input>
                                 </li>
                                 <li class="list-group-item">
-                                    會員等級 : <?= $coffusers["user_grade"] ?>
+                                    會員等級 : 
+                                    <select class="form-select form-control" aria-label="Grade" value="<?= $coffusers["user_grade"] ?>"  name="grade">
+                                        <option value="<?= $coffusers["user_grade_id"] ?>" selected >
+                                            <?= $coffusers["user_grade"] ?> (不變更)
+                                        </option>
+                                        <option value="1">一般會員</option>
+                                        <option value="2">VIP</option>
+                                        <option value="3">未認證</option>
+                                    </select>
                                 </li>
                                 <li class="list-group-item">
                                     加入時間 : <?= $coffusers["user_created_at"] ?>
                                 </li>
                             </ul>
-                            <div class="card-body d-flex justify-content-between">
-                                <a href="user-edit.php?id=<?= $id ?>" class="card-link btn btn-warning">編輯資料</a>
-                                <a href="#" class="card-link btn btn-danger">刪除</a>
+                            <div class="card-body d-flex justify-content-between border-top">
+                                <a href="user-detail.php?id=<?= $id ?>" class="card-link btn btn-warning">取消</a>
+                                <button type="submit" class="card-link btn btn-warning">送出</button>
                             </div>
+                            </form>
                         </div>
                     </div>
 

@@ -32,6 +32,9 @@
 
 <?php include("teacher-lesson.php"); ?>
 
+<?php include("coursebar.php"); ?>
+
+
 
 <!-- Divider -->
 <hr class="sidebar-divider">

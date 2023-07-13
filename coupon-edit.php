@@ -140,7 +140,7 @@ $row = $result->fetch_assoc();
                             <div class="py-2 d-flex justify-content-between">
                                 <div>
                                     <button class="btn btn-warning" type="submit">儲存</button>
-                                    <a class="btn btn-warning" href="Coupon-list.php?coupon_id=<?= $row["coupon_id"] ?>">取消</a>
+                                    <a class="btn btn-warning" href="Coupon-edit-list.php?coupon_id=<?= $row["coupon_id"] ?>">取消</a>
                                 </div>
                                 <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">刪除</button>
                             </div>

@@ -10,8 +10,7 @@
     <div id="Userbar" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Users Option</h6>
-            <a class="collapse-item" href="user-list.php">UserList</a>
-            
+            <a class="collapse-item" href="user-list.php">User-List</a>
         </div>
     </div>
 </li>

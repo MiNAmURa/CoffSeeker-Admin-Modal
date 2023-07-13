@@ -14,7 +14,7 @@
             <a class="collapse-item" href="coupon.php">Coupon-Detail</a>
             <a class="collapse-item" href="coupon-create.php">Create-Coupon</a>
             <a class="collapse-item" href="coupon-search.php">Coupon-Search</a>
-            <a class="collapse-item" href="coupon-edit.php">Create-Edit</a>
+            <a class="collapse-item" href="coupon-edit-list.php">Coupon-Edit</a>
         </div>
     </div>
 </li>

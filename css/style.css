@@ -2,9 +2,24 @@
    --milky:#988966;
 }
 
+.breadcrumb-item+.breadcrumb-item::before {
+   content: none;
+}
+
+
 .index-logo{
    max-height:600px ;
 }
+
+.breadcrumb{
+   background: rgba(255, 255, 255, 0);
+}
+
+.breadcrumb a{
+   text-decoration: none;
+   color: #6e707e;  
+}
+
 /* Nav Sidebar */
 
 .bg-milky{
@@ -45,7 +60,16 @@
  /* 會員詳細資料 */
 
  .user-icon-box{
-   max-width: 500px;
+   max-width: 400px;
    border-radius: 50%;
    margin: auto;
  }
+
+ .back-user-list{
+   text-decoration: none;
+ }
+
+ .back-user-list:active , .back-user-list:visited , .back-user-list:hover{
+   text-decoration: none;
+   color: #6e707e;   
+}
