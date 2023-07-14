@@ -70,9 +70,10 @@
  }
 
 /* 會員清單與搜尋頁 */
-.pages{
-   top: 7.5px;
-}
+/* .pages-up{
+   transform: translateX(-55px);
+} */
+
 
 
  /* 會員詳細資料 */

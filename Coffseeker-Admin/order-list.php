@@ -52,7 +52,7 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>User-List</title>
+    <title>Order-List</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -74,17 +74,17 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
 
                 <div class="container-fluid">
 
-                    <h1 class="text-center py-4">會員清單</h1>
+                    <h1 class="text-center py-4">訂單列表</h1>
 
                     <div class="pb-2">
                         <form action="user-search.php" method="get">
                             <div class="row gx-2">
                                 <div class="col-auto">
                                     <select class="form-select form-control" aria-label="Grade" name="select">
-                                        <option value="id" selected>ID</option>
-                                        <option value="user_name">名稱</option>
-                                        <option value="user_grade_id">等級</option>
-                                        <option value="user_email">信箱</option>
+                                        <option value="id" selected>訂單編號</option>
+                                        <option value="user_name">購買商品</option>
+                                        <option value="user_grade_id">數量</option>
+                                        <option value="user_email">訂單狀態</option>
                                     </select>
                                 </div>
                                 <div class="col">
@@ -122,14 +122,14 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>名稱</th>
-                                <th>性別</th>
-                                <th>電話</th>
-                                <th>信箱</th>
-                                <th>生日</th>
-                                <th>加入日期</th>
-                                <th>會員等級</th>
+                                <th>訂單編號</th>
+                                <th>購買商品</th>
+                                <th>數量</th>
+                                <th>商品單價</th>
+                                <th>訂單總價</th>
+                                <th>購買人</th>
+                                <th>訂單成立時間</th>
+                                <th>訂單狀態</th>
                                 <th></th>
                                 <th></th>
                             </tr>

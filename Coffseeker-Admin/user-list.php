@@ -5,12 +5,14 @@ require_once("../db_connect.php");
 // 給預設值的縮寫法 同等於if判斷式 如果$_GET["page" 有值帶值 沒有值則帶入 1 (設定預設值)
 $page = $_GET["page"] ?? 1;
 
+
+
 $sqlTotal = "SELECT id FROM users WHERE user_valid=1";
 $resultTotal = $conn->query($sqlTotal);
 $totalUser = $resultTotal->num_rows;
 
 
-$perPage=10;
+$perPage=5;
 $totalPage=ceil($totalUser/$perPage);
 // ================================
 
@@ -103,6 +105,7 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                         <div>
                         全部的資料 共 <?= $totalUser ?> 筆
                         </div>
+                    
                         <!-- 升降冪條件 -->
                         <div class="py-2 d-flex justify-content-end">
                             <div class="btn-group">
@@ -115,6 +118,39 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                             </div>
                         </div>
                     </div>
+                    <!-- 頁數 -->
+                    <div class="d-flex justify-content-center">
+                            <nav aria-label="Page navigation example">
+                                <?php
+                                $prevPage = $page - 1;
+                                $nextPage = $page + 1;
+                                ?>
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a class="page-link border-0" href="user-list.php?page=<?php if($prevPage == 0){echo 1;}else{echo $prevPage;} ?>&type=<?= $type ?>">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <?php
+                                    // 計算顯示的頁碼範圍
+                                    $startPage = max($page - 4, 1);
+                                    $endPage = min($startPage + 4, $totalPage);?>
+                                    
+                                    <?php for ($i = $startPage; $i <= $endPage; $i++) : ?>
+                                        <li class="page-item <?php if ($i == $page) echo "active";?>">
+                                            <a class="page-link bg-warning border-0" href="user-list.php?page=<?= $i ?>&type=<?= $type ?>"><?= $i ?></a>
+                                        </li>
+                                    <?php endfor; ?>
+                                    
+                            
+                                    <li class="page-item">
+                                        <a class="page-link border-0" href="user-list.php?page=<?php if($nextPage > $totalPage){echo $nextPage-1;}else{echo $nextPage;} ?>&type=<?= $type ?>">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
 
 
 
@@ -172,21 +208,44 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-                    <!-- 頁數 -->
-                    <div class="d-flex justify-content-center">
-                            <nav aria-label="Page navigation example ">
-                                <?php $user_count = $getuser->num_rows; ?>
+                        <!-- 頁數 -->
+                        <div class="d-flex justify-content-center">
+                            <nav aria-label="Page navigation example">
+                                <?php
+                                $prevPage = $page - 1;
+                                $nextPage = $page + 1;
+                                ?>
                                 <ul class="pagination">
-                                    <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
+                                    <li class="page-item">
+                                        <a class="page-link border-0" href="user-list.php?page=<?php if($prevPage == 0){echo 1;}else{echo $prevPage;} ?>&type=<?= $type ?>">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <?php
+                                    // 計算顯示的頁碼範圍
+                                    $startPage = max($page - 4, 1);
+                                    $endPage = min($startPage + 4, $totalPage);?>
+                                    
+                                    <?php for ($i = $startPage; $i <= $endPage; $i++) : ?>
                                         <li class="page-item <?php if ($i == $page) echo "active";?>">
                                             <a class="page-link bg-warning border-0" href="user-list.php?page=<?= $i ?>&type=<?= $type ?>"><?= $i ?></a>
                                         </li>
                                     <?php endfor; ?>
+                                    
+                            
+                                    <li class="page-item">
+                                        <a class="page-link border-0" href="user-list.php?page=<?php if($nextPage > $totalPage){echo $nextPage-1;}else{echo $nextPage;} ?>&type=<?= $type ?>">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
-
-                </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        共<?=$totalPage?>頁
+                    </div>
+                        
 
 
 

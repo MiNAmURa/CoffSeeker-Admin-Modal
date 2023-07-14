@@ -116,6 +116,7 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                         <div>
                             符合條件的資料 共 <?= $totalUser ?> 筆
                         </div>
+                    
                         <!-- 升降冪條件 -->
                         <div class="py-2 d-flex justify-content-end">
                             <div class="btn-group">
@@ -128,6 +129,40 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                             </div>
                         </div>
                     </div>
+                    <!-- 頁數 -->
+                    <div class="d-flex justify-content-center">
+                            <nav class="page-count" aria-label="Page navigation example">
+                                <?php
+                                $prevPage = $page - 1;
+                                $nextPage = $page + 1;
+                                ?>
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a class="page-link border-0" href="user-search.php?page=<?php if($prevPage == 0){echo 1;}else{echo $prevPage;} ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <?php
+                                    // 計算顯示的頁碼範圍
+                                    $startPage = max($page - 4, 1);
+                                    $endPage = min($startPage + 4, $totalPage);?>
+                                    
+                                    <?php for ($i = $startPage; $i <= $endPage; $i++) : ?>
+                                        <li class="page-item <?php if ($i == $page) echo "active";?>">
+                                            <a class="page-link bg-warning border-0" href="user-search.php?page=<?= $i ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>"><?= $i ?></a>
+                                        </li>
+                                    <?php endfor; ?>
+                                    
+                            
+                                    <li class="page-item">
+                                        <a class="page-link border-0" href="user-search.php?page=<?php if($nextPage > $totalPage){echo $nextPage-1;}else{echo $nextPage;} ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    
 
 
 
@@ -185,19 +220,42 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-                    <!-- 頁數 -->
-                    <div class="d-flex justify-content-center">
-                            <nav aria-label="Page navigation example ">
-                                <?php $user_count = $getuser->num_rows; ?>
+                        <!-- 頁數 -->
+                        <div class="d-flex justify-content-center">
+                            <nav aria-label="Page navigation example">
+                                <?php
+                                $prevPage = $page - 1;
+                                $nextPage = $page + 1;
+                                ?>
                                 <ul class="pagination">
-                                    <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
+                                    <li class="page-item">
+                                        <a class="page-link border-0" href="user-search.php?page=<?php if($prevPage == 0){echo 1;}else{echo $prevPage;} ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <?php
+                                    // 計算顯示的頁碼範圍
+                                    $startPage = max($page - 4, 1);
+                                    $endPage = min($startPage + 4, $totalPage);?>
+                                    
+                                    <?php for ($i = $startPage; $i <= $endPage; $i++) : ?>
                                         <li class="page-item <?php if ($i == $page) echo "active";?>">
                                             <a class="page-link bg-warning border-0" href="user-search.php?page=<?= $i ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>"><?= $i ?></a>
                                         </li>
                                     <?php endfor; ?>
+                                    
+                            
+                                    <li class="page-item">
+                                        <a class="page-link border-0" href="user-search.php?page=<?php if($nextPage > $totalPage){echo $nextPage-1;}else{echo $nextPage;} ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
+                        <div class="d-flex justify-content-center">
+                        共<?=$totalPage?>頁
+                    </div>
                 </div>
 
 
