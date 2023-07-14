@@ -14,7 +14,7 @@
 <!-- Nav Item - Dashboard -->
 <li class="nav-item active">
     <a class="nav-link" href="index.php">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+    <i class="fa-solid fa-indent"></i>
         <span>INDEX</span></a>
 </li>
 
@@ -30,13 +30,11 @@
 
 <?php include("couponbar.php"); ?>
 
-<?php include("teacher-lesson.php"); ?>
+<?php include("teacherbar.php"); ?>
 
 <?php include("coursebar.php"); ?>
 
-<?php include("oasis.php"); ?>
-
-
+<?php include("orderbar.php"); ?>
 
 <!-- Divider -->
 <hr class="sidebar-divider">

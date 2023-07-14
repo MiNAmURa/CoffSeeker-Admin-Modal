@@ -24,6 +24,14 @@
    color: black;
 }
 
+.bg-warning{
+   color: black;
+}
+
+.bg-warning:hover{
+   color: white;
+}
+
 /* Nav Sidebar */
 
 .bg-milky{
@@ -60,6 +68,12 @@
    font-size: 0.8rem;
    border-radius: 10rem;
  }
+
+/* 會員清單與搜尋頁 */
+.pages{
+   top: 7.5px;
+}
+
 
  /* 會員詳細資料 */
 

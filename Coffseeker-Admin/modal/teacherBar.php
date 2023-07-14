@@ -3,7 +3,7 @@
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#teacher-lesson"
         aria-expanded="true" aria-controls="collapseTwo">
         <!-- fontawesome -->
-        <i class="fa-solid fa-users"></i>
+        <i class="fa-solid fa-person-chalkboard"></i>
         <span>Teacher Lesson</span>
     </a>
     <!-- id 要對應 上面的 data-target  -->
