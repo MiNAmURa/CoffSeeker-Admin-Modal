@@ -1,11 +1,6 @@
 <?php
-
 $page = $_GET["page"] ?? 1;
-
 $type = $_GET["type"] ?? 1;
-
-
-
 require_once("../db_connect.php");
 
 $sqlTotal = "SELECT coupon_id FROM coupon WHERE coupon_valid";
@@ -14,7 +9,6 @@ $totalCoupon = $resultTotal->num_rows;
 
 $perPage = 5;
 $startItem = ($page - 1) * $perPage;
-
 $totalPage = ceil($totalCoupon / $perPage);
 
 if ($type == 1) {
@@ -25,11 +19,15 @@ if ($type == 1) {
     $orderBy = "ORDER BY expries_at ASC";
 } elseif ($type == 4) {
     $orderBy = "ORDER BY expries_at DESC";
+} elseif ($type == 5) {
+    $orderBy = "AND coupon_valid = 1";
+} elseif ($type == 6) {
+    $orderBy = "AND coupon_valid = -1";
 } else {
     header("location: 404.php");
 }
 
-$sql = "SELECT coupon_id, coupon_name, coupon_code, coupon_valid, discount_type, discount_value, created_at, expries_at, updated_at, max_usage, usage_restriction FROM coupon WHERE coupon_valid $orderBy LIMIT $startItem, $perPage";
+$sql = "SELECT coupon_id, coupon_name, coupon_code, coupon_valid, discount_type, discount_value, created_at, expires_at, updated_at, max_usage, usage_restriction, valid_description FROM coupon WHERE coupon_valid $orderBy LIMIT $startItem, $perPage";
 
 $result = $conn->query($sql);
 ?>
@@ -45,36 +43,29 @@ $result = $conn->query($sql);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Coupon List</title>
+    <title>所有優惠卷清單</title>
 
     <?php include("modal/template.php") ?>
 </head>
 
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <?php include("modal/sidebar.php") ?>
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
             <div id="content">
-
                 <?php include("modal/topbar.php") ?>
-
                 <!-- ↓↓放置內容↓↓-->
-
-                <h1 class="text-center">Coupon List</h1>
-
+                <h1 class="text-center">所有優惠卷清單</h1>
                 <div class="container">
                     <div class="py-2">
                         <form action="coupon-search.php">
                             <div class="row gx-2">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="搜尋優惠卷" name="coupon_name">
+                                    <input type="text" class="form-control" placeholder="請輸入優惠卷名稱" name="coupon_name">
                                 </div>
                                 <div class="col-auto">
                                     <button class="btn btn-warning" type="submit">搜尋</button>
@@ -87,34 +78,32 @@ $result = $conn->query($sql);
                     ?>
                     <div class="py-2 d-flex justify-content-between align-items-center">
                         <a class="btn btn-warning" href="coupon-create.php">新增</a>
-                        <div>
-                            共 <?= $totalCoupon ?> 張, 第 <?= $page ?> 頁
-                        </div>
-                    </div>
-                    <div class="py-2 d-flex justify-content-end">
-                        <div class="btn-group">
-                            <a href="Coupon-edit-list.php?page=<?= $page ?>&type=1" class="btn btn-warning 
+                        <div class="">
+                            <a href="Coupon-list.php?page=<?= $page ?>&type=5" class="btn btn-warning 
         <?php
-        if ($type == 1) echo "active";
-        ?>">ID <i class="fa-solid fa-arrow-down-short-wide"></i></a>
-                            <a href="Coupon-edit-list.php?page=<?= $page ?>&type=2" class="btn btn-warning 
+        if ($type == 5) echo "active";
+        ?>">可使用<i class="fa-solid"></i></i></a>
+                            <a href="Coupon-list.php?page=<?= $page ?>&type=6" class="btn btn-warning 
         <?php
-        if ($type == 2) echo "active";
-        ?>">ID <i class="fa-solid fa-arrow-down-wide-short"></i></i></a>
-                            <a href="Coupon-edit-list.php?page=<?= $page ?>&type=3" class="btn btn-warning 
+        if ($type == 6) echo "active";
+        ?>">已停用<i class="fa-solid"></i></i></a>
+                            <a href="Coupon-list.php?page=<?= $page ?>&type=3" class="btn btn-warning 
         <?php
         if ($type == 3) echo "active";
         ?>">到期日 <i class="fa-solid fa-arrow-down-short-wide"></i></a>
-                            <a href="Coupon-edit-list.php?page=<?= $page ?>&type=4" class="btn btn-warning 
+                            <a href="Coupon-list.php?page=<?= $page ?>&type=4" class="btn btn-warning 
         <?php
         if ($type == 4) echo "active";
         ?>">到期日<i class="fa-solid fa-arrow-down-wide-short"></i></i></a>
                         </div>
                     </div>
+                    <div class="py-2 d-flex justify-content-end">
+                        <div>
+                            共 <?= $totalCoupon ?> 張, 第 <?= $page ?> 頁
+                        </div>
+                    </div>
                     <?php
                     $rows = $result->fetch_all(MYSQLI_ASSOC);
-                    // var_dump($rows);
-                    // exit;
                     ?>
                     <table class="table table-bordered">
                         <thead>
@@ -138,11 +127,11 @@ $result = $conn->query($sql);
                                     <td><?= $row["coupon_id"] ?></td>
                                     <td><?= $row["coupon_name"] ?></td>
                                     <td><?= $row["coupon_code"] ?></td>
-                                    <td><?= $row["coupon_valid"] ?></td>
+                                    <td><?= $row["valid_description"] ?></td>
                                     <td><?= $row["discount_type"] ?></td>
                                     <td><?= $row["discount_value"] ?></td>
                                     <td><?= $row["created_at"] ?></td>
-                                    <td><?= $row["expries_at"] ?></td>
+                                    <td><?= $row["expires_at"] ?></td>
                                     <td><?= $row["updated_at"] ?></td>
                                     <td><?= $row["max_usage"] ?></td>
                                     <td><?= $row["usage_restriction"] ?></td>
@@ -168,27 +157,19 @@ $result = $conn->query($sql);
                 <!-- ↑↑放置內容↑↑ -->
             </div>
             <!-- End of Main Content -->
-
             <?php include("modal/footer.php") ?>
-
         </div>
         <!-- End of Content Wrapper -->
-
     </div>
     <!-- End of Page Wrapper -->
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
-
-
 </body>
 
 </html>

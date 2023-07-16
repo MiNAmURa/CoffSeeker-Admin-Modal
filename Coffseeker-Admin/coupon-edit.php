@@ -1,6 +1,5 @@
 <?php
 if (!isset($_GET["coupon_id"])) {
-    // die("資料不存在");
     header("location: 404.php");
 }
 $id = $_GET["coupon_id"];
@@ -9,16 +8,12 @@ require_once("../db_connect.php");
 $sql = "SELECT * FROM coupon WHERE coupon_id=$id";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
-// var_dump($row);
-
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -31,23 +26,16 @@ $row = $result->fetch_assoc();
 </head>
 
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <?php include("modal/sidebar.php") ?>
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
-
                 <?php include("modal/topbar.php") ?>
-
                 <!-- ↓↓放置內容↓↓-->
-
-                <h1 class="text-center">Coupon-Edit</h1>
+                <h1 class="text-center">編輯優惠券</h1>
                 <!-- modal start -->
                 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
                     <div class="modal-dialog modal-sm">
@@ -73,6 +61,12 @@ $row = $result->fetch_assoc();
                             <table class="table table-bordered ">
                                 <input type="hidden" name="coupon_id" value="<?= $row["coupon_id"] ?>">
                                 <tr>
+                                    <th>優惠卷ID</th>
+                                    <td>
+                                        <?= $row["coupon_id"] ?>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <th>優惠卷名稱</th>
                                     <td>
                                         <input type="text" class="form-control" value="<?= $row["coupon_name"] ?>" name="coupon_name">
@@ -82,16 +76,18 @@ $row = $result->fetch_assoc();
                                     <th>優惠卷狀態</th>
                                     <td>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="coupon_valid" id="dcoupon_valid1" value="1">
-                                            <label class="form-check-label" for="exampleRadios1">
+                                            <input class="form-check-input" type="radio" name="coupon_valid" value="1" <?php if ($row["coupon_valid"] == 1) echo 'checked'; ?>>
+                                            <label class="form-check-label">
                                                 可使用
                                             </label>
+                                            <input type="hidden" name="valid_description" value="可使用" <?php if ($row["valid_description"] == "可使用") echo 'checked'; ?>>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="coupon_valid" id="coupon_valid2" value="-1">
-                                            <label class="form-check-label" for="exampleRadios2">
+                                            <input class="form-check-input" type="radio" name="coupon_valid" value="-1" <?php if ($row["coupon_valid"] == -1) echo 'checked'; ?>>
+                                            <label class="form-check-label">
                                                 停用
                                             </label>
+                                            <input type="hidden" name="valid_description" value="已停用" <?php if ($row["valid_description"] == "已停用") echo 'checked'; ?>>
                                         </div>
                                     </td>
                                 </tr>
@@ -99,13 +95,13 @@ $row = $result->fetch_assoc();
                                     <th>優惠卷類型</th>
                                     <td>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="discount_type" id="discount_type1" value="百分比">
+                                            <input class="form-check-input" type="radio" name="discount_type" id="discount_type1" value="百分比" <?php if ($row["discount_type"] == "百分比") echo 'checked'; ?>>
                                             <label class="form-check-label" for="exampleRadios1">
                                                 依售價百分比折價
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="discount_type" id="discount_type2" value="金額">
+                                            <input class="form-check-input" type="radio" name="discount_type" id="discount_type2" value="金額" <?php if ($row["discount_type"] == "金額") echo 'checked'; ?>>
                                             <label class="form-check-label" for="exampleRadios2">
                                                 依優惠金額折價
                                             </label>
@@ -127,7 +123,7 @@ $row = $result->fetch_assoc();
                                 <tr>
                                     <th>優惠卷到期日</th>
                                     <td>
-                                        <input type="date" value="<?= $row["expries_at"] ?>" name="expries_at">
+                                        <input type="date" value="<?= $row["expires_at"] ?>" name="expires_at">
                                     </td>
                                 </tr>
                                 <tr>
@@ -140,7 +136,7 @@ $row = $result->fetch_assoc();
                             <div class="py-2 d-flex justify-content-between">
                                 <div>
                                     <button class="btn btn-warning" type="submit">儲存</button>
-                                    <a class="btn btn-warning" href="Coupon-edit-list.php?coupon_id=<?= $row["coupon_id"] ?>">取消</a>
+                                    <a class="btn btn-warning" href="coupon.php?coupon_id=<?= $row["coupon_id"] ?>">取消</a>
                                 </div>
                                 <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">刪除</button>
                             </div>
@@ -153,27 +149,19 @@ $row = $result->fetch_assoc();
                 <!-- ↑↑放置內容↑↑ -->
             </div>
             <!-- End of Main Content -->
-
             <?php include("modal/footer.php") ?>
-
         </div>
         <!-- End of Content Wrapper -->
-
     </div>
     <!-- End of Page Wrapper -->
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
-
-
 </body>
 
 </html>
