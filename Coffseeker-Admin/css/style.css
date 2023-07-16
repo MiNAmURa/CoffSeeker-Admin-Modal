@@ -114,3 +114,9 @@
    position: relative;
    top: -20px;
 }
+
+/* Order */
+
+.order-box{
+   margin:0 auto;
+}

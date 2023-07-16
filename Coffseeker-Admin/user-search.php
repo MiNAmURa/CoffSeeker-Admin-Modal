@@ -83,7 +83,7 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
 
                 <div class="container-fluid">
 
-                    <h1 class="text-center py-4">會員清單</h1>
+                    <h1 class="text-center py-4">User-Search</h1>
 
                     <div class="pb-2">
                         <form action="user-search.php">
@@ -93,10 +93,18 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                                 </div>
                                 <div class="col-auto">
                                     <select class="form-select form-control" aria-label="Grade" name="select">
-                                        <option value="id" <?php if($select == 'id') echo "selected"; ?>>ID</option>
-                                        <option value="user_name" <?php if($select == 'user_name') echo "selected"; ?>>名稱</option>
-                                        <option value="user_grade_id"<?php if($select == 'user_grade_id') echo "selected"; ?>>等級</option>
-                                        <option value="user_email" <?php if($select == 'user_email') echo "selected"; ?>>信箱</option>
+                                        <option value="id" <?php if($select == 'id') echo "selected"; ?>>
+                                            ID
+                                        </option>
+                                        <option value="user_name" <?php if($select == 'user_name') echo "selected"; ?>>
+                                            名稱
+                                        </option>
+                                        <option value="user_grade_id"<?php if($select == 'user_grade_id') echo "selected"; ?>>
+                                            等級
+                                        </option>
+                                        <option value="user_email" <?php if($select == 'user_email') echo "selected"; ?>>
+                                            信箱
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="col">
