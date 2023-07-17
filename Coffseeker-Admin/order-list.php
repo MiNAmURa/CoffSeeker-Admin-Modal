@@ -155,13 +155,13 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>訂單編號</th>
-                                <th>購買商品</th>
-                                <th>訂單總價</th>
-                                <th>購買人</th>
-                                <th>訂單成立時間</th>
-                                <th>訂單狀態</th>
-                                <th></th>
+                                <th class="col-1">訂單編號</th>
+                                <th class="col-4">購買商品</th>
+                                <th class="col-1">訂單總價</th>
+                                <th class="col-1">購買人</th>
+                                <th class="col-2">成立時間</th>
+                                <th class="col-1">訂單狀態</th>
+                                <th class="col-2"></th>
                             </tr>
                         </thead>
 
