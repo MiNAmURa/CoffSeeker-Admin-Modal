@@ -38,7 +38,7 @@ $row = $result->fetch_assoc();
                 <!-- ↓↓放置內容↓↓-->
                 <h1 class="text-center">優惠卷詳細內容</h1>
                 <div class="container">
-                    <div class="py-2">
+                    <div class="py-2 mb-2">
                         <a class="btn btn-warning" href="Coupon-list.php">回優惠卷列表</a>
                     </div>
                     <table class="table table-bordered ">
@@ -83,7 +83,7 @@ $row = $result->fetch_assoc();
                             <td><?= $row["usage_restriction"] ?></td>
                         </tr>
                     </table>
-                    <div class="py-2">
+                    <div class="py-1">
                         <a class="btn btn-warning" href="Coupon-edit.php?coupon_id=<?= $row["coupon_id"] ?>">編輯</a>
                     </div>
                 </div>
