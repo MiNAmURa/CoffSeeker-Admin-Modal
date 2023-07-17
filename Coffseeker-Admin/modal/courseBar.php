@@ -10,7 +10,8 @@
     <div id="coursebar" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Course Option</h6>
-            <a class="collapse-item" href="user-list.php">course-List</a>
+            <a class="collapse-item" href="course_list.php">course-List</a>
+            <a class="collapse-item" href="course_list.php?valid=0">course-List-已下架</a>
         </div>
     </div>
 </li>

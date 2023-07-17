@@ -78,7 +78,7 @@ $result = $conn->query($sql);
                     ?>
                     <div class="py-2 d-flex justify-content-between align-items-center">
                         <a class="btn btn-warning" href="coupon-create.php">新增</a>
-                        <div class="">
+                        <div class="btn-group">
                             <a href="Coupon-list.php?page=<?= $page ?>&type=1" class="btn btn-warning 
         <?php
         if ($type == 1) echo "active";

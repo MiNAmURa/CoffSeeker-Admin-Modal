@@ -81,7 +81,7 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                     <div class="pb-2">
                         <form action="user-search.php" method="get">
                             <div class="row gx-2">
-                                <div class="col-auto">
+                                <div class="col-1">
                                     <select class="form-select form-control" aria-label="Grade" name="select">
                                         <option value="id" selected>ID</option>
                                         <option value="user_name">名稱</option>

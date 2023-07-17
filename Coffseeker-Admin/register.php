@@ -35,9 +35,10 @@
                         <div class="p-5">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <h2 class="h6 text-danger mb-4" id="error"></h2>
                             </div>
                             <!-- Form -->
-                            <form action="action/users/doSignUp.php" method="post" class="user">
+                            <form action="action/users/doSignUp.php" method="post" class="user" id="form">
                                 <div class="form-group">
                                         <input type="text" class="form-control form-control-user" id="name"
                                             placeholder="User Name" name="name">
@@ -58,36 +59,25 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="phone" class="form-control form-control-user"
+                                        <input type="tel" class="form-control form-control-user"
                                             id="phone" placeholder="Phone" name="phone">
                                     </div>
                                     <div class="col-sm-6">
-                                    <select class="form-select gender-select" aria-label="gender"  name="gender">
-                                        <option selected>Select Your Gender</option>
+                                    <select class="form-select gender-select" aria-label="gender"  name="gender" id="gender">
+                                        <option value="">Select Your Gender</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                         <option value="LGBTQIA+">LGBTQIA+</option>
                                         <option value="Private">Private</option>
                                     </select>
-                                        <!-- <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password" name="repassword"> -->
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="date" class="form-control form-control-user" id="birthday"
                                     name="birthday">
                                 </div>
-                                <!-- <a href="login.php" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
-                                <hr>
-                                <a href="index.php" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="index.php" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a> -->
-                                <button class="btn btn-user btn-block bg-milky border-0 sign-up" type="submit">Sign Up !</button>
+                                
+                                <button class="btn btn-user btn-block bg-milky border-0 sign-up" id="send" type="button">Sign Up !</button>
                             </form>
                             <hr>
                             <div class="text-center">
@@ -104,6 +94,92 @@
 
     </div>
 
+    <script>
+        const form = document.querySelector("#form");
+        const name=document.querySelector("#name");
+        const password=document.querySelector("#password");
+        const repassword=document.querySelector("#repassword");
+        const email=document.querySelector("#email");
+        const gender=document.querySelector("#gender");
+        const phone=document.querySelector("#phone");
+        const birthday=document.querySelector("#birthday");
+        const remail=/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+        const send=document.querySelector("#send");
+        const error=document.querySelector("#error");
+        
+        send.addEventListener("click",function(){
+        
+        
+        if(name.value==""){
+            error.innerText="請輸入帳號"
+            return;
+        }else{
+            error.innerText=""
+        }
+        
+        if(name.value.length<4){
+            error.innerText="帳號請設定在4~12位英數字之間"
+            return;
+        }
+
+        if(name.value.length>12){
+            error.innerText="帳號請設定在4~12位英數字之間"
+            return;
+        }
+
+        if(email.value==""){
+            error.innerText="請輸入email"
+            return;
+        }
+        
+        if(!remail.test(email.value)){
+            error.innerText="email格式錯誤"
+            return;
+        }
+
+        if(password.value==""){
+            error.innerText="請輸入密碼"
+            return;
+        }else{
+            error.innerText=""
+        }
+
+        if(repassword.value!=password.value){
+            error.innerText="密碼不一致"
+            return;
+        }else{
+            error.innerText=""
+        }
+
+        if(phone.value == ""){
+            error.innerText="請輸入電話號碼"
+            return;
+        }else{
+            error.innerText=""
+        }
+
+        if(gender.value == ""){
+            error.innerText="請選擇性別"
+            return;
+        }else{
+            error.innerText=""
+        }
+        
+        if(birthday.value == ""){
+            error.innerText="請輸入生日日期"
+            return;
+        }else{
+            error.innerText=""
+        }
+        
+        form.submit();
+    })
+        
+
+
+
+    </script>
+    
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
