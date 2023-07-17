@@ -114,6 +114,7 @@ if (isset($_GET["coupon_name"])) {
                                     <th>最後更新</th>
                                     <th>可使用次數</th>
                                     <th>優惠卷使用條件</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>

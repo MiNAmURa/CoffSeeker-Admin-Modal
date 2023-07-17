@@ -78,7 +78,7 @@ $result = $conn->query($sql);
                     ?>
                     <div class="py-2 d-flex justify-content-between align-items-center">
                         <a class="btn btn-warning" href="coupon-create.php">新增</a>
-                        <div class="btn-group">
+                        <div class="">
                             <a href="Coupon-list.php?page=<?= $page ?>&type=1" class="btn btn-warning 
         <?php
         if ($type == 1) echo "active fw-bolder";
@@ -123,6 +123,7 @@ $result = $conn->query($sql);
                                 <th>最後更新</th>
                                 <th>可使用次數</th>
                                 <th>優惠卷使用條件</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>

@@ -12,13 +12,13 @@ $startItem = ($page - 1) * $perPage;
 $totalPage = ceil($totalCoupon / $perPage);
 
 if ($type == 1) {
-    $orderBy = "ORDER BY coupon_id ASC";
+    $orderBy = "AND coupon_valid";
 } elseif ($type == 2) {
     $orderBy = "ORDER BY coupon_id DESC";
 } elseif ($type == 3) {
-    $orderBy = "ORDER BY expries_at ASC";
+    $orderBy = "ORDER BY expires_at ASC";
 } elseif ($type == 4) {
-    $orderBy = "ORDER BY expries_at DESC";
+    $orderBy = "ORDER BY expires_at DESC";
 } elseif ($type == 5) {
     $orderBy = "AND coupon_valid = 1";
 } elseif ($type == 6) {
@@ -26,6 +26,10 @@ if ($type == 1) {
 } else {
     header("location: 404.php");
 }
+
+$sqlTotal = "SELECT coupon_id FROM coupon WHERE coupon_valid $orderBy";
+$resultTotal = $conn->query($sqlTotal);
+$totalCoupon = $resultTotal->num_rows;
 
 $sql = "SELECT coupon_id, coupon_name, coupon_code, coupon_valid, discount_type, discount_value, created_at, expires_at, updated_at, max_usage, usage_restriction, valid_description FROM coupon WHERE coupon_valid $orderBy LIMIT $startItem, $perPage";
 
@@ -79,19 +83,23 @@ $result = $conn->query($sql);
                     <div class="py-2 d-flex justify-content-between align-items-center">
                         <a class="btn btn-warning" href="coupon-create.php">新增</a>
                         <div class="">
-                            <a href="Coupon-list.php?page=<?= $page ?>&type=5" class="btn btn-warning 
+                            <a href="Coupon-edit-list.php?page=<?= $page ?>&type=1" class="btn btn-warning 
+        <?php
+        if ($type == 1) echo "active fw-bolder";
+        ?>">所有項目<i class="fa-solid"></i></i></a>
+                            <a href="Coupon-edit-list.php?page=<?= $page ?>&type=5" class="btn btn-warning 
         <?php
         if ($type == 5) echo "active fw-bolder";
         ?>">可使用<i class="fa-solid"></i></i></a>
-                            <a href="Coupon-list.php?page=<?= $page ?>&type=6" class="btn btn-warning 
+                            <a href="Coupon-edit-list.php?page=<?= $page ?>&type=6" class="btn btn-warning 
         <?php
         if ($type == 6) echo "active fw-bolder";
         ?>">已停用<i class="fa-solid"></i></i></a>
-                            <a href="Coupon-list.php?page=<?= $page ?>&type=3" class="btn btn-warning 
+                            <a href="Coupon-edit-list.php?page=<?= $page ?>&type=3" class="btn btn-warning 
         <?php
         if ($type == 3) echo "active fw-bolder";
         ?>">到期日 <i class="fa-solid fa-arrow-down-short-wide"></i></a>
-                            <a href="Coupon-list.php?page=<?= $page ?>&type=4" class="btn btn-warning 
+                            <a href="Coupon-edit-list.php?page=<?= $page ?>&type=4" class="btn btn-warning 
         <?php
         if ($type == 4) echo "active fw-bolder";
         ?>">到期日<i class="fa-solid fa-arrow-down-wide-short"></i></i></a>
@@ -119,6 +127,7 @@ $result = $conn->query($sql);
                                 <th>最後更新</th>
                                 <th>可使用次數</th>
                                 <th>優惠卷使用條件</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
