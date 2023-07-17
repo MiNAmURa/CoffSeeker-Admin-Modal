@@ -120,3 +120,30 @@
 .order-box{
    margin:0 auto;
 }
+
+/* product */
+.totalpage{
+   display: flex;
+   justify-content: right;
+}
+.product_description{
+   list-style-type: none;
+   font-size: 13px;
+   padding: 0;
+}
+.product_name{
+   background: rgb(238, 238, 238);
+   /* color: white; */
+}
+.fa-circle-plus{
+   font-size: 30px;
+   color: green;
+   
+}
+.img-prev{
+   height: 200px;
+   width: 200px;
+   border: 1px solid lightgray;
+   margin-left: 20px;
+}
+

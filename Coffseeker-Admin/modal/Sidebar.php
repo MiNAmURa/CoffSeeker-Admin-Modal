@@ -28,13 +28,21 @@
 
 <?php include("userbar.php"); ?>
 
+<?php include("orderbar.php"); ?>
+
 <?php include("couponbar.php"); ?>
 
-<?php include("teacherbar.php"); ?>
+<?php include("productbar.php"); ?>
 
 <?php include("coursebar.php"); ?>
 
-<?php include("orderbar.php"); ?>
+<?php include("categorybar.php"); ?>
+
+<?php include("teacherbar.php"); ?>
+
+
+
+
 
 <!-- Divider -->
 <hr class="sidebar-divider">

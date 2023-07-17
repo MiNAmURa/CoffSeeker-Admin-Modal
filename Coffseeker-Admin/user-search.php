@@ -91,7 +91,7 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                                 <div class="col-auto">
                                     <a class="btn btn-warning" href="user-list.php"><i class="fa-solid fa-reply"></i></a>
                                 </div>
-                                <div class="col-auto">
+                                <div class="col-1">
                                     <select class="form-select form-control" aria-label="Grade" name="select">
                                         <option value="id" <?php if($select == 'id') echo "selected"; ?>>
                                             ID
