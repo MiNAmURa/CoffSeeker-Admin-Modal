@@ -13,7 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
     // 處理上傳的圖片
-    $target_dir = "images/"; // 儲存的資料夾
+    $target_dir = "../../images/"; // 儲存的資料夾
+    $target_path="images/" . $_FILES["product-image"]["name"];
     $target_file = $target_dir . basename($_FILES["product-image"]["name"]); // 取得圖片檔案的路徑
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); // 取得圖片的副檔名
 
@@ -34,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
     // 將商品資料插入資料庫
-    $sql = "INSERT INTO product (product_category, product_brand, product_name, product_amount, product_price, product_description, product_image, created_at, updated_at, product_valid) VALUES ('$selectedCategories', '$product_brand', '$product_name', '$product_amount', '$product_price', '$product_description', '$target_file', '$currentDateTime', '$currentDateTime', '$product_valid')";
+    $sql = "INSERT INTO product (product_category, product_brand, product_name, product_amount, product_price, product_description, product_image, created_at, updated_at, product_valid) VALUES ('$selectedCategories', '$product_brand', '$product_name', '$product_amount', '$product_price', '$product_description', '$target_path', '$currentDateTime', '$currentDateTime', '$product_valid')";
 
     if ($conn->query($sql) === TRUE) {
         $message = "商品上傳成功！";
