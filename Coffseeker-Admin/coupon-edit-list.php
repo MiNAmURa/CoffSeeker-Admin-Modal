@@ -81,19 +81,19 @@ $result = $conn->query($sql);
                         <div class="">
                             <a href="Coupon-list.php?page=<?= $page ?>&type=5" class="btn btn-warning 
         <?php
-        if ($type == 5) echo "active";
+        if ($type == 5) echo "active fw-bolder";
         ?>">可使用<i class="fa-solid"></i></i></a>
                             <a href="Coupon-list.php?page=<?= $page ?>&type=6" class="btn btn-warning 
         <?php
-        if ($type == 6) echo "active";
+        if ($type == 6) echo "active fw-bolder";
         ?>">已停用<i class="fa-solid"></i></i></a>
                             <a href="Coupon-list.php?page=<?= $page ?>&type=3" class="btn btn-warning 
         <?php
-        if ($type == 3) echo "active";
+        if ($type == 3) echo "active fw-bolder";
         ?>">到期日 <i class="fa-solid fa-arrow-down-short-wide"></i></a>
                             <a href="Coupon-list.php?page=<?= $page ?>&type=4" class="btn btn-warning 
         <?php
-        if ($type == 4) echo "active";
+        if ($type == 4) echo "active fw-bolder";
         ?>">到期日<i class="fa-solid fa-arrow-down-wide-short"></i></i></a>
                         </div>
                     </div>
