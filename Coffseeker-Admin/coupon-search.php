@@ -86,15 +86,15 @@ if (isset($_GET["coupon_name"])) {
                             <div class="">優惠卷狀態為：
                                 <a href="Coupon-search.php?coupon_name=<?= $name ?>&type=1" class="btn btn-warning 
                         <?php
-                        if ($type == 5) echo "active";
+                        if ($type == 1) echo "active";
                         ?>">所有項目<i class="fa-solid"></i></i></a>
                                 <a href="Coupon-search.php?coupon_name=<?= $name ?>&type=2" class="btn btn-warning 
                         <?php
-                        if ($type == 5) echo "active";
+                        if ($type == 2) echo "active";
                         ?>">可使用<i class="fa-solid"></i></i></a>
                                 <a href="Coupon-search.php?coupon_name=<?= $name ?>&type=3" class="btn btn-warning 
                         <?php
-                        if ($type == 6) echo "active";
+                        if ($type == 3) echo "active";
                         ?>">已停用<i class="fa-solid"></i></i></a>
                             </div>
                         </div>
