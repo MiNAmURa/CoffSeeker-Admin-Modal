@@ -35,9 +35,9 @@
                     <!-- 404 Error Text -->
                     <div class="text-center">
                         <div class="error mx-auto" data-text="404">404</div>
-                        <p class="lead text-gray-800 mb-5">Page Not Found</p>
-                        <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-                        <a href="index.php">&larr; Back to Index</a>
+                        <p class="lead text-gray-800 mb-5">找不到頁面</p>
+                        <p class="text-gray-500 mb-0">被你發現奇怪的BUG了...</p>
+                        <a href="index.php">&larr; 回到首頁</a>
                     </div>
 
                 </div>

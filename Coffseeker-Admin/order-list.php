@@ -124,7 +124,7 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
                                 ?>
                                 <ul class="pagination">
                                     <li class="page-item">
-                                        <a class="page-link border-0" href="order-list.php?page=<?php if($prevPage == 0){echo 1;}else{echo $prevPage;} ?>&type=<?= $type ?>">
+                                        <a class="page-link border-0 bg-warning" href="order-list.php?page=<?php if($prevPage == 0){echo 1;}else{echo $prevPage;} ?>&type=<?= $type ?>">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
@@ -135,13 +135,13 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
                                     
                                     <?php for ($i = $startPage; $i <= $endPage; $i++) : ?>
                                         <li class="page-item <?php if ($i == $page) echo "active";?>">
-                                            <a class="page-link bg-warning border-0" href="order-list.php?page=<?= $i ?>&type=<?= $type ?>"><?= $i ?></a>
+                                            <a class="page-link text-warning border-0" href="order-list.php?page=<?= $i ?>&type=<?= $type ?>"><?= $i ?></a>
                                         </li>
                                     <?php endfor; ?>
                                     
                             
                                     <li class="page-item">
-                                        <a class="page-link border-0" href="order-list.php?page=<?php if($nextPage > $totalPage){echo $nextPage-1;}else{echo $nextPage;} ?>&type=<?= $type ?>">
+                                        <a class="page-link border-0 bg-warning" href="order-list.php?page=<?php if($nextPage > $totalPage){echo $nextPage-1;}else{echo $nextPage;} ?>&type=<?= $type ?>">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
                                     </li>
@@ -202,7 +202,7 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
                                 ?>
                                 <ul class="pagination">
                                     <li class="page-item">
-                                        <a class="page-link border-0" href="order-list.php?page=<?php if($prevPage == 0){echo 1;}else{echo $prevPage;} ?>&type=<?= $type ?>">
+                                        <a class="page-link border-0 bg-warning" href="order-list.php?page=<?php if($prevPage == 0){echo 1;}else{echo $prevPage;} ?>&type=<?= $type ?>">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
@@ -213,13 +213,13 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
                                     
                                     <?php for ($i = $startPage; $i <= $endPage; $i++) : ?>
                                         <li class="page-item <?php if ($i == $page) echo "active";?>">
-                                            <a class="page-link bg-warning border-0" href="order-list.php?page=<?= $i ?>&type=<?= $type ?>"><?= $i ?></a>
+                                            <a class="page-link text-warning border-0" href="order-list.php?page=<?= $i ?>&type=<?= $type ?>"><?= $i ?></a>
                                         </li>
                                     <?php endfor; ?>
                                     
                             
                                     <li class="page-item">
-                                        <a class="page-link border-0" href="order-list.php?page=<?php if($nextPage > $totalPage){echo $nextPage-1;}else{echo $nextPage;} ?>&type=<?= $type ?>">
+                                        <a class="page-link border-0 bg-warning" href="order-list.php?page=<?php if($nextPage > $totalPage){echo $nextPage-1;}else{echo $nextPage;} ?>&type=<?= $type ?>">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
                                     </li>

@@ -256,19 +256,19 @@ $result = $conn->query($sql);
                             <ul class="pagination ms-3 justify-content-center">
                                 <?php if ($page > 1) : ?>
                                     <li class="page-item">
-                                        <a class="page-link" href="product-list.php?page=<?= ($page - 1) ?>&type=<?= $type ?>&min=<?= $min ?>&max=<?= $max ?>" aria-label="Previous">
+                                        <a class="page-link bg-warning border-0" href="product-list.php?page=<?= ($page - 1) ?>&type=<?= $type ?>&min=<?= $min ?>&max=<?= $max ?>" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
                                 <?php endif; ?>
                                 <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
                                     <li class="page-item <?php if ($i == $page) echo "active"; ?>">
-                                        <a class="page-link" href="product-list.php?page=<?= $i ?>&type=<?= $type ?>&min=<?= $min ?>&max=<?= $max ?>"><?= $i ?></a>
+                                        <a class="page-link text-warning border-0" href="product-list.php?page=<?= $i ?>&type=<?= $type ?>&min=<?= $min ?>&max=<?= $max ?>"><?= $i ?></a>
                                     </li>
                                 <?php endfor; ?>
                                 <?php if ($page < $totalPage) : ?>
                                     <li class="page-item">
-                                        <a class="page-link" href="product-list.php?page=<?= ($page + 1) ?>&type=<?= $type ?>&min=<?= $min ?>&max=<?= $max ?>" aria-label="Next">
+                                        <a class="page-link bg-warning border-0" href="product-list.php?page=<?= ($page + 1) ?>&type=<?= $type ?>&min=<?= $min ?>&max=<?= $max ?>" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
                                     </li>

@@ -4,13 +4,13 @@
         aria-expanded="true" aria-controls="collapseTwo">
         <!-- fontawesome -->
         <i class="fa-solid fa-cart-shopping"></i>
-        <span>Orders</span>
+        <span>訂單管理</span>
     </a>
     <!-- id 要對應 上面的 data-target  -->
     <div id="hungry" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Order Option</h6>
-            <a class="collapse-item" href="order-list.php">Order-List</a>
+            <h6 class="collapse-header">Orders Option</h6>
+            <a class="collapse-item" href="order-list.php">訂單列表</a>
         </div>
     </div>
 </li>

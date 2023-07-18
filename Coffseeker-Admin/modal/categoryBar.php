@@ -4,13 +4,13 @@
         aria-expanded="true" aria-controls="collapseTwo">
         <!-- fontawesome -->
         <i class="fa-solid fa-bookmark"></i>
-        <span>Category</span>
+        <span>分類管理</span>
     </a>
     <!-- id 要對應 上面的 data-target  -->
     <div id="Categorybar" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Categories Option</h6>
-            <a class="collapse-item" href="user-list.php">Category-List</a>
+            <a class="collapse-item" href="category.php">分類列表</a>
         </div>
     </div>
 </li>

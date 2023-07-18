@@ -4,14 +4,14 @@
         aria-expanded="true" aria-controls="collapseTwo">
         <!-- fontawesome -->
         <i class="fa-solid fa-book"></i>
-        <span>Course</span>
+        <span>課程管理</span>
     </a>
     <!-- id 要對應 上面的 data-target  -->
     <div id="coursebar" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Course Option</h6>
-            <a class="collapse-item" href="course_list.php">course-List</a>
-            <a class="collapse-item" href="course_list.php?valid=0">course-List-已下架</a>
+            <a class="collapse-item" href="course_list.php">課程列表</a>
+            <a class="collapse-item" href="course_list.php?valid=0">已下架課程</a>
         </div>
     </div>
 </li>

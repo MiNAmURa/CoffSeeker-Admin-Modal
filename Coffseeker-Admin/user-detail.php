@@ -65,7 +65,7 @@ $coffusers = $getuser->fetch_assoc();
                 <?php include("modal/topbar.php") ?>
 
                 <!-- ↓↓放置內容↓↓-->
-                <h1 class="text-center py-2">User_Detail</h1>
+                <h1 class="text-center py-2">會員詳細資料</h1>
 
                 <div class="container-fluid">
                 

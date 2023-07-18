@@ -44,7 +44,7 @@ $coffusers = $getuser->fetch_assoc();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>User-Detail</title>
+    <title>User-Edit</title>
 
     <?php include("modal/template.php") ?>
 </head>

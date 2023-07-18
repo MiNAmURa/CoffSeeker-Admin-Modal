@@ -156,7 +156,7 @@ $result = $conn->query($sql);
                             <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
 
                                 <li class="page-item">
-                                    <a class="page-link" href="Coupon-edit-list.php?page=<?= $i ?>&type=<?= $type ?>"><?= $i ?></a>
+                                    <a class="page-link text-warning" href="Coupon-edit-list.php?page=<?= $i ?>&type=<?= $type ?>"><?= $i ?></a>
                                 </li>
 
                             <?php endfor; ?>

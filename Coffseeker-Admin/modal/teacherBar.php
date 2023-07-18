@@ -4,14 +4,14 @@
         aria-expanded="true" aria-controls="collapseTwo">
         <!-- fontawesome -->
         <i class="fa-solid fa-person-chalkboard"></i>
-        <span>Teacher Lesson</span>
+        <span>講師管理</span>
     </a>
     <!-- id 要對應 上面的 data-target  -->
     <div id="teacher-lesson" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Teacher Option</h6>
-            <a class="collapse-item" href="user-list.php">Teacher List</a>
-            <a class="collapse-item" href="user-list.php">Lesson List</a>
+            <a class="collapse-item" href="teacher-list.php">講師清單</a>
+            <a class="collapse-item" href="teacher-create.php">新增講師資訊</a>
             
         </div>
     </div>

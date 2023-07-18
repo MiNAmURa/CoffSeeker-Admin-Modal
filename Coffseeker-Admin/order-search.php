@@ -89,7 +89,7 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
 
                 <div class="container-fluid">
 
-                    <h1 class="text-center py-4">訂單列表</h1>
+                    <h1 class="text-center py-4">訂單搜尋</h1>
 
                     <div class="pb-2">
                         <form action="order-search.php" method="get">
@@ -143,7 +143,7 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
                                 ?>
                                 <ul class="pagination">
                                     <li class="page-item">
-                                        <a class="page-link border-0" href="order-search.php?page=<?php if($prevPage == 0){echo 1;}else{echo $prevPage;} ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>">
+                                        <a class="page-link border-0 bg-warning" href="order-search.php?page=<?php if($prevPage == 0){echo 1;}else{echo $prevPage;} ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
@@ -154,13 +154,13 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
                                     
                                     <?php for ($i = $startPage; $i <= $endPage; $i++) : ?>
                                         <li class="page-item <?php if ($i == $page) echo "active";?>">
-                                            <a class="page-link bg-warning border-0" href="order-search.php?page=<?= $i ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>"><?= $i ?></a>
+                                            <a class="page-link text-warning border-0" href="order-search.php?page=<?= $i ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>"><?= $i ?></a>
                                         </li>
                                     <?php endfor; ?>
                                     
                             
                                     <li class="page-item">
-                                        <a class="page-link border-0" href="order-search.php?page=<?php if($nextPage > $totalPage){echo $nextPage-1;}else{echo $nextPage;} ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>">
+                                        <a class="page-link border-0 bg-warning" href="order-search.php?page=<?php if($nextPage > $totalPage){echo $nextPage-1;}else{echo $nextPage;} ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
                                     </li>
@@ -213,7 +213,7 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
                     </table>
                     <!-- 頁數 -->
                     <div class="d-flex justify-content-center">
-
+                        
                             <nav aria-label="Page navigation example">
                                 <?php
                                 $prevPage = $page - 1;
@@ -221,7 +221,7 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
                                 ?>
                                 <ul class="pagination">
                                     <li class="page-item">
-                                        <a class="page-link border-0" href="order-search.php?page=<?php if($prevPage == 0){echo 1;}else{echo $prevPage;} ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>">
+                                        <a class="page-link border-0 bg-warning" href="order-search.php?page=<?php if($prevPage == 0){echo 1;}else{echo $prevPage;} ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
@@ -232,20 +232,19 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
                                     
                                     <?php for ($i = $startPage; $i <= $endPage; $i++) : ?>
                                         <li class="page-item <?php if ($i == $page) echo "active";?>">
-                                            <a class="page-link bg-warning border-0" href="order-search.php?page=<?= $i ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>"><?= $i ?></a>
+                                            <a class="page-link text-warning border-0" href="order-search.php?page=<?= $i ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>"><?= $i ?></a>
                                         </li>
                                     <?php endfor; ?>
                                     
                             
                                     <li class="page-item">
-                                        <a class="page-link border-0" href="order-search.php?page=<?php if($nextPage > $totalPage){echo $nextPage-1;}else{echo $nextPage;} ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>">
+                                        <a class="page-link border-0 bg-warning" href="order-search.php?page=<?php if($nextPage > $totalPage){echo $nextPage-1;}else{echo $nextPage;} ?>&type=<?= $type ?>&select=<?= $select ?>&keyword=<?=$keyword?>">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
                                     </li>
                                 </ul>
                             </nav>
                     </div>
-
                 </div>
 
 

@@ -31,7 +31,7 @@
 
             <!-- ↓↓放置內容↓↓-->
 
-            <h1 class="text-center" >放東西</h1>
+            <h1 class="text-center" >空白頁</h1>
 
             <!-- ↑↑放置內容↑↑ -->
             </div>

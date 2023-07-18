@@ -74,9 +74,9 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
 
                 <?php include("modal/topbar.php") ?>
 
-                <div class="container-fluid">
+                <div class="container-fluid mb-5">
 
-                    <h1 class="text-center py-4">User-List</h1>
+                    <h1 class="text-center py-4">會員列表</h1>
 
                     <div class="pb-2">
                         <form action="user-search.php" method="get">
@@ -127,7 +127,7 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                                 ?>
                                 <ul class="pagination">
                                     <li class="page-item">
-                                        <a class="page-link border-0" href="user-list.php?page=<?php if($prevPage == 0){echo 1;}else{echo $prevPage;} ?>&type=<?= $type ?>">
+                                        <a class="page-link border-0 bg-warning" href="user-list.php?page=<?php if($prevPage == 0){echo 1;}else{echo $prevPage;} ?>&type=<?= $type ?>">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
@@ -138,13 +138,13 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                                     
                                     <?php for ($i = $startPage; $i <= $endPage; $i++) : ?>
                                         <li class="page-item <?php if ($i == $page) echo "active";?>">
-                                            <a class="page-link bg-warning border-0" href="user-list.php?page=<?= $i ?>&type=<?= $type ?>"><?= $i ?></a>
+                                            <a class="page-link text-warning border-0" href="user-list.php?page=<?= $i ?>&type=<?= $type ?>"><?= $i ?></a>
                                         </li>
                                     <?php endfor; ?>
                                     
                             
                                     <li class="page-item">
-                                        <a class="page-link border-0" href="user-list.php?page=<?php if($nextPage > $totalPage){echo $nextPage-1;}else{echo $nextPage;} ?>&type=<?= $type ?>">
+                                        <a class="page-link border-0 bg-warning" href="user-list.php?page=<?php if($nextPage > $totalPage){echo $nextPage-1;}else{echo $nextPage;} ?>&type=<?= $type ?>">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
                                     </li>
@@ -217,7 +217,7 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                                 ?>
                                 <ul class="pagination">
                                     <li class="page-item">
-                                        <a class="page-link border-0" href="user-list.php?page=<?php if($prevPage == 0){echo 1;}else{echo $prevPage;} ?>&type=<?= $type ?>">
+                                        <a class="page-link border-0 bg-warning" href="user-list.php?page=<?php if($prevPage == 0){echo 1;}else{echo $prevPage;} ?>&type=<?= $type ?>">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
@@ -228,23 +228,24 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                                     
                                     <?php for ($i = $startPage; $i <= $endPage; $i++) : ?>
                                         <li class="page-item <?php if ($i == $page) echo "active";?>">
-                                            <a class="page-link bg-warning border-0" href="user-list.php?page=<?= $i ?>&type=<?= $type ?>"><?= $i ?></a>
+                                            <a class="page-link text-warning border-0" href="user-list.php?page=<?= $i ?>&type=<?= $type ?>"><?= $i ?></a>
                                         </li>
                                     <?php endfor; ?>
                                     
                             
                                     <li class="page-item">
-                                        <a class="page-link border-0" href="user-list.php?page=<?php if($nextPage > $totalPage){echo $nextPage-1;}else{echo $nextPage;} ?>&type=<?= $type ?>">
+                                        <a class="page-link border-0 bg-warning" href="user-list.php?page=<?php if($nextPage > $totalPage){echo $nextPage-1;}else{echo $nextPage;} ?>&type=<?= $type ?>">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
                                     </li>
                                 </ul>
                             </nav>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-center">
                         共<?=$totalPage?>頁
                     </div>
+                </div>
+                    
                         
 
 

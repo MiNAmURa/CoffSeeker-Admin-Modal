@@ -60,7 +60,7 @@ if (isset($_GET["coupon_name"])) {
                 <?php include("modal/topbar.php") ?>
                 <!-- ↓↓放置內容↓↓-->
                 <h1 class="text-center">搜尋優惠卷</h1>
-                <div class="container">
+                <div class="container-fluid">
                     <div class="py-2 mb-2">
                         <a class="btn btn-warning" href="coupon-list.php">回優惠卷列表</a>
                     </div>
