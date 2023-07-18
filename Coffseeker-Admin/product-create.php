@@ -31,11 +31,11 @@
 
                 <!-- ↓↓放置內容↓↓-->
 
-                <h1 class="text-center">放東西</h1>
+                <h1 class="text-center">Product-Create</h1>
 
                 <div class="container-sm mt-3" style="width:500px">
                     <h3 class="mb-3 text-center  fw-bold">新增商品</h3>
-                    <form action="action/product/doCreate.php" method="POST" enctype="multipart/form-data">
+                    <form action="action/product/doCreate.php" method="POST" enctype="multipart/form-data" id="product-form">
                         <div class="mb-3">
                             <label for="product-name" class="form-label">商品名稱</label>
                             <input type="text" class="form-control" id="product-name" name="product-name" required>
@@ -61,55 +61,76 @@
                         <div class="mb-3">
                             <label for="product-amount" class="form-label">商品數量</label>
                             <input type="number" class="form-control" id="product-amount" name="product-amount" required>
+                            <div class="invalid-feedback">
+                                請填寫商品數量
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="product-price" class="form-label">商品價格</label>
                             <input type="number" class="form-control" id="product-price" name="product-price" required>
+                            <div class="invalid-feedback">
+                                請填寫商品價格
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="product-description" class="form-label">商品描述</label>
                             <textarea class="form-control" id="product-description" name="product-description" required rows="3" cols="30" style="resize: none" placeholder="請輸入商品描述"></textarea>
+                            <div class="invalid-feedback">
+                                請填寫商品描述
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="product-image" class="form-label">商品圖片</label>
                             <input type="file" class="form-control" id="product-image" name="product-image" required>
-                        </div>
-                        <div class="mb-3 d-flex">
-                            <label for="preview-image" class="form-label">預覽圖片</label>
-                            <div class="img-prev">
-                                <img id="preview-image" src="#" alt="" style="max-width: 200px;">
+                            <div class="invalid-feedback">
+                                請選擇商品圖片
                             </div>
                         </div>
+                        <div class="mb-3 d-flex align-items-center">
+                            <label for="preview-image" class="form-label me-2">預覽圖片</label>
+                            <div id="img-preview" class="img-prev">
+                                <img id="preview-image" src="#" alt="" style="max-width: 200px; max-height: 200px;">
+                            </div>
+                        </div>
+
                         <div class="mb-3">
                             <label for="product-valid" class="form-label">商品上架</label>
                             <select class="form-select" id="product-valid" name="product-valid" required>
+                                <option value="">請選擇狀態</option>
                                 <option value="上架">上架</option>
                                 <option value="下架">下架</option>
                             </select>
+                            <div class="invalid-feedback">
+                                請選擇商品上架狀態
+                            </div>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-warning mb-3 ">上傳</button>
+                            <button type="submit" class="btn btn-warning mb-3">上傳</button>
                         </div>
                     </form>
-                    <!-- </div> -->
 
                 </div>
 
                 <script>
                     // 在使用者選擇圖片後，顯示預覽圖片
-                    function showPreview(event) {
-                        var input = event.target;
-                        var reader = new FileReader();
-                        reader.onload = function() {
-                            var preview = document.getElementById("preview-image");
-                            preview.src = reader.result;
-                        };
-                        reader.readAsDataURL(input.files[0]);
+                    function showPreview() {
+                        var fileInput = document.getElementById('product-image');
+                        var previewImage = document.getElementById('preview-image');
+
+                        if (fileInput.files && fileInput.files[0]) {
+                            var reader = new FileReader();
+
+                            reader.onload = function(e) {
+                                previewImage.setAttribute('src', e.target.result);
+                            };
+
+                            reader.readAsDataURL(fileInput.files[0]);
+                        }
                     }
 
                     // 監聽圖片選擇事件
-                    var inputImage = document.getElementById("product-image");
-                    inputImage.addEventListener("change", showPreview);
+                    var fileInput = document.getElementById('product-image');
+                    fileInput.addEventListener('change', showPreview);
                 </script>
                 <!-- ↑↑放置內容↑↑ -->
             </div>
