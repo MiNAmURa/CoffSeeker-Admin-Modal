@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2023-07-17 17:25:45
+-- 產生時間： 2023-07-18 21:05:36
 -- 伺服器版本： 10.4.28-MariaDB
 -- PHP 版本： 8.2.4
 
@@ -20,6 +20,99 @@ SET time_zone = "+00:00";
 --
 -- 資料庫： `coffseeker_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `categories`
+--
+
+CREATE TABLE `categories` (
+  `categories_id` int(3) NOT NULL,
+  `categories_name` varchar(20) NOT NULL,
+  `valid` tinyint(2) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 傾印資料表的資料 `categories`
+--
+
+INSERT INTO `categories` (`categories_id`, `categories_name`, `valid`) VALUES
+(1, '精選咖啡豆', 1),
+(2, '咖啡綜合禮品', 1),
+(3, '咖啡用具', 1),
+(4, '咖啡飲用器具', 1),
+(5, '咖啡機台', 1),
+(6, '其他咖啡機具 ', 1),
+(7, '咖啡書籍', 1),
+(8, '咖啡課程', 1),
+(9, 'test', 0),
+(10, 'Test2', 0),
+(11, 'Ahoyz', 0);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `categories_item`
+--
+
+CREATE TABLE `categories_item` (
+  `items_id` int(3) NOT NULL,
+  `items_name` varchar(20) NOT NULL,
+  `valid` tinyint(4) NOT NULL DEFAULT 1,
+  `categories_id` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 傾印資料表的資料 `categories_item`
+--
+
+INSERT INTO `categories_item` (`items_id`, `items_name`, `valid`, `categories_id`) VALUES
+(1, '咖啡豆', 1, 1),
+(2, '咖啡粉', 1, 1),
+(3, '濾掛式咖啡包', 1, 1),
+(4, '即溶式咖啡', 1, 1),
+(5, '咖啡豆禮盒', 1, 2),
+(6, '咖啡粉禮盒', 1, 2),
+(7, '濾掛式禮盒', 1, 2),
+(8, '綜合大禮盒', 1, 2),
+(9, '盎司杯', 1, 3),
+(10, '濾杯', 1, 3),
+(11, '濾紙', 1, 3),
+(12, '咖啡豆/粉專用勺', 1, 3),
+(13, '拉花杯', 1, 3),
+(14, '電子溫度計', 1, 3),
+(15, '電子定時器', 1, 3),
+(16, '電子磅秤', 1, 3),
+(17, '咖啡壺', 1, 4),
+(18, '咖啡杯', 1, 4),
+(19, '滴漏式咖啡機', 1, 5),
+(20, '半自動義式咖啡機', 1, 5),
+(21, '全自動義式咖啡機', 1, 5),
+(22, '膠囊咖啡機', 1, 5),
+(23, '手動磨豆機', 1, 6),
+(24, '烘豆機', 1, 6),
+(26, '奶泡機', 1, 6),
+(27, '虹吸機', 1, 6),
+(33, '咖啡膠囊', 1, 1),
+(34, '冷萃咖啡', 1, 1),
+(35, '咖啡碟', 1, 4),
+(36, '拿鐵杯', 1, 4),
+(37, '雙層玻璃杯', 1, 4),
+(38, '陶瓷杯', 1, 4),
+(39, '不鏽鋼杯', 1, 4),
+(40, '馬克杯', 1, 4),
+(41, '冰咖啡杯', 1, 4),
+(42, '咖啡瓶', 1, 4),
+(43, '手動磨豆機', 1, 3),
+(44, '電動磨豆機', 1, 6),
+(45, '咖啡壓縮器', 1, 6),
+(46, '咖啡杯稱重器', 1, 3),
+(47, '冷萃器', 1, 3),
+(48, '咖啡水壺', 1, 3),
+(49, '咖啡工具禮盒', 1, 2),
+(50, 'test2', 1, 1),
+(51, 'test', 0, 10);
 
 -- --------------------------------------------------------
 
@@ -46,8 +139,8 @@ CREATE TABLE `coffseeker_teachers` (
 --
 
 INSERT INTO `coffseeker_teachers` (`teacher_id`, `teacher_img`, `teacher_name`, `teacher_phone`, `teacher_gender`, `teacher_mail`, `teacher_qualification`, `teacher_experience`, `teacher_specialty`, `created_at`, `valid`) VALUES
-(1, 'id-1.jpg', '張小蘭', '0912-345678', '女', 'zhangxiaolan@example.com ', '咖啡師證照', 5, '特色咖啡調製', '2020-02-15', 1),
-(2, 'id-2.jpg', '王大明', '0921-987654', '男', 'wangdaming@example.com', '咖啡品鑑師', 8, '咖啡品質控制', '2021-07-21', 1),
+(1, 'photo-4.png', '張曉蘭', '0912-345678', '女', 'zhangxiaolan@example.com ', '咖啡師證照', 5, '特色咖啡調製', '2020-02-15', 1),
+(2, 'htdocsdashboarddocsimagesactivate-use-xdebugimage1.png', '王大明', '0921-987654', '男', 'wangdaming@example.com', '咖啡品鑑師', 8, '咖啡品質控制', '2021-07-21', 1),
 (3, 'id-3.webp', '李小雪', '0933-246810', '女', 'lixiaoxue@example.com', '咖啡萃取師', 3, '手沖咖啡', '2019-09-12', 1),
 (4, 'id-4.jpg', '陳志豪', '0988-135790', '男', 'chenzhihao@example.com', '咖啡烘焙師', 6, '特殊風味咖啡', '2022-05-27', 1),
 (5, 'id-5.jpg', '林美玲', '0955-864209', '女', 'linmeiling@example.com', '咖啡萃取師', 4, '義式濃縮咖啡', '2023-02-06', 1),
@@ -63,9 +156,10 @@ INSERT INTO `coffseeker_teachers` (`teacher_id`, `teacher_img`, `teacher_name`, 
 (33, '', '張雅琪', '0933-559478', '女', 'yachi@example.com', '咖啡師證照', 8, '咖啡品質控制', '2021-08-14', 1),
 (34, '', '王志強', '0988-155682', '男', 'junwei@example.com', '咖啡烘焙師', 5, '冰滴咖啡', '2020-07-10', 1),
 (35, '', '李雅婷', '0966-154992', '女', 'yating@example.com', '咖啡萃取師', 9, '特調咖啡', '2019-12-21', 1),
-(36, '', '吳明宏', '0944-789598', '男', 'minghung@example.com', '咖啡烘焙師', 4, '風味咖啡', '2020-03-04', 1),
+(36, 'htdocsdashboardimagesstack-icons@2x.png', '吳宏', '0944-789598', '男', 'minghung@example.com', '咖啡烘焙師', 4, '風味咖啡', '2020-03-04', 1),
 (37, '', '劉佳怡', '0966-128994', '女', 'jiayi@example.com', '咖啡品鑑師', 3, '手沖咖啡', '2019-12-21', 1),
-(38, '', '鄭偉哲', '0944-794137', '男', 'weizhe@example.com', '咖啡萃取師', 7, '咖啡拉花', '2020-03-04', 1);
+(38, '', '鄭偉哲', '0944-794137', '男', 'weizhe@example.com', '咖啡萃取師', 7, '咖啡拉花', '2020-03-04', 1),
+(76, 'htdocsimagesbg.jpg', 'fgkhjofmgjdfgj', '0912666668', '男', 'ddddddddddddddd@test.com', '咖啡師證照, 咖啡品鑑師, 咖啡萃取師, ', 50, '特色咖啡調製 test1 test2', '2023-07-18', 1);
 
 -- --------------------------------------------------------
 
@@ -310,9 +404,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_category`, `product_brand`, `product_name`, `product_amount`, `product_price`, `product_description`, `product_image`, `created_at`, `updated_at`, `product_valid`) VALUES
-(1, '', 'PR咖啡', '職人尋味濾掛咖啡-酒香/花香/甜果/可可│淺焙 精品手沖', 20, 500, '莊園配方 職人尋味系列', 'images/10001.jpg', '2023-07-11 10:02:05', '2023-07-17 17:17:20', 0),
-(2, '深焙, 水洗, 日曬', 'JC咖啡', '濃縮烘焙咖啡豆 義式配方│中深焙 / 專為義式咖啡、拿鐵調配', 100, 800, '濃縮烘焙咖啡豆 義式配方\n', 'images/10006.jpg', '2023-07-11 10:04:20', '2023-07-11 10:04:20', 1),
-(3, '淺焙, 日曬, 禮盒', 'JC咖啡', '【禮盒/伴手禮】莊園濾掛咖啡│福到-哥倫比亞 萊姆酒桶日曬10g/', 30, 1000, '哥倫比亞 金迪奧省 安娜小農 萊姆酒桶日曬\n \n', 'images/100010.jpg', '2023-07-11 10:06:39', '2023-07-11 10:06:39', 1),
+(1, '', 'PR咖啡', '職人尋味濾掛咖啡-酒香/花香/甜果/可可│淺焙 精品手沖', 20, 500, '莊園配方 職人尋味系列', 'images/10001.jpg', '2023-07-11 10:02:05', '2023-07-18 14:10:26', 0),
+(2, '', 'JC咖啡', '濃縮烘焙咖啡豆 義式配方│中深焙 / 專為義式咖啡、拿鐵調配', 50, 800, '濃縮烘焙咖啡豆 義式配方\r\n', 'images/10006.jpg', '2023-07-11 10:04:20', '2023-07-18 14:10:19', 0),
+(3, '淺焙, 日曬, 禮盒', 'JC咖啡', '【禮盒/伴手禮】莊園濾掛咖啡│福到-哥倫比亞 萊姆酒桶日曬10g/', 30, 1000, '哥倫比亞 金迪奧省 安娜小農 萊姆酒桶日曬\n \n', 'images/100010.jpg', '2023-07-11 10:06:39', '2023-07-11 10:06:39', 0),
 (4, '禮盒', 'Sit Down Plz Coffee ', '日常禮盒 x 日日好日 x 濾掛咖啡12入', 50, 500, '\n\n材質｜350 磅象牙卡印刷\n尺寸｜25 x 18 x 7 cm\n容量｜12 包濾掛咖啡\n\n', 'images/日常禮盒 x 日日好日 x 濾掛咖啡12入.jpg', '2023-07-11 10:34:33', '2023-07-11 10:34:33', 1),
 (5, '濾掛', 'Sit Down Plz Coffee', '鑽石山水洗 / 巴拿馬翡翠莊園 / 經典 / 咖啡豆 / 濾掛 /', 73, 100, '西當短評｜輕輕鬆鬆，酸甜好入喉～', 'images/鑽石山水洗.jpg', '2023-07-11 10:37:00', '2023-07-11 10:37:00', 1),
 (6, '中焙', 'Sit Down Plz Coffee', '【六週年單品級配方】救國者一號 / 配方豆 / 濾掛咖啡 / 咖啡豆', 60, 900, '風味描述｜茶花、牛奶糖、榛果、紅茶\n', 'images/【六週年單品級配方】救國者一號.jpg', '2023-07-11 10:39:54', '2023-07-11 10:39:54', 1),
@@ -345,7 +439,9 @@ INSERT INTO `product` (`product_id`, `product_category`, `product_brand`, `produ
 (33, '禮盒', '想望咖啡', '想望咖啡【免運禮盒】珍稀藝伎 精品咖啡掛耳18入/濾掛/生日禮物', 10, 2560, '✶ 組合內容：以下咖啡品項各 6 包 ✶\r\n\r\n．翡翠莊園．綠標藝伎（淺焙．水洗）巴拿馬 - 風味：佛手柑、茉莉花、柳橙、荔枝、綠茶**\r\n．亞歷山大藝伎（淺焙．水洗）哥倫比亞 - 風味：小白菊、佛手柑、水蜜桃、檸檬茶**\r\n．莫拉藝伎（淺焙．水洗）哥倫比亞 - 風味：白花、水蜜桃、烏龍茶**', 'images/想望咖啡【免運禮盒】珍稀藝伎 精品咖啡掛耳18入 濾掛 生日禮物.jpg', '2023-07-11 16:25:14', '2023-07-11 16:25:14', 1),
 (34, '禮盒', '想望咖啡', '想望咖啡【獨家風味】想望禮盒 精品咖啡掛耳20入 早晨&午後', 12, 920, '✶ 組合內容 ✶\r\n\r\n．波西塔諾的早晨（中深焙．蜜處理）薩爾瓦多、瓜地馬拉 - 風味：焦糖、肉桂蘋果、黑巧克力\r\n．蒙馬特的午後（淺焙．厭氧日曬）薩爾瓦多、巴拿馬 - 風味：莓果、橙皮、白酒\r\n', 'images/想望咖啡【獨家風味】想望禮盒 精品咖啡掛耳20入 早晨&午後.jpg', '2023-07-11 16:26:27', '2023-07-11 16:26:27', 1),
 (35, '禮盒', 'Simple Kaffa 興波咖啡', 'Simple Kaffa 興波咖啡 | 世界冠軍濾掛式咖啡禮盒', 18, 860, ' 阿寶綜合 / 深焙配方，榛果、焦糖、巧克力調性，甜感十足\r\n 衣索比亞日曬 / 淺焙單品，鳳梨、芒果乾、洋甘菊、紅茶\r\n 衣索比亞水洗 / 淺焙單品，佛手柑，白花，萊姆，紅茶', 'images/Simple Kaffa 興波咖啡  世界冠軍濾掛式咖啡禮盒.jpg', '2023-07-11 16:28:02', '2023-07-11 16:28:02', 1),
-(36, '', '薩圖爾精品咖啡', '【SATUR】 農神之禮 結實紺藍 熟豆組', 1, 980, '● 經典系列\r\n【產地】[ 哥倫比亞 ] 哥倫比亞；[ 迦佑曼特寧 ] 印尼；[ 耶加雪菲 ] 衣索比亞；[ 安提瓜 ] 瓜地馬拉\r\n\r\n● 神系列\r\n【產地】 [ 馬廄 ] 台灣東山；[ 中央山谷 ] 哥斯大黎加；[ 翡翠莊園鑽石山] 巴拿馬', 'images/【SATUR】 農神之禮 結實紺藍 熟豆組.jpg', '2023-07-11 16:30:56', '2023-07-17 17:01:22', 1);
+(36, '', '薩圖爾精品咖啡', '【SATUR】 農神之禮 結實紺藍 熟豆組', 1, 980, '● 經典系列\r\n【產地】[ 哥倫比亞 ] 哥倫比亞；[ 迦佑曼特寧 ] 印尼；[ 耶加雪菲 ] 衣索比亞；[ 安提瓜 ] 瓜地馬拉\r\n\r\n● 神系列\r\n【產地】 [ 馬廄 ] 台灣東山；[ 中央山谷 ] 哥斯大黎加；[ 翡翠莊園鑽石山] 巴拿馬', 'images/【SATUR】 農神之禮 結實紺藍 熟豆組.jpg', '2023-07-11 16:30:56', '2023-07-17 17:01:22', 1),
+(37, '', 'prtest', 'prtest', 123213, 123, '123231', '../../images/coffseeker-blue-gold.png', '2023-07-17 17:29:22', '2023-07-17 17:29:22', 0),
+(38, '', 'prtest123123', 'prtest123', 123123123, 4294967295, '31231231231', 'images/coffseeker-black-orange.png', '2023-07-17 17:32:25', '2023-07-17 17:32:47', 1);
 
 -- --------------------------------------------------------
 
@@ -497,6 +593,18 @@ INSERT INTO `user_grade` (`grade_id`, `grade`) VALUES
 --
 
 --
+-- 資料表索引 `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`categories_id`);
+
+--
+-- 資料表索引 `categories_item`
+--
+ALTER TABLE `categories_item`
+  ADD PRIMARY KEY (`items_id`);
+
+--
 -- 資料表索引 `coffseeker_teachers`
 --
 ALTER TABLE `coffseeker_teachers`
@@ -567,10 +675,22 @@ ALTER TABLE `user_grade`
 --
 
 --
+-- 使用資料表自動遞增(AUTO_INCREMENT) `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `categories_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `categories_item`
+--
+ALTER TABLE `categories_item`
+  MODIFY `items_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
 -- 使用資料表自動遞增(AUTO_INCREMENT) `coffseeker_teachers`
 --
 ALTER TABLE `coffseeker_teachers`
-  MODIFY `teacher_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `teacher_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `coupon`
@@ -618,7 +738,7 @@ ALTER TABLE `order_states`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `product_id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `users`
