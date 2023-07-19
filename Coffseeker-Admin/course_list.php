@@ -18,6 +18,9 @@ if(isset($_GET["status"])){
     $now = date("Y-m-d");
     $status =$_GET["status"];
     switch ($status) {
+        case "signOff":
+            $whereClause .= "  AND sign_start_date > '$now' ";
+            break;
         case "signing":
             $whereClause .= "  AND sign_start_date <= '$now' AND sign_end_date >= '$now'";
             break;
@@ -285,6 +288,7 @@ $allGetStringXV = http_build_query(array_filter($allGetXV));
                                 <div class="">
                                     <a class="btn btn-outline-secondary rounded-pill me-2 <?= $countAll== $totalResult ? "active" : "" ?> " href="course_list.php<?= isset($_GET["valid"]) ? "?valid=".$_GET["valid"] : "" ?>">全部課程<span class="badge rounded-pill text-bg-light ms-2 "><?= $countAll ?></span></a>
 
+                                    <a class="btn btn-outline-secondary rounded-pill me-2 <?=isset($_GET["status"]) && $_GET["status"]=="signing"?"active":""?>" href="course_list.php?status=signOff<?= isset($_GET["valid"]) ? "&valid=".$_GET["valid"] : "" ?>" >報名未開放<span class="badge rounded-pill text-bg-light ms-2 "><?= $countSigning ?></span></a>
                                     <a class="btn btn-outline-secondary rounded-pill me-2 <?=isset($_GET["status"]) && $_GET["status"]=="signing"?"active":""?>" href="course_list.php?status=signing<?= isset($_GET["valid"]) ? "&valid=".$_GET["valid"] : "" ?>" >報名開放中<span class="badge rounded-pill text-bg-light ms-2 "><?= $countSigning ?></span></a>
                                     <a class="btn btn-outline-secondary rounded-pill me-2 <?=isset($_GET["status"]) && $_GET["status"]=="courseOn" ? "active":""?>" href="course_list.php?status=courseOn<?= isset($_GET["valid"]) ? "&valid=".$_GET["valid"] : "" ?>" >課程進行中<span class="badge rounded-pill text-bg-light ms-2 "><?= $countCoursing ?></span></a>
                                     <a class="btn btn-outline-secondary rounded-pill me-2 <?=isset($_GET["status"]) && $_GET["status"]=="courseOff"?"active":""?>" href="course_list.php?status=courseOff<?= isset($_GET["valid"]) ? "&valid=".$_GET["valid"] : "" ?>" >已結束課程<span class="badge rounded-pill text-bg-light ms-2 "><?= $countCourseEnd ?></span></a>
