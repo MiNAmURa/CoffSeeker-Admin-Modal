@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>teacher-create</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <?php include("modal/template.php") ?>
 </head>
@@ -91,8 +92,10 @@
                         </div>
                         <div class="mb-2">
                             <label for="teacher_img" class="fw-bold">選擇頭像</label>
-                            <div>
-                                <input type="file" class="form-control " name="teacher_img" accept="image/jpeg, image/png, image/gif, image/webp">
+                            <input type="file" class="form-control " id="imageUpload" name="teacher_img" accept="image/jpeg, image/png, image/gif, image/webp">
+                            <div class="mt-3 d-flex justify-content-center mw-100">
+                                <!-- <i class="fa-solid fa-camera" class="camera"></i> -->
+                                <img src="" class="border shadow object-fit-cover overflow-hidden" alt="" id="createImg">
                             </div>
 
                         </div>
@@ -127,6 +130,21 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <script>
+        const imageUpload = document.getElementById("imageUpload");
+        const createImg = document.getElementById("createImg");
+        const camera=document.querySelector(".camera");
+
+        imageUpload.addEventListener("change", function() {
+            // camera.style.display=none;
+            const reader = new FileReader();
+            reader.onload = function() {
+                createImg.src = reader.result;
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
+    </script>
 
 
     <!-- j-query -->

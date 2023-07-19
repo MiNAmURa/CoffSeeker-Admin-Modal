@@ -82,9 +82,12 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
                                 <tr>
                                     <th>頭像</th>
                                     <td class="">
-                                        <img class="object-fit-cover mw-100 overflow-hidden w-25 mb-3" src="action/teacher/teacher-img/<?= $row["teacher_img"] ?>" alt="">
+                                        <img class="object-fit-cover mw-100 overflow-hidden w-25 mb-3" id="replaceImg" src="action/teacher/teacher-img/<?= $row["teacher_img"] ?>" alt="">
 
-                                        <input type="file" name="teacher_img" accept="image/jpeg, image/png, image/gif, image/webp">
+                                        <input type="file" name="teacher_img" id="imageUpload" accept="image/jpeg, image/png, image/gif, image/webp">
+                                        <!-- <div>
+                                            <img type="file"  src="" alt="your image" >
+                                        </div> -->
 
                                     </td>
                                 </tr>
@@ -161,14 +164,26 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script>
+        const imageUpload = document.getElementById("imageUpload");
+        const replaceImg = document.getElementById("replaceImg");
 
+        imageUpload.addEventListener("change", function() {
+            // console.log('123');
+            const reader = new FileReader();
+            reader.onload = function() {
+                replaceImg.src = reader.result;
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
+    </script>
 
     <!-- j-query -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous">
     </script>
 
-<!-- Bootstrap JavaScript Libraries -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
