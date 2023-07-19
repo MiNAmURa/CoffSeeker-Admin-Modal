@@ -80,6 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <!-- ↓↓放置內容↓↓-->
 
                 <div class="container my-5">
+                    <h1 class="text-center">下架商品管理</h1>
                     <div class="py-2">
                         <a class="btn btn-warning" href="product-list.php">回商品列表</a>
                     </div>
@@ -127,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         <td class="text-nowrap text-center">$<?= $row["product_price"] ?></td>
                                         <td class="text-center"><?= $row["updated_at"] ?></td>
                                         <td class="text-nowrap text-center"><?= $status ?></td>
-                                        <td><a href="product-edit.php?id=<?= $row['product_id'] ?>"> <button class="btn btn-outline-warning"><i class="fa-solid fa-pencil"></i></button></a></td>
+                                        <td class="text-center"><a href="product-edit.php?id=<?= $row['product_id'] ?>"> <button class="btn btn-outline-warning "><i class="fa-solid fa-pencil"></i></button></a></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
