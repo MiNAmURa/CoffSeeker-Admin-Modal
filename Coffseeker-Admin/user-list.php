@@ -1,5 +1,5 @@
 <?php
-require_once("../db_connect.php");
+require_once("../pdo_connect.php");
 
 
 // 給預設值的縮寫法 同等於if判斷式 如果$_GET["page" 有值帶值 沒有值則帶入 1 (設定預設值)
@@ -7,9 +7,24 @@ $page = $_GET["page"] ?? 1;
 
 
 
-$sqlTotal = "SELECT id FROM users WHERE user_valid=1";
-$resultTotal = $conn->query($sqlTotal);
-$totalUser = $resultTotal->num_rows;
+$sqlTotal = $db_host->prepare("SELECT id FROM users WHERE user_valid=1");
+try{
+    $sqlTotal->execute();
+    $resultTotal = $sqlTotal->fetchAll();
+    $totalUser = $sqlTotal->rowCount();
+    
+
+}catch(PDOException $e){
+    echo "預處理陳述式執行失敗! <br/>";
+    echo "Error:" . $e->getMessage() ."<br/>";
+    $db_host = NULL;
+    exit;
+}
+
+// $sqlTotal = "SELECT id FROM users WHERE user_valid=1";
+
+// $resultTotal = $conn->query($sqlTotal);
+// $totalUser = $resultTotal->num_rows;
 
 
 $perPage=10;
@@ -31,16 +46,36 @@ if($type==1){
 
 $startItem = ($page - 1) * $perPage;
 
-$coffsql = "SELECT users.* ,
+$coffsql = $db_host->prepare("SELECT users.* ,
 
 user_grade.grade AS user_grade FROM users 
 
 JOIN user_grade ON user_grade.grade_id = users.user_grade_id
 
-WHERE user_valid = 1 ORDER BY id $ADESC  LIMIT $startItem, $perPage";
+WHERE user_valid = 1 ORDER BY id $ADESC  LIMIT $startItem, $perPage"); 
 
-$getuser = $conn->query($coffsql);
-$coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
+
+try{
+    $coffsql -> execute(); 
+    
+
+}catch(PDOException ){
+    echo "預處理陳述式執行失敗! <br/>";
+    echo "Error:" . $e->getMessage() ."<br/>";
+    $db_host = NULL;
+    exit;
+}
+
+// $coffsql = $db_host->prepare("SELECT users.* ,
+
+// user_grade.grade AS user_grade FROM users 
+
+// JOIN user_grade ON user_grade.grade_id = users.user_grade_id
+
+// WHERE user_valid = 1 ORDER BY id $ADESC  LIMIT $startItem, $perPage"); 
+
+// $getuser = $conn->query($coffsql);
+// $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -172,7 +207,7 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                         </thead>
 
                         <tbody>
-                            <?php foreach ($coffusers as $user) : ?>
+                            <?php foreach ( $coffsql->fetchAll(PDO::FETCH_ASSOC) as $user ) : ?>
                                 <tr>
                                     <td>
                                         <?= $user["id"]; ?>
