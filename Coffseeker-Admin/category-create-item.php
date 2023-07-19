@@ -81,9 +81,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <a class="btn btn-secondary mx-3" href="category-item.php?id=<?= $detail ?>">取消</a>
                             <button class="btn btn-warning" type="submit">新增</button>
                         </div>
-
+                    </form>
                 </div>
-                </form>
+                
 
 
             </div>
