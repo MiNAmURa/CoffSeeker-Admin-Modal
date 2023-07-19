@@ -1,3 +1,11 @@
+<?php
+
+require_once("../../db_connect.php");
+
+$query = "SELECT DISTINCT product_brand FROM product";
+$result = $conn->query($query);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,9 +16,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Create-Coupon</title>
+    <title>建立新優惠卷</title>
 
     <?php include("modal/template.php") ?>
+
 </head>
 
 <body id="page-top">
@@ -23,13 +32,31 @@
             <div id="content">
                 <?php include("modal/topbar.php") ?>
                 <!-- ↓↓放置內容↓↓-->
-                
+                <!-- Modal start-->
+                <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="errorModalLabel">優惠卷日期有誤</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                請將開始日期與到期日期變更
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal end -->
+
                 <div class="container my-5">
-                <h1 class="text-center">建立新優惠卷</h1>
+                    <h1 class="text-center">建立新優惠卷</h1>
                     <div class="py-2">
                         <a class="btn btn-warning" href="coupon-list.php">回優惠卷列表</a>
                     </div>
-                    <form action="action/coupon/doCreate.php" method="post">
+                    <form action="action/coupon/doCreate.php" method="post" onsubmit="return checkForm()">
                         <div class="mb-3">
                             <label for="">優惠卷名稱：</label>
                             <input type="text" class="form-control" name="coupon_name" placeholder="例：炎炎夏日 外送免運卷" Required>
@@ -82,19 +109,49 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="">優惠卷到期日：</label>
+                            <label for="">優惠卷開始日期：</label>
+                            <input type="date" name="start_at" Required>
+                            <label for="" class="ms-3">優惠卷到期日期：</label>
                             <input type="date" name="expires_at" Required>
                         </div>
 
                         <div class="mb-3">
+                            <label for="">最低消費金額：</label>
+                            <input type="text" class="form-control" name="price_min" placeholder="例：請填入最低金額 (999)" Required>
+                        </div>
+                        <div class="mb-3">
                             <label for="">優惠卷使用條件：</label>
-                            <input type="text" class="form-control" name="usage_restriction" placeholder="例：炎炎夏日專案">
+                            <select name="usage_restriction" class="form-control">
+                                <option value="" selected disabled>請選擇可用的品牌名稱</option>
+                                <?php
+                                while ($row = $result->fetch_assoc()) {
+                                    $productBrand = $row["product_brand"];
+                                    echo "<option value=\"$productBrand\">$productBrand</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
 
                         <button class="btn btn-warning" type="submit">送出</button>
                     </form>
                 </div>
                 <script>
+                    function checkForm() {
+                        var startDateString = document.querySelector('input[name="start_at"]').value;
+                        var endDateString = document.querySelector('input[name="expires_at"]').value;
+
+                        var startDate = new Date(Date.parse(startDateString));
+                        var endDate = new Date(Date.parse(endDateString));
+
+                        if (startDate > endDate) {
+                            var errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+                            errorModal.show();
+                            return false; // 驗證失敗，阻止表單提交
+                        } else {
+                            return true; // 驗證通過，允許表單提交
+                        }
+                    }
+
                     function generateCouponCode() {
                         var randomStringInput = document.getElementById('randomString');
                         var characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -117,7 +174,7 @@
         <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
-    
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -125,6 +182,9 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

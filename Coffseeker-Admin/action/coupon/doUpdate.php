@@ -14,17 +14,21 @@ $max = $_POST["max_usage"];
 $now = date('Y-m-d H:i:s');
 $expires = $_POST["expires_at"];
 $restrict = $_POST["usage_restriction"];
+$start = $_POST["start_at"];
+$min = $_POST["price_min"];
 
-$description = ""; // 預設值
+$description = "";
 
 if ($valid == 1) {
     $description = "可使用";
 } else if ($valid == -1) {
     $description = "已停用";
+} else if ($valid == 0) {
+    $description = "已刪除";
 }
 
 
-$sql = "UPDATE coupon SET coupon_name='$name',coupon_valid='$valid', discount_type='$type', discount_value='$value', max_usage='$max', expires_at='$expires' ,updated_at='$now',usage_restriction='$restrict', valid_description='$description' WHERE coupon_id=$id";
+$sql = "UPDATE coupon SET coupon_name='$name',coupon_valid='$valid', discount_type='$type', discount_value='$value', max_usage='$max', expires_at='$expires' ,updated_at='$now',usage_restriction='$restrict', valid_description='$description',start_at='$start',price_min='$min'  WHERE coupon_id=$id";
 
 if ($conn->query($sql) === TRUE) {
     header("location: ../../Coupon.php?coupon_id=$id");

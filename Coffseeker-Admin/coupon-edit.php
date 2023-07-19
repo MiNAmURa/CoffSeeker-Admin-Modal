@@ -8,6 +8,10 @@ require_once("../db_connect.php");
 $sql = "SELECT * FROM coupon WHERE coupon_id=$id";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
+
+$query = "SELECT DISTINCT product_brand FROM product";
+$result = $conn->query($query);
+
 ?>
 
 <!DOCTYPE html>
@@ -35,8 +39,8 @@ $row = $result->fetch_assoc();
             <div id="content">
                 <?php include("modal/topbar.php") ?>
                 <!-- ↓↓放置內容↓↓-->
-                
-                <!-- modal start -->
+
+                <!-- Modal start -->
                 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
@@ -54,11 +58,30 @@ $row = $result->fetch_assoc();
                         </div>
                     </div>
                 </div>
-                <!-- modal end -->
+                <!-- Modal end -->
+
+                <!-- Modal start-->
+                <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="errorModalLabel">優惠卷日期有誤</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                請將開始日期與到期日期變更
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal end -->
                 <div class="container my-5">
-                <h1 class="text-center">編輯優惠券</h1>
+                    <h1 class="text-center">編輯優惠券</h1>
                     <div class="m-2">
-                        <form action="action/coupon/doUpdate.php" method="post">
+                        <form action="action/coupon/doUpdate.php" method="post" onsubmit="return checkForm()">
                             <table class="table table-bordered ">
                                 <input type="hidden" name="coupon_id" value="<?= $row["coupon_id"] ?>">
                                 <tr>
@@ -122,21 +145,42 @@ $row = $result->fetch_assoc();
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>優惠卷到期日</th>
+                                    <th>優惠卷開始日期</th>
+                                    <td>
+                                        <input type="date" value="<?= $row["start_at"] ?>" name="start_at">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>優惠卷到期日期</th>
                                     <td>
                                         <input type="date" value="<?= $row["expires_at"] ?>" name="expires_at">
                                     </td>
                                 </tr>
                                 <tr>
+                                    <th>最低消費金額</th>
+                                    <td>
+                                        <input type="text" class="form-control" value="<?= $row["price_min"] ?>" name="price_min">
+                                    </td>
+                                </tr>
+                                <tr>
                                     <th>優惠卷使用條件</th>
                                     <td>
-                                        <input type="text" class="form-control" value="<?= $row["usage_restriction"] ?>" name="usage_restriction">
+                                        <select name="usage_restriction" class="form-control">
+                                            <option value="" disabled>請選擇可用的品牌名稱</option>
+                                            <?php
+                                            while ($brandRow = $result->fetch_assoc()) {
+                                                $productBrand = $brandRow["product_brand"];
+                                                $selected = ($productBrand === $row["usage_restriction"]) ? "selected" : "";
+                                                echo "<option value=\"$productBrand\" $selected>$productBrand</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </td>
                                 </tr>
                             </table>
                             <div class="py-2 d-flex justify-content-between">
                                 <div>
-                                    <button class="btn btn-warning" type="submit">儲存</button>
+                                    <button class="btn btn-warning" type="submit" data-bs-toggle="modal" data-bs-target="#errorModal">儲存</button>
                                     <a class="btn btn-warning" href="coupon.php?coupon_id=<?= $row["coupon_id"] ?>">取消</a>
                                 </div>
                                 <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">刪除</button>
@@ -144,7 +188,10 @@ $row = $result->fetch_assoc();
                         </form>
                     </div>
                 </div>
+
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+
+
 
                 </script>
                 <!-- ↑↑放置內容↑↑ -->
@@ -159,10 +206,33 @@ $row = $result->fetch_assoc();
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+
+    <script>
+        function checkForm() {
+            var startDateString = document.querySelector('input[name="start_at"]').value;
+            var endDateString = document.querySelector('input[name="expires_at"]').value;
+
+            var startDate = new Date(Date.parse(startDateString));
+            var endDate = new Date(Date.parse(endDateString));
+
+            if (startDate > endDate) {
+                var errorModal = document.getElementById('errorModal');
+                errorModal.classList.add('show');
+                errorModal.style.display = 'block';
+                return false; // 驗證失敗，阻止表單提交
+            } else {
+                return true; // 驗證通過，允許表單提交
+            }
+
+
+        }
+    </script>
 </body>
 
 </html>

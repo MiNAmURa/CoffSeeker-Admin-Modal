@@ -17,6 +17,14 @@ if ($type == 1) {
     $orderBy = "ORDER BY expires_at ASC";
 } elseif ($type == 3) {
     $orderBy = "ORDER BY expires_at DESC";
+} elseif ($type == 6) {
+    $orderBy = "ORDER BY start_at ASC";
+} elseif ($type == 7) {
+    $orderBy = "ORDER BY start_at DESC";
+} elseif ($type == 8) {
+    $orderBy = "ORDER BY discount_type ASC";
+} elseif ($type == 9) {
+    $orderBy = "ORDER BY discount_type DESC";
 } elseif ($type == 4) {
     $orderBy = "AND coupon_valid = 1";
 } elseif ($type == 5) {
@@ -28,7 +36,7 @@ $sqlTotal = "SELECT coupon_id FROM coupon WHERE coupon_valid $orderBy";
 $resultTotal = $conn->query($sqlTotal);
 $totalCoupon = $resultTotal->num_rows;
 
-$sql = "SELECT coupon_id, coupon_name, coupon_code, coupon_valid, discount_type, discount_value, created_at, expires_at, updated_at, max_usage, usage_restriction, valid_description FROM coupon WHERE coupon_valid $orderBy LIMIT $startItem, $perPage";
+$sql = "SELECT coupon_id, coupon_name, coupon_code, coupon_valid, discount_type, discount_value, created_at, expires_at, updated_at, start_at ,max_usage, usage_restriction, valid_description, price_min FROM coupon WHERE coupon_valid $orderBy LIMIT $startItem, $perPage";
 
 $result = $conn->query($sql);
 ?>
@@ -78,27 +86,19 @@ $result = $conn->query($sql);
                     ?>
                     <div class="py-2 d-flex justify-content-between align-items-center">
                         <a class="btn btn-warning" href="coupon-create.php">新增</a>
-                        <div class="">
+                        <div class="">優惠卷狀態為：
                             <a href="Coupon-list.php?page=<?= $page ?>&type=1" class="btn btn-warning 
         <?php
         if ($type == 1) echo "active fw-bolder";
-        ?>">所有項目<i class="fa-solid"></i></i></a>
+        ?>">所有項目</a>
                             <a href="Coupon-list.php?page=<?= $page ?>&type=4" class="btn btn-warning 
         <?php
         if ($type == 4) echo "active fw-bolder";
-        ?>">可使用<i class="fa-solid"></i></i></a>
+        ?>">可使用</a>
                             <a href="Coupon-list.php?page=<?= $page ?>&type=5" class="btn btn-warning 
         <?php
         if ($type == 5) echo "active fw-bolder";
-        ?>">已停用<i class="fa-solid"></i></i></a>
-                            <a href="Coupon-list.php?page=<?= $page ?>&type=2" class="btn btn-warning 
-        <?php
-        if ($type == 2) echo "active fw-bolder";
-        ?>">到期日 <i class="fa-solid fa-arrow-down-short-wide"></i></a>
-                            <a href="Coupon-list.php?page=<?= $page ?>&type=3" class="btn btn-warning 
-        <?php
-        if ($type == 3) echo "active fw-bolder";
-        ?>">到期日<i class="fa-solid fa-arrow-down-wide-short"></i></i></a>
+        ?>">已停用</a>
                         </div>
                     </div>
                     <div class="py-2 d-flex justify-content-end">
@@ -116,12 +116,49 @@ $result = $conn->query($sql);
                                 <th>優惠卷名稱</th>
                                 <th>優惠卷代碼</th>
                                 <th>優惠卷狀態</th>
-                                <th>優惠卷種類</th>
+                                <th>優惠卷種類
+                                    <?php
+                                    if ($type == 8) {
+                                        echo '<a href="Coupon-list.php?page=' . $page . '&type=9" class="fw-bolder">';
+                                        echo '<i class="fa-solid fa-sort" style="color:#f6c23e"></i>';
+                                        echo '</a>';
+                                    } else {
+                                        echo '<a href="Coupon-list.php?page=' . $page . '&type=8" class="fw-bolder">';
+                                        echo '<i class="fa-solid fa-sort" style="color:#f6c23e"></i>';
+                                        echo '</a>';
+                                    }
+                                    ?>
+                                </th>
                                 <th>優惠卷面額</th>
-                                <th>登錄時間</th>
-                                <th>到期日</th>
+                                <th>開始日期
+                                    <?php
+                                    if ($type == 6) {
+                                        echo '<a href="Coupon-list.php?page=' . $page . '&type=7" class="fw-bolder">';
+                                        echo '<i class="fa-solid fa-sort" style="color:#f6c23e"></i>';
+                                        echo '</a>';
+                                    } else {
+                                        echo '<a href="Coupon-list.php?page=' . $page . '&type=6" class="fw-bolder">';
+                                        echo '<i class="fa-solid fa-sort" style="color:#f6c23e"></i>';
+                                        echo '</a>';
+                                    }
+                                    ?>
+                                </th>
+                                <th>到期日期
+                                    <?php
+                                    if ($type == 2) {
+                                        echo '<a href="Coupon-list.php?page=' . $page . '&type=3" class="fw-bolder">';
+                                        echo '<i class="fa-solid fa-sort" style="color:#f6c23e"></i>';
+                                        echo '</a>';
+                                    } else {
+                                        echo '<a href="Coupon-list.php?page=' . $page . '&type=2" class="fw-bolder">';
+                                        echo '<i class="fa-solid fa-sort" style="color:#f6c23e"></i>';
+                                        echo '</a>';
+                                    }
+                                    ?>
+                                </th>
                                 <th>最後更新</th>
                                 <th>可使用次數</th>
+                                <th>最低消費金額</th>
                                 <th>優惠卷使用條件</th>
                                 <th></th>
                             </tr>
@@ -135,10 +172,11 @@ $result = $conn->query($sql);
                                     <td><?= $row["valid_description"] ?></td>
                                     <td><?= $row["discount_type"] ?></td>
                                     <td><?= $row["discount_value"] ?></td>
-                                    <td><?= $row["created_at"] ?></td>
+                                    <td><?= $row["start_at"] ?></td>
                                     <td><?= $row["expires_at"] ?></td>
                                     <td><?= $row["updated_at"] ?></td>
                                     <td><?= $row["max_usage"] ?></td>
+                                    <td><?= $row["price_min"] ?></td>
                                     <td><?= $row["usage_restriction"] ?></td>
                                     <td>
                                         <a href="Coupon.php?coupon_id=<?= $row["coupon_id"] ?>" class="btn btn-warning">顯示</a>

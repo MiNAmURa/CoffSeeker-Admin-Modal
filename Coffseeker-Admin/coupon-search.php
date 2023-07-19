@@ -8,18 +8,17 @@ if (isset($_GET["coupon_name"])) {
     $name = $_GET["coupon_name"];
 
     if (!empty($_GET["coupon_name"])) {
-        if($type == 1){
+        if ($type == 1) {
             $orderBy = "AND coupon_valid";
-        }
-        elseif ($type == 2) {
+        } elseif ($type == 2) {
             $orderBy = "AND coupon_valid = 1";
         } elseif ($type == 3) {
             $orderBy = "AND coupon_valid = -1";
         } else {
             header("location: 404.php");
         }
-        $sql1 = "SELECT coupon_id, coupon_name, coupon_code, coupon_valid, discount_type, discount_value, created_at, expires_at, updated_at, max_usage, usage_restriction, valid_description FROM coupon WHERE coupon_name LIKE '%$name%' $orderBy AND coupon_valid";
-        $sql2 = "SELECT coupon_id, coupon_name, coupon_code, coupon_valid, discount_type, discount_value, created_at, expires_at, updated_at, max_usage, usage_restriction, valid_description FROM coupon WHERE coupon_name LIKE '%$name%' $orderBy AND coupon_valid";
+        $sql1 = "SELECT coupon_id, coupon_name, coupon_code, coupon_valid, discount_type, discount_value, created_at, expires_at, updated_at, max_usage, usage_restriction, valid_description,start_at,price_min FROM coupon WHERE coupon_name LIKE '%$name%' $orderBy AND coupon_valid";
+        $sql2 = "SELECT coupon_id, coupon_name, coupon_code, coupon_valid, discount_type, discount_value, created_at, expires_at, updated_at, max_usage, usage_restriction, valid_description,start_at,price_min FROM coupon WHERE coupon_name LIKE '%$name%' $orderBy AND coupon_valid";
         $sql = "$sql1 UNION $sql2";
 
         $result = $conn->query($sql);
@@ -59,9 +58,9 @@ if (isset($_GET["coupon_name"])) {
             <div id="content">
                 <?php include("modal/topbar.php") ?>
                 <!-- ↓↓放置內容↓↓-->
-                
+
                 <div class="container-fluid my-5">
-                <h1 class="text-center">搜尋優惠卷</h1>
+                    <h1 class="text-center">搜尋優惠卷</h1>
                     <div class="py-2 mb-2">
                         <a class="btn btn-warning" href="coupon-list.php">回優惠卷列表</a>
                     </div>
@@ -80,7 +79,7 @@ if (isset($_GET["coupon_name"])) {
                     <div class="py-2 d-flex justify-content-between align-items-center">
                         <?php if (isset($_GET["coupon_name"])) : ?>
                             <div>
-                                搜尋 <?= $name ?> 的結果, 共有 <?= $coupon_count ?> 筆符合的資料     
+                                搜尋 <?= $name ?> 的結果, 共有 <?= $coupon_count ?> 筆符合的資料
                             </div>
                         <?php endif; ?>
                         <div class="py-2 d-flex justify-content-end">
@@ -88,15 +87,15 @@ if (isset($_GET["coupon_name"])) {
                                 <a href="Coupon-search.php?coupon_name=<?= $name ?>&type=1" class="btn btn-warning 
                         <?php
                         if ($type == 1) echo "active fw-bolder";
-                        ?>">所有項目<i class="fa-solid"></i></i></a>
+                        ?>">所有項目</a>
                                 <a href="Coupon-search.php?coupon_name=<?= $name ?>&type=2" class="btn btn-warning 
                         <?php
                         if ($type == 2) echo "active fw-bolder";
-                        ?>">可使用<i class="fa-solid"></i></i></a>
+                        ?>">可使用</a>
                                 <a href="Coupon-search.php?coupon_name=<?= $name ?>&type=3" class="btn btn-warning 
                         <?php
                         if ($type == 3) echo "active fw-bolder";
-                        ?>">已停用<i class="fa-solid"></i></i></a>
+                        ?>">已停用</a>
                             </div>
                         </div>
                     </div>
@@ -127,10 +126,10 @@ if (isset($_GET["coupon_name"])) {
                                         <td><?= $row["valid_description"] ?></td>
                                         <td><?= $row["discount_type"] ?></td>
                                         <td><?= $row["discount_value"] ?></td>
-                                        <td><?= $row["created_at"] ?></td>
+                                        <td><?= $row["start_at"] ?></td>
                                         <td><?= $row["expires_at"] ?></td>
-                                        <td><?= $row["updated_at"] ?></td>
                                         <td><?= $row["max_usage"] ?></td>
+                                        <td><?= $row["price_min"] ?></td>
                                         <td><?= $row["usage_restriction"] ?></td>
                                         <td>
                                             <a href="Coupon.php?coupon_id=<?= $row["coupon_id"] ?>" class="btn btn-warning">顯示</a>
