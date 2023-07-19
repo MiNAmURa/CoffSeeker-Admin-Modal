@@ -28,6 +28,14 @@ if ($valid == 1) {
     $description = "已刪除";
 }
 
+if (strtotime($start) < strtotime($now)) {
+    $valid = -1;
+    $description = "已停用";
+} else {
+    $valid = 1; 
+    $description = "可使用";
+}
+
 
 $sql = "INSERT INTO coupon (coupon_name,coupon_code,discount_type,discount_value,coupon_valid,created_at,expires_at,start_at,updated_at,max_usage,used_times,usage_restriction,valid_description,price_min) VALUES ('$name', '$code', '$type','$value','$valid','$now','$expires','$start','$now','$max', 0, '$restrict','$description','$min')";
 
