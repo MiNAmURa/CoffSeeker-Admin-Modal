@@ -28,7 +28,7 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>teacher-Edit</title>
+    <title>Teacher-Edit</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -50,7 +50,7 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
 
                 <!-- ↓↓放置內容↓↓-->
 
-                <h1 class="text-center">編輯教師資訊</h1>
+                
 
                 <!-- modal start -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -75,7 +75,8 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
                     </div>
                 </div>
                 <!-- modal end -->
-                <div class="container">
+                <div class="container my-5">
+                <h1 class="text-center">編輯教師資訊</h1>
                     <form action="action/teacher/doEdit.php" class="form" method="post" enctype="multipart/form-data">
                         <table class="table table-bordered">
                             <?php foreach ($rows as $row) : ?>
@@ -131,8 +132,8 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
                         </table>
                         <div class="d-flex justify-content-between">
                             <div>
-                                <button type="submit" class="btn btn-info">送出</button>
-                                <a href="teacher-list.php" class="btn btn-info">回到教師清單</a>
+                                <button type="submit" class="btn btn-warning">送出</button>
+                                <a href="teacher-list.php" class="btn btn-warning">回到教師清單</a>
                             </div>
 
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">刪除教師</button>

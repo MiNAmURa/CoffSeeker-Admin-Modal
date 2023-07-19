@@ -44,7 +44,7 @@ $result = $conn->query($sql);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>所有優惠卷清單</title>
+    <title>Coupon-List</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -59,8 +59,8 @@ $result = $conn->query($sql);
             <div id="content">
                 <?php include("modal/topbar.php") ?>
                 <!-- ↓↓放置內容↓↓-->
-                <h1 class="text-center">所有優惠卷清單</h1>
-                <div class="container-fluid">
+                <div class="container-fluid my-5">
+                    <h1 class="text-center">所有優惠卷清單</h1>
                     <div class="py-2">
                         <form action="coupon-search.php">
                             <div class="row gx-2">
@@ -109,7 +109,7 @@ $result = $conn->query($sql);
                     <?php
                     $rows = $result->fetch_all(MYSQLI_ASSOC);
                     ?>
-                    <table class="table table-bordered table-hover align-middle text-center">
+                    <table class="table table-bordered align-middle text-center">
                         <thead>
                             <tr>
                                 <th>ID</th>

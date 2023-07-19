@@ -16,7 +16,7 @@ $sql="DELETE FROM course WHERE course_id =$id";
 if ($conn->query($sql) === TRUE) {
     $data=[
         "status"=>1,
-        "message"=>"刪除課程成功，三秒後將跳轉頁面"
+        "message"=>"刪除課程成功，即將跳轉頁面"
     ];
     echo json_encode($data);
 

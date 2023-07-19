@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>新增小分類</title>
+    <title>Create-Category</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -56,8 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <!-- ↓↓放置內容↓↓-->
 
-                <h1 class="text-center">新增分類</h1>
-                <div class="container">
+                
+                <div class="container my-5">
+                    <h1 class="text-center">新增分類</h1>
                     <form action="action/category/doCreate-item.php" method="post" class="py-2">
                         <div class="mb-3 row">
                             <label for="" class="col-sm-2 col-form-label">選擇大分類</label>
@@ -81,25 +81,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <a class="btn btn-secondary mx-3" href="category-item.php?id=<?= $detail ?>">取消</a>
                             <button class="btn btn-warning" type="submit">新增</button>
                         </div>
-
+                    </form>
                 </div>
-                </form>
 
-
+                <!-- ↑↑放置內容↑↑ -->
             </div>
+            <!-- End of Main Content -->
 
-            <!-- ↑↑放置內容↑↑ -->
+            <?php include("modal/footer.php") ?>
+
         </div>
-        <!-- End of Main Content -->
-
-        <?php include("modal/footer.php") ?>
-
-    </div>
-    <!-- End of Content Wrapper -->
+        <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
 
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -115,12 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous">
     </script>
 
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-    </script>
 
 </body>
 

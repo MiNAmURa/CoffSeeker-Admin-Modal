@@ -46,8 +46,8 @@ $row= $result->fetch_assoc();
 
             <!-- ↓↓放置內容↓↓-->
 
+            <div class="container pt-2 my-5">
             <h1 class="text-center" >編輯分類</h1>
-            <div class="container pt-2">
             <form action="action/category/doUpdate.php" method="post">
                 <table class="table table-bordered">
                     <tbody>

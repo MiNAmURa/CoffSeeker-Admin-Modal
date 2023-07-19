@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Product_Create</title>
+    <title>Product-Create</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -31,18 +31,20 @@
 
                 <!-- ↓↓放置內容↓↓-->
 
-                <h1 class="text-center">Product-Create</h1>
 
-                <div class="container-sm mt-3" style="width:500px">
-                    <h3 class="mb-3 text-center  fw-bold">新增商品</h3>
+                <div class="container-sm my-5" style="width:500px">
+                    <h1 class="text-center">新增商品</h1>
+                    <div class="py-2">
+                        <a class="btn btn-warning mb-3" href="product-list.php">回商品列表</a>
+                    </div>
                     <form action="action/product/doCreate.php" method="POST" enctype="multipart/form-data" id="product-form">
                         <div class="mb-3">
                             <label for="product-name" class="form-label">商品名稱</label>
-                            <input type="text" class="form-control" id="product-name" name="product-name" required>
+                            <input type="text" class="form-control" id="product-name" name="product-name" required placeholder="請輸入商品名稱">
                         </div>
                         <div class="mb-3">
                             <label for="product-brand" class="form-label">商品品牌</label>
-                            <input type="text" class="form-control" id="product-brand" name="product-brand" required>
+                            <input type="text" class="form-control" id="product-brand" name="product-brand" required placeholder="請輸入商品品牌">
                         </div>
                         <!-- 商品類別 先隱藏了! -->
                         <!-- <div class="mb-3">
@@ -60,31 +62,19 @@
             </div> -->
                         <div class="mb-3">
                             <label for="product-amount" class="form-label">商品數量</label>
-                            <input type="number" class="form-control" id="product-amount" name="product-amount" required>
-                            <div class="invalid-feedback">
-                                請填寫商品數量
-                            </div>
+                            <input type="number" class="form-control" id="product-amount" name="product-amount" required placeholder="請輸入商品數量">
                         </div>
                         <div class="mb-3">
                             <label for="product-price" class="form-label">商品價格</label>
-                            <input type="number" class="form-control" id="product-price" name="product-price" required>
-                            <div class="invalid-feedback">
-                                請填寫商品價格
-                            </div>
+                            <input type="number" class="form-control" id="product-price" name="product-price" required placeholder="請輸入商品價格">
                         </div>
                         <div class="mb-3">
                             <label for="product-description" class="form-label">商品描述</label>
                             <textarea class="form-control" id="product-description" name="product-description" required rows="3" cols="30" style="resize: none" placeholder="請輸入商品描述"></textarea>
-                            <div class="invalid-feedback">
-                                請填寫商品描述
-                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="product-image" class="form-label">商品圖片</label>
                             <input type="file" class="form-control" id="product-image" name="product-image" required>
-                            <div class="invalid-feedback">
-                                請選擇商品圖片
-                            </div>
                         </div>
                         <div class="mb-3 d-flex align-items-center">
                             <label for="preview-image" class="form-label me-2">預覽圖片</label>
@@ -92,7 +82,6 @@
                                 <img id="preview-image" src="#" alt="" style="max-width: 200px; max-height: 200px;">
                             </div>
                         </div>
-
                         <div class="mb-3">
                             <label for="product-valid" class="form-label">商品上架</label>
                             <select class="form-select" id="product-valid" name="product-valid" required>
@@ -100,9 +89,6 @@
                                 <option value="上架">上架</option>
                                 <option value="下架">下架</option>
                             </select>
-                            <div class="invalid-feedback">
-                                請選擇商品上架狀態
-                            </div>
                         </div>
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-warning mb-3">上傳</button>

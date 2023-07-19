@@ -81,7 +81,7 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
 
                 <?php include("modal/topbar.php") ?>
 
-                <div class="container-fluid">
+                <div class="container-fluid my-5">
 
                     <h1 class="text-center py-4">搜尋會員</h1>
 

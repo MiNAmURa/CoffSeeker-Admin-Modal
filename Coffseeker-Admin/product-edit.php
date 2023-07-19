@@ -87,53 +87,72 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 <?php include("modal/topbar.php") ?>
 
-            <!-- ↓↓放置內容↓↓-->
+                <!-- ↓↓放置內容↓↓-->
 
-            <h1 class="text-center" >Product-List</h1>
+                <div class="container my-5" style="width:500px">
+                    <h1 class="text-center">商品編輯</h1>
+                    <div class="py-2">
+                        <a class="btn btn-warning mb-3" href="product-list.php">回商品列表</a>
+                    </div>
+                    <form action="action/product/doUpdate.php" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <input type="hidden" name="product_id" value="<?= $product_id ?>">
 
-            <div class="container mt-3" style="width:500px">
-        <h3 class="fw-bold text-center">編輯</h3>
-        <form action="action/product/doUpdate.php" method="POST" enctype="multipart/form-data">
-            <div class="mb-3">
-                <input type="hidden" name="product_id" value="<?= $product_id ?>">
+                            <label for="product-name" class="form-label">商品名稱</label>
+                            <input type="text" class="form-control" id="product-name" name="product_name" required value="<?= $product_name ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="product-brand" class="form-label">商品品牌</label>
+                            <input type="text" class="form-control" id="product-brand" name="product_brand" required value="<?= $product_brand ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="product-amount" class="form-label">商品數量</label>
+                            <input type="number" class="form-control" id="product-amount" name="product_amount" required value="<?= $product_amount ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="product-price" class="form-label">商品價格</label>
+                            <input type="number" class="form-control" id="product-price" name="product_price" required value="<?= $product_price ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="product-description" class="form-label">商品描述</label>
+                            <textarea class="form-control" id="product-description" name="product_description" required rows="3" cols="30" style="resize: none"><?= $product_description ?></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="product-image" class="form-label">商品圖片</label>
+                            <img id="preview-image" src="<?= $product_image ?>" alt="" style="max-width: 200px; max-height:200px">
+                            <input type="file" class="form-control mt-3" id="product-image" name="product_image">
+                        </div>
+                        <div class="mb-3">
+                            <label for="product-valid" class="form-label">商品上架</label>
+                            <select class="form-select" id="product-valid" name="product_valid" required>
+                                <option value="1" <?= ($product_valid == '1') ? 'selected' : '' ?>>上架</option>
+                                <option value="0" <?= ($product_valid == '0') ? 'selected' : '' ?>>下架</option>
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-warning mb-3">編輯</button>
+                        </div>
+                    </form>
+                </div>
 
-                <label for="product-name" class="form-label">商品名稱</label>
-                <input type="text" class="form-control" id="product-name" name="product_name" required value="<?= $product_name ?>">
-            </div>
-            <div class="mb-3">
-                <label for="product-brand" class="form-label">商品品牌</label>
-                <input type="text" class="form-control" id="product-brand" name="product_brand" required value="<?= $product_brand ?>">
-            </div>
-            <div class="mb-3">
-                <label for="product-amount" class="form-label">商品數量</label>
-                <input type="number" class="form-control" id="product-amount" name="product_amount" required value="<?= $product_amount ?>">
-            </div>
-            <div class="mb-3">
-                <label for="product-price" class="form-label">商品價格</label>
-                <input type="number" class="form-control" id="product-price" name="product_price" required value="<?= $product_price ?>">
-            </div>
-            <div class="mb-3">
-                <label for="product-description" class="form-label">商品描述</label>
-                <textarea class="form-control" id="product-description" name="product_description" required rows="3" cols="30" style="resize: none"><?= $product_description ?></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="product-image" class="form-label">商品圖片</label>
-                <img src="<?= $product_image ?>" alt="" style="width: 100px;">
-            </div>
+                <script>
+                    var fileInput = document.getElementById('product-image');
 
-            <div class="mb-3">
-                <label for="product-valid" class="form-label">商品上架</label>
-                <select class="form-select" id="product-valid" name="product_valid" required>
-                    <option value="1" <?= ($product_valid == '1') ? 'selected' : '' ?>>上架</option>
-                    <option value="0" <?= ($product_valid == '0') ? 'selected' : '' ?>>下架</option>
-                </select>
-            </div>
+                    fileInput.addEventListener('change', function(event) {
+                        var file = event.target.files[0];
 
-            <button type="submit" class="btn btn-warning mb-3">上傳</button>
-        </form>
-    </div>
+                        if (file) {
+                            var reader = new FileReader();
+                            reader.onload = function() {
+                                var preview = document.getElementById('preview-image');
+                                preview.src = reader.result;
+                            }
+                            reader.readAsDataURL(file);
+                        }
+                    });
+                </script>
 
-            <!-- ↑↑放置內容↑↑ -->
+                <!-- ↑↑放置內容↑↑ -->
             </div>
             <!-- End of Main Content -->
 
@@ -161,7 +180,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-DLqX+VvzlZa3jnvqDd2f0l68sm7idtJAgqs2TV3pH0x5cToJir8w5MCEqAzhKw3y" crossorigin="anonymous"></script>
-    
+
 
 </body>
 

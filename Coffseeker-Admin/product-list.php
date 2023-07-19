@@ -87,16 +87,16 @@ $result = $conn->query($sql);
 
                 <!-- ↓↓放置內容↓↓-->
 
-                <h1 class="text-center">Product-List</h1>
+                <h1 class="text-center"></h1>
                 <div class="container">
-                    <h2 class="mt-3  text-center">商品列表</h2>
+                    <h1 class="mt-3 text-center">商品列表</h1>
                     <div class="row mb-4 mt-4">
                         <form class="form-inline mb-3 me-4" role="search" action="product-search.php" method="get">
                             <div class="form-group mr-3">
                                 <div class="input-group">
                                     <input class="form-control" type="text" placeholder="請輸入關鍵字" name="name">
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-warning" type="submit">
+                                        <button class="btn btn-warning" type="submit">
                                             <i class="fa-solid fa-magnifying-glass"></i>
                                         </button>
                                     </div>
@@ -107,7 +107,7 @@ $result = $conn->query($sql);
                         <div class="d-flex align-items-center justify-content-between flex-wrap">
                             <div class="btn-group">
                                 <form action="product-list.php" method="get" class="m-0">
-                                    <button class="btn btn-outline-warning dropdown-toggle" type="submit" name="type" value="<?= $type ?>" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn btn-warning dropdown-toggle" type="submit" name="type" value="<?= $type ?>" data-bs-toggle="dropdown" aria-expanded="false">
                                         排序方式 <i class="fa-solid fa-chevron-down"></i>
                                     </button>
                                     <ul class="dropdown-menu">
@@ -136,7 +136,7 @@ $result = $conn->query($sql);
                                 <div class="row gx-3 flex-wrap mt-2 mb-1">
                                     <?php if (isset($_GET["min"])) : ?>
                                         <div class="col-auto">
-                                            <a class="btn btn-outline-warning" href="product-list.php"><i class="fa-solid fa-arrow-left"></i></a>
+                                            <a class="btn btn-warning" href="product-list.php"><i class="fa-solid fa-arrow-left"></i></a>
                                         </div>
                                     <?php endif; ?>
                                     <div class="col-auto">
@@ -149,13 +149,13 @@ $result = $conn->query($sql);
                                         <input type="number" class="form-control" name="max" value="<?php if (isset($_GET["max"])) echo $_GET["max"] ?>">
                                     </div>
                                     <div class="col-auto">
-                                        <button type="submit" class="btn btn-outline-warning me-4">價錢篩選</button>
+                                        <button type="submit" class="btn btn-warning me-4">價錢篩選</button>
                                     </div>
                                     <div class="col-auto ml-3">
-                                        <a href="product-create.php" class="btn btn-outline-warning">新增商品</a>
+                                        <a href="product-create.php" class="btn btn-warning">新增商品</a>
                                     </div>
-                                    <div class="col-auto ml-3">
-                                        <a href="product-managing.php" class="btn btn-outline-warning">管理下架商品</a>
+                                    <div class="col-auto ml-3 mb-1">
+                                        <a href="product-managing.php" class="btn btn-warning">管理下架商品</a>
                                     </div>
                                 </div>
                             </form>
