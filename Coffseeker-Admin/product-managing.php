@@ -84,16 +84,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <div class="py-2">
                         <a class="btn btn-warning" href="product-list.php">回商品列表</a>
                     </div>
-                    <div class="py-2 d-flex justify-content-between align-items-center">
-                        <?php if (isset($_GET["name"])) : ?>
-                            <div class="mb-2">
-                                搜尋 <span class="fw-bold text-danger mb-2"><?= $name ?></span> 的結果, 共有 <span class="fw-bold text-danger"><?= $product_count ?></span> 筆符合的資料
-                            </div>
-                        <?php endif; ?>
-                    </div>
-
                     <?php if ($product_count != 0) : ?>
-                        <table class="table table-bordered border-end align-middle">
+                        <table class="table table-bordered border-end align-middle mt-3">
                             <thead>
                                 <tr>
                                     <th class="text-nowrap text-center">編號</th>
@@ -128,11 +120,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         <td class="text-nowrap text-center">$<?= $row["product_price"] ?></td>
                                         <td class="text-center"><?= $row["updated_at"] ?></td>
                                         <td class="text-nowrap text-center"><?= $status ?></td>
-                                        <td class="text-center"><a href="product-edit.php?id=<?= $row['product_id'] ?>"> <button class="btn btn-outline-warning "><i class="fa-solid fa-pencil"></i></button></a></td>
+                                        <td class="text-center">
+                                            <a href="product-edit.php?id=<?= $row['product_id'] ?>">
+                                                <button class="btn btn-outline-warning"><i class="fa-solid fa-pencil"></i></button>
+                                            </a>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                    <?php else : ?>
+                        <p class="mt-2">目前沒有下架商品可以管理。</p>
                     <?php endif; ?>
                 </div>
                 <!-- ↑↑放置內容↑↑ -->
