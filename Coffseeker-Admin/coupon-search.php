@@ -44,7 +44,7 @@ if (isset($_GET["coupon_name"])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>搜尋優惠卷</title>
+    <title>Coupon-Search</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -59,8 +59,9 @@ if (isset($_GET["coupon_name"])) {
             <div id="content">
                 <?php include("modal/topbar.php") ?>
                 <!-- ↓↓放置內容↓↓-->
+                
+                <div class="container-fluid my-5">
                 <h1 class="text-center">搜尋優惠卷</h1>
-                <div class="container-fluid">
                     <div class="py-2 mb-2">
                         <a class="btn btn-warning" href="coupon-list.php">回優惠卷列表</a>
                     </div>

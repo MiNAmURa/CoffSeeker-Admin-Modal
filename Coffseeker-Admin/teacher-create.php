@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>teacher-create</title>
+    <title>Teacher-Create</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -30,7 +30,7 @@
                 <?php include("modal/topbar.php") ?>
 
                 <!-- ↓↓放置內容↓↓-->
-                <div class="container mb-5">
+                <div class="container my-5">
                     <h1 class="text-center">新增教師</h1>
                     <form action="action/teacher/doCreate.php" method="post" class="col-4 mx-auto bordered mt-5" enctype="multipart/form-data">
                         <div class="mb-2">
@@ -97,7 +97,7 @@
 
                         </div>
                         <div class="d-flex justify-content-around mt-4">
-                            <button class="btn btn-info" type="submit">送出</button>
+                            <button class="btn btn-warning" type="submit">送出</button>
                             <a class="btn btn-danger ms-5" href="teacher-list.php">取消</a>
                         </div>
 

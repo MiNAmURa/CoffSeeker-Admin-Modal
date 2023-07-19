@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>管理商品下架</title>
+    <title>Product-Managing</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 <!-- ↓↓放置內容↓↓-->
 
-                <div class="container">
+                <div class="container my-5">
                     <div class="py-2">
                         <a class="btn btn-warning" href="product-list.php">回商品列表</a>
                     </div>

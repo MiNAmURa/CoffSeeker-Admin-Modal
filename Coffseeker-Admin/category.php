@@ -53,7 +53,7 @@ $rows = $result->fetch_all(MYSQLI_ASSOC); //fetch_all()查詢所有結果行，�
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>分類</title>
+    <title>Category-List</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -75,8 +75,8 @@ $rows = $result->fetch_all(MYSQLI_ASSOC); //fetch_all()查詢所有結果行，�
 
                 <!-- ↓↓放置內容↓↓-->
 
-                <h1 class="text-center">分類</h1>
-                <div class="container">
+                <div class="container my-5">
+                <h1 class="text-center">分類列表</h1>
                     <div class="py-2 d-flex justify-content-between align-items-center">
                         <h5>共<?= $totalCategory ?>筆,第 <?= $page ?> 頁</h5>
                     </div>

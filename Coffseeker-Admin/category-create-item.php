@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>新增小分類</title>
+    <title>Create-Item</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -56,8 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <!-- ↓↓放置內容↓↓-->
 
+                <div class="container my-5">
                 <h1 class="text-center">新增分類</h1>
-                <div class="container">
                     <form action="action/category/doCreate-item.php" method="post" class="py-2">
                         <div class="mb-3 row">
                             <label for="" class="col-sm-2 col-form-label">選擇大分類</label>

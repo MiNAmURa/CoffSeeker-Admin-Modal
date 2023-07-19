@@ -65,10 +65,11 @@ $coffusers = $getuser->fetch_assoc();
                 <?php include("modal/topbar.php") ?>
 
                 <!-- ↓↓放置內容↓↓-->
+                
+                <div class="container-fluid my-5">
+                
                 <h1 class="text-center py-2">會員詳細資料</h1>
 
-                <div class="container-fluid">
-                
                         <!-- <nav aria-label="breadcrumb ps-0">
                             <ol class="breadcrumb py-3">
                                 <li class="breadcrumb-item"><a href="index.php">INDEX</a></li>

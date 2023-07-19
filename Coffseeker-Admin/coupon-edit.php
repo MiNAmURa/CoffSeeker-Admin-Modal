@@ -35,7 +35,7 @@ $row = $result->fetch_assoc();
             <div id="content">
                 <?php include("modal/topbar.php") ?>
                 <!-- ↓↓放置內容↓↓-->
-                <h1 class="text-center">編輯優惠券</h1>
+                
                 <!-- modal start -->
                 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
                     <div class="modal-dialog modal-sm">
@@ -55,7 +55,8 @@ $row = $result->fetch_assoc();
                     </div>
                 </div>
                 <!-- modal end -->
-                <div class="container">
+                <div class="container my-5">
+                <h1 class="text-center">編輯優惠券</h1>
                     <div class="m-2">
                         <form action="action/coupon/doUpdate.php" method="post">
                             <table class="table table-bordered ">

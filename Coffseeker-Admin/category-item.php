@@ -79,8 +79,8 @@ $rows = $result->fetch_all(MYSQLI_ASSOC); //fetch_all()查詢所有結果行，�
 
                 <!-- ↓↓放置內容↓↓-->
 
-                <h1 class="text-center">細節分類</h1>
-                <div class="container">
+                <div class="container my-5">
+                    <h1 class="text-center">細節分類</h1>
                     <div class="py-2 d-flex justify-content-between align-items-center">
                         <?php if (!empty($rows)) : ?>
                             <h2><?= $rows[0]["big_name"] ?></h2>
@@ -169,7 +169,7 @@ $rows = $result->fetch_all(MYSQLI_ASSOC); //fetch_all()查詢所有結果行，�
 
                             <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
                                 <li class="page-item <?php if ($i == $page) echo "active"; ?>">
-                                    <a class="page-link bg-warning border-0" href="category-item.php?id=<?= $detail ?>&page=<?= $i ?>&type=<?= $type ?>">
+                                    <a class="page-link text-warning border-0" href="category-item.php?id=<?= $detail ?>&page=<?= $i ?>&type=<?= $type ?>">
                                         <?= $i ?>
                                     </a>
                                 </li>

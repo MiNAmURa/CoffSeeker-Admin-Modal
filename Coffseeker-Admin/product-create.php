@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Product_Create</title>
+    <title>Product-Create</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -31,10 +31,9 @@
 
                 <!-- ↓↓放置內容↓↓-->
 
-                <h1 class="text-center">Product-Create</h1>
 
-                <div class="container-sm mt-3" style="width:500px">
-                    <h3 class="mb-3 text-center  fw-bold">新增商品</h3>
+                <div class="container-sm my-5" style="width:500px">
+                    <h1 class="text-center">新增商品</h1>
                     <form action="action/product/doCreate.php" method="POST" enctype="multipart/form-data" id="product-form">
                         <div class="mb-3">
                             <label for="product-name" class="form-label">商品名稱</label>

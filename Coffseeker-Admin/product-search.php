@@ -25,7 +25,7 @@ if (isset($_GET["name"])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>標題</title>
+    <title>Product-Search</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -47,8 +47,9 @@ if (isset($_GET["name"])) {
 
             <!-- ↓↓放置內容↓↓-->
 
-            <h1 class="text-center" >Product-Search</h1>
-            <div class="container">
+            
+            <div class="container my-5">
+            <h1 class="text-center" >搜尋商品</h1>
         <div class="py-2">
             <a class="btn btn-warning" href="product-list.php">回商品列表</a>
         </div>

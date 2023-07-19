@@ -89,10 +89,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <!-- ↓↓放置內容↓↓-->
 
-            <h1 class="text-center" >Product-List</h1>
-
-            <div class="container mt-3" style="width:500px">
-        <h3 class="fw-bold text-center">編輯</h3>
+            <div class="container my-5" style="width:500px">
+        <h1 class="text-center">商品編輯</h1>
         <form action="action/product/doUpdate.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <input type="hidden" name="product_id" value="<?= $product_id ?>">
