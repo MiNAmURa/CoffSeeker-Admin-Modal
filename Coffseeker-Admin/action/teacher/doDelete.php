@@ -10,7 +10,7 @@ $sql="UPDATE coffseeker_teachers SET valid=0 WHERE teacher_id='$id'";
 // $conn->query($sql);
 
 if($conn->query($sql)===TRUE){
-    header("location: teacher-list.php");
+    header("location: ../../teacher-list.php");
 }else{
     echo "資料刪除失敗" . $conn->error;
 };

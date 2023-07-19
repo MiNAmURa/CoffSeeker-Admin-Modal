@@ -30,7 +30,7 @@
                 <?php include("modal/topbar.php") ?>
 
                 <!-- ↓↓放置內容↓↓-->
-                <div class="container">
+                <div class="container mb-5">
                     <h1 class="text-center">新增教師</h1>
                     <form action="action/teacher/doCreate.php" method="post" class="col-4 mx-auto bordered mt-5" enctype="multipart/form-data">
                         <div class="mb-2">
@@ -74,13 +74,13 @@
                             <br>
                             <label for="option5" class="mt-3">其他:</label>
                             <br>
-                            <input name="teacher_qualification[]" id="option6" style="height:18px,width=140px"></input>
+                            <input name="teacher_qualification[]" id="option6" class="form-control"></input>
 
                         </div>
                         <div class="mb-2">
                             <label for="qualification" class="fw-bold">教學年資(單位:年)</label>
                             <div>
-                                <input id="qualification" type="number" class="form-control col-10" name="teacher_experience" min="0" required>
+                                <input id="qualification" type="number" class="form-control " name="teacher_experience" min="0" required style="">
                             </div>
 
                         </div>
@@ -92,11 +92,11 @@
                         <div class="mb-2">
                             <label for="teacher_img" class="fw-bold">選擇頭像</label>
                             <div>
-                                <input type="file" class="form-control col-10" name="teacher_img" accept="image/jpeg, image/png, image/gif, image/webp">
+                                <input type="file" class="form-control " name="teacher_img" accept="image/jpeg, image/png, image/gif, image/webp">
                             </div>
 
                         </div>
-                        <div class="d-flex justify-content-end">
+                        <div class="d-flex justify-content-around mt-4">
                             <button class="btn btn-info" type="submit">送出</button>
                             <a class="btn btn-danger ms-5" href="teacher-list.php">取消</a>
                         </div>

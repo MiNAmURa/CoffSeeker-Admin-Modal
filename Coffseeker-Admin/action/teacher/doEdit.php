@@ -27,7 +27,7 @@ if(empty($imgFile)){
 
 }elseif($_FILES["teacher_img"]["error"]==0){
     if(file_exists($path . $imgFile)){
-        $sqlImage="UPDATE coffseeker_teachers SET teacher_img='$imgFile' WHERE teacher_id=$id";
+        $sqlImage="UPDATE coffseeker_teachers SET teacher_img='$imgFile',teacher_name='$name', teacher_phone='$phone', teacher_gender='$gender', teacher_mail='$mail', teacher_qualification='$qualification', teacher_experience='$experience', teacher_specialty='$specialty' WHERE teacher_id=$id";
         if($conn->query($sqlImage) === TRUE){
             header("location: ../../teacher-detail.php?teacher_id=$id");
         }else{
@@ -35,7 +35,7 @@ if(empty($imgFile)){
         };
     } else {
         move_uploaded_file($_FILES["teacher_img"]["tmp_name"],$path . $imgFile);
-        $sqlImage="UPDATE coffseeker_teachers SET teacher_img='$imgFile' WHERE teacher_id=$id";
+        $sqlImage="UPDATE coffseeker_teachers SET teacher_img='$imgFile',teacher_name='$name', teacher_phone='$phone', teacher_gender='$gender', teacher_mail='$mail', teacher_qualification='$qualification', teacher_experience='$experience', teacher_specialty='$specialty' WHERE teacher_id=$id";
         if($conn->query($sqlImage) === TRUE){
             header("location: ../../teacher-detail.php?teacher_id=$id");
         }else{

@@ -47,8 +47,8 @@ $sql = "INSERT INTO coffseeker_teachers (teacher_name, teacher_phone, teacher_ge
 
 if ($conn->query($sql) === TRUE) {
   $latestId = $conn->insert_id;
-  header("location  : ../../teacher-list.php");
- 
+  header("location: ../../teacher-list.php");
+  
 } else {
   echo "新增失敗" . $conn->error;
   die;
