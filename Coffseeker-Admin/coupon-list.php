@@ -206,6 +206,35 @@ $result = $conn->query($sql);
     </div>
     <!-- End of Page Wrapper -->
 
+    <script>
+        window.onload = function() {
+            checkCouponExpiry();
+        }
+
+        function checkCouponExpiry() {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        sessionStorage.setItem('couponExpiryChecked', 'true');
+                    } else {
+                        console.error(response.message);
+                    }
+                } else {
+                    console.error("請求錯誤：" + xhr.status);
+                }
+            };
+
+            xhr.open("GET", "action/coupon/checkExpiry.php", true);
+            xhr.send();
+        }
+
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.removeItem('couponExpiryChecked');
+        });
+    </script>
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
