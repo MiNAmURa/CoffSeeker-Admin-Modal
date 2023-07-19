@@ -14,7 +14,7 @@ if(!isset($_POST["id"])){
 $id=$_POST["id"];
 $valid=$_POST["valid"];
 if ($valid==1) {
-    $valid=0;
+    $valid=2;
 }else{
     $valid=1;
 }
@@ -24,7 +24,7 @@ $sql="UPDATE course SET course_valid=$valid WHERE course_id=$id";
 if ($conn->query($sql) === TRUE) {
     $data=[
         "status"=>1,
-        "message"=>"修改課程成功，三秒後將刷新頁面"
+        "message"=>"修改課程成功，即將刷新頁面"
     ];
     echo json_encode($data);
 
