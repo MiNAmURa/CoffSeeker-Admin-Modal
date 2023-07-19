@@ -11,7 +11,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Course Option</h6>
             <a class="collapse-item" href="course_list.php">課程列表</a>
-            <a class="collapse-item" href="course_list.php?valid=0">已下架課程</a>
+            <a class="collapse-item" href="course_list.php?valid=2">已下架課程</a>
         </div>
     </div>
 </li>
