@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <?php include("modal/topbar.php") ?>
 
                 <!-- ↓↓放置內容↓↓-->
-
+                <h2 class="text-center mb-3">管理下架商品</h2>
                 <div class="container">
                     <div class="py-2">
                         <a class="btn btn-warning" href="product-list.php">回商品列表</a>

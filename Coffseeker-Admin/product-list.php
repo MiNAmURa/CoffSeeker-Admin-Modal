@@ -87,205 +87,211 @@ $result = $conn->query($sql);
 
                 <!-- ↓↓放置內容↓↓-->
 
-                <h1 class="text-center">Product-List</h1>
+                <h1 class="text-center"></h1>
                 <div class="container">
                     <h2 class="mt-3  text-center">商品列表</h2>
                     <div class="row mb-4 mt-4">
-                        <form class="form-inline mb-3 me-4" role="search" action="product-search.php" method="get">
-                            <div class="form-group mr-3">
-                                <div class="input-group">
-                                    <input class="form-control" type="text" placeholder="請輸入關鍵字" name="name">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-warning" type="submit">
-                                            <i class="fa-solid fa-magnifying-glass"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 排序按鈕 -->
-                        </form>
-                        <div class="d-flex align-items-center justify-content-between flex-wrap">
-                            <div class="btn-group">
-                                <form action="product-list.php" method="get" class="m-0">
-                                    <button class="btn btn-outline-warning dropdown-toggle" type="submit" name="type" value="<?= $type ?>" data-bs-toggle="dropdown" aria-expanded="false">
-                                        排序方式 <i class="fa-solid fa-chevron-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <button class="dropdown-item <?php if ($type == 1) echo "active"; ?>" type="submit" name="type" value="1">編號：小 -> 大</button>
-                                        </li>
-                                        <li>
-                                            <button class="dropdown-item <?php if ($type == 2) echo "active"; ?>" type="submit" name="type" value="2">編號：大 -> 小</button>
-                                        </li>
-                                        <li>
-                                            <button class="dropdown-item <?php if ($type == 3) echo "active"; ?>" type="submit" name="type" value="3">價格：低 -> 高</button>
-                                        </li>
-                                        <li>
-                                            <button class="dropdown-item <?php if ($type == 4) echo "active"; ?>" type="submit" name="type" value="4">價格：高 -> 低</button>
-                                        </li>
-                                        <li>
-                                            <button class="dropdown-item <?php if ($type == 5) echo "active"; ?>" type="submit" name="type" value="5">更新：舊 -> 新</button>
-                                        </li>
-                                        <li>
-                                            <button class="dropdown-item <?php if ($type == 6) echo "active"; ?>" type="submit" name="type" value="6">更新：新 -> 舊</button>
-                                        </li>
-                                    </ul>
-                                </form>
-                            </div>
-                            <form action="product-list.php">
-                                <div class="row gx-3 flex-wrap mt-2 mb-1">
-                                    <?php if (isset($_GET["min"])) : ?>
-                                        <div class="col-auto">
-                                            <a class="btn btn-outline-warning" href="product-list.php"><i class="fa-solid fa-arrow-left"></i></a>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <form class="form-inline" role="search" action="product-search.php" method="get">
+                                <div class="form-group mr-3">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" placeholder="請輸入關鍵字" name="name">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-warning" type="submit">
+                                                <i class="fa-solid fa-magnifying-glass"></i>
+                                            </button>
                                         </div>
-                                    <?php endif; ?>
-                                    <div class="col-auto">
-                                        <input type="number" class="form-control" name="min" value="<?php if (isset($_GET["min"])) echo $_GET["min"] ?>">
-                                    </div>
-                                    <div class="col-auto">
-                                        ~
-                                    </div>
-                                    <div class="col-auto">
-                                        <input type="number" class="form-control" name="max" value="<?php if (isset($_GET["max"])) echo $_GET["max"] ?>">
-                                    </div>
-                                    <div class="col-auto">
-                                        <button type="submit" class="btn btn-outline-warning me-4">價錢篩選</button>
-                                    </div>
-                                    <div class="col-auto ml-3">
-                                        <a href="product-create.php" class="btn btn-outline-warning">新增商品</a>
-                                    </div>
-                                    <div class="col-auto ml-3">
-                                        <a href="product-managing.php" class="btn btn-outline-warning">管理下架商品</a>
                                     </div>
                                 </div>
+                                <?php if (isset($_GET["min"])) : ?>
+                                    <div class="col-auto">
+                                        <a class="btn btn-outline-warning" href="product-list.php"><i class="fa-solid fa-arrow-left"></i></a>
+                                    </div>
+                                <?php endif; ?>
                             </form>
                         </div>
-                        <div class="totalpage d-flex align-items-center mt-2">
-                            共 <?= $totalProduct ?> 件商品，第 <?= $page ?> 頁
+
+                        <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-end">
+                            <div class="col-auto">
+                                <input type="number" class="form-control" name="min" value="<?php if (isset($_GET["min"])) echo $_GET["min"] ?>">
+                            </div>
+                            <div class="col-auto">
+                                ~
+                            </div>
+                            <div class="col-auto">
+                                <input type="number" class="form-control" name="max" value="<?php if (isset($_GET["max"])) echo $_GET["max"] ?>">
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-outline-warning">價錢篩選</button>
+                            </div>
                         </div>
                     </div>
-                    <table class="table table-bordered">
-                        <thead class="">
-                            <tr class="text-center">
-                                <th class="text-nowrap text-center">編號</th>
-                                <th class="text-center">圖片</th>
-                                <th class="text-center">商品名稱</th>
-                                <th class="text-nowrap">品牌</th>
-                                <!-- <th>類別</th> -->
-                                <th class="text-nowrap">數量</th>
-                                <th>價格</th>
-                                <th class="text-nowrap">最後更新時間</th>
-                                <th>狀態</th>
-                                <th class="text-nowrap">動作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $counter = 0;
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    // 取得商品資訊
-                                    $product_id = $row['product_id'];
-                                    // $product_category = $row['product_category'];
-                                    $product_brand = $row['product_brand'];
-                                    $product_name = $row['product_name'];
-                                    $product_amount = $row['product_amount'];
-                                    $product_price = $row['product_price'];
-                                    $product_description = $row['product_description'];
-                                    $product_image = $row['product_image'];
-                                    $created_at = $row['created_at'];
-                                    $updated_at = $row['updated_at'];
-                                    $product_valid = $row['product_valid'];
-                                    $status = ($product_valid == 1) ? '上架' : '下架';
-                            ?>
-                                    <tr class="<?= $row_class ?> align-middle">
-                                        <td class="text-center "><?= $product_id ?></td>
-                                        <td><img src="<?php echo $product_image; ?>" alt="商品圖片" style="max-width: 60px;"></td>
-                                        <td>
-                                            <span class="fw-bold product_name"><?= $product_name ?></span>
-                                            <ul class="product_description mt-2 text-left">
-                                                <li><i class="fa-regular fa-message me-2"></i><?= $product_description ?></li>
-                                            </ul>
-                                        </td>
-                                        <td class=" text-center"><?= $product_brand ?></td>
-                                        <td class="text-nowrap text-center"><?= $product_amount ?></td>
-                                        <!-- <td class="text-nowrap text-center"><?= $product_category ?></td> -->
-                                        <td class="text-nowrap text-center">$ <?= $product_price ?></td>
-                                        <td class="text-center"><?= $updated_at ?></td>
-                                        <td class="text-nowrap"><?= $status ?></td>
+                    <div class="d-flex align-items-center justify-content-between flex-wrap">
+                        <div class="btn-group">
+                            <form action="product-list.php" method="get" class="m-0">
+                                <button class="btn btn-warning dropdown-toggle" type="submit" name="type" value="<?= $type ?>" data-bs-toggle="dropdown" aria-expanded="false">
+                                    排序方式 <i class="fa-solid fa-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item <?php if ($type == 1) echo "active"; ?>" type="submit" name="type" value="1">編號：小 -> 大</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item <?php if ($type == 2) echo "active"; ?>" type="submit" name="type" value="2">編號：大 -> 小</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item <?php if ($type == 3) echo "active"; ?>" type="submit" name="type" value="3">價格：低 -> 高</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item <?php if ($type == 4) echo "active"; ?>" type="submit" name="type" value="4">價格：高 -> 低</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item <?php if ($type == 5) echo "active"; ?>" type="submit" name="type" value="5">更新：舊 -> 新</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item <?php if ($type == 6) echo "active"; ?>" type="submit" name="type" value="6">更新：新 -> 舊</button>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
+                        <form action="product-list.php">
+                            <div class="row gx-3 flex-wrap mt-2 mb-1">
 
-                                        <td class="text-nowrap">
-                                            <!-- 編輯icon -->
-                                            <a href="product-edit.php?id=<?= $product_id ?>"> <button class="btn btn-outline-warning"><i class="fa-solid fa-pencil"></i></button></a>
-                                            <!-- 刪除icon -->
-                                            <a href="action/product/doDelete.php?id=<?= $product_id ?>" class="" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $product_id ?>"><button class="btn btn-outline-danger ms-2"><i class="fa-solid fa-trash-can"></i></button>
-                                            </a>
+                                <div class="col-auto ml-3">
+                                    <a href="product-create.php" class="btn btn-outline-warning">新增商品</a>
+                                </div>
+                                <div class="col-auto ml-3">
+                                    <a href="product-managing.php" class="btn btn-outline-warning">管理下架商品</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="totalpage d-flex align-items-center mt-2">
+                        共 <?= $totalProduct ?> 件商品，第 <?= $page ?> 頁
+                    </div>
+                
+                <table class="table table-bordered">
+                    <thead class="">
+                        <tr class="text-center">
+                            <th class="text-nowrap text-center">編號</th>
+                            <th class="text-center">圖片</th>
+                            <th class="text-center">商品名稱</th>
+                            <th class="text-nowrap">品牌</th>
+                            <!-- <th>類別</th> -->
+                            <th class="text-nowrap">數量</th>
+                            <th>價格</th>
+                            <th class="text-nowrap">最後更新時間</th>
+                            <th>狀態</th>
+                            <th class="text-nowrap">動作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $counter = 0;
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                // 取得商品資訊
+                                $product_id = $row['product_id'];
+                                // $product_category = $row['product_category'];
+                                $product_brand = $row['product_brand'];
+                                $product_name = $row['product_name'];
+                                $product_amount = $row['product_amount'];
+                                $product_price = $row['product_price'];
+                                $product_description = $row['product_description'];
+                                $product_image = $row['product_image'];
+                                $created_at = $row['created_at'];
+                                $updated_at = $row['updated_at'];
+                                $product_valid = $row['product_valid'];
+                                $status = ($product_valid == 1) ? '上架' : '下架';
+                        ?>
+                                <tr class="<?= $row_class ?> align-middle">
+                                    <td class="text-center "><?= $product_id ?></td>
+                                    <td><img src="<?php echo $product_image; ?>" alt="商品圖片" style="max-width: 60px;"></td>
+                                    <td>
+                                        <span class="fw-bold product_name"><?= $product_name ?></span>
+                                        <ul class="product_description mt-2 text-left">
+                                            <li><i class="fa-regular fa-message me-2"></i><?= $product_description ?></li>
+                                        </ul>
+                                    </td>
+                                    <td class=" text-center"><?= $product_brand ?></td>
+                                    <td class="text-nowrap text-center"><?= $product_amount ?></td>
+                                    <!-- <td class="text-nowrap text-center"><?= $product_category ?></td> -->
+                                    <td class="text-nowrap text-center">$ <?= $product_price ?></td>
+                                    <td class="text-center"><?= $updated_at ?></td>
+                                    <td class="text-nowrap"><?= $status ?></td>
 
-                                            <!-- 刪除跳出確認框 -->
-                                            <div class="modal fade" id="deleteModal<?= $product_id ?>" tabindex="-1" aria-labelledby="deleteModalLabel<?= $product_id ?>" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="deleteModalLabel<?= $product_id ?>">刪除</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            確定要刪除這個商品嗎？
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <a href="action/product/doDelete.php?id=<?= $product_id ?>" class="btn btn-danger">刪除</a>
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                                                        </div>
+                                    <td class="text-nowrap">
+                                        <!-- 編輯icon -->
+                                        <a href="product-edit.php?id=<?= $product_id ?>"> <button class="btn btn-outline-warning"><i class="fa-solid fa-pencil"></i></button></a>
+                                        <!-- 刪除icon -->
+                                        <a href="action/product/doDelete.php?id=<?= $product_id ?>" class="" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $product_id ?>"><button class="btn btn-outline-danger ms-2"><i class="fa-solid fa-trash-can"></i></button>
+                                        </a>
+
+                                        <!-- 刪除跳出確認框 -->
+                                        <div class="modal fade" id="deleteModal<?= $product_id ?>" tabindex="-1" aria-labelledby="deleteModalLabel<?= $product_id ?>" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="deleteModalLabel<?= $product_id ?>">刪除</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        確定要刪除這個商品嗎？
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="action/product/doDelete.php?id=<?= $product_id ?>" class="btn btn-danger">刪除</a>
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </td>
-                                    </tr>
-                            <?php
-                                    $counter++;
-                                }
-                            } else {
-                                echo "<tr><td colspan='8'>目前沒有商品資料</td></tr>";
+                                        </div>
+                                    </td>
+                                </tr>
+                        <?php
+                                $counter++;
                             }
-                            ?>
-                        </tbody>
-                    </table>
-                    <!-- 最下面的頁數顯示 -->
-                    <footer>
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination ms-3 justify-content-center">
-                                <?php if ($page > 1) : ?>
-                                    <li class="page-item">
-                                        <a class="page-link bg-warning border-0" href="product-list.php?page=<?= ($page - 1) ?>&type=<?= $type ?>&min=<?= $min ?>&max=<?= $max ?>" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                <?php endif; ?>
-                                <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
-                                    <li class="page-item <?php if ($i == $page) echo "active"; ?>">
-                                        <a class="page-link text-warning border-0" href="product-list.php?page=<?= $i ?>&type=<?= $type ?>&min=<?= $min ?>&max=<?= $max ?>"><?= $i ?></a>
-                                    </li>
-                                <?php endfor; ?>
-                                <?php if ($page < $totalPage) : ?>
-                                    <li class="page-item">
-                                        <a class="page-link bg-warning border-0" href="product-list.php?page=<?= ($page + 1) ?>&type=<?= $type ?>&min=<?= $min ?>&max=<?= $max ?>" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                <?php endif; ?>
-                            </ul>
-                        </nav>
-                    </footer>
-                </div>
-
-                <!-- ↑↑放置內容↑↑ -->
+                        } else {
+                            echo "<tr><td colspan='8'>目前沒有商品資料</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <!-- 最下面的頁數顯示 -->
+                <footer>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination ms-3 justify-content-center">
+                            <?php if ($page > 1) : ?>
+                                <li class="page-item">
+                                    <a class="page-link bg-warning border-0" href="product-list.php?page=<?= ($page - 1) ?>&type=<?= $type ?>&min=<?= $min ?>&max=<?= $max ?>" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+                            <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
+                                <li class="page-item <?php if ($i == $page) echo "active"; ?>">
+                                    <a class="page-link text-warning border-0" href="product-list.php?page=<?= $i ?>&type=<?= $type ?>&min=<?= $min ?>&max=<?= $max ?>"><?= $i ?></a>
+                                </li>
+                            <?php endfor; ?>
+                            <?php if ($page < $totalPage) : ?>
+                                <li class="page-item">
+                                    <a class="page-link bg-warning border-0" href="product-list.php?page=<?= ($page + 1) ?>&type=<?= $type ?>&min=<?= $min ?>&max=<?= $max ?>" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+                        </ul>
+                    </nav>
+                </footer>
             </div>
-            <!-- End of Main Content -->
 
-            <?php include("modal/footer.php") ?>
-
+            <!-- ↑↑放置內容↑↑ -->
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Main Content -->
+
+        <?php include("modal/footer.php") ?>
+
+    </div>
+    <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
