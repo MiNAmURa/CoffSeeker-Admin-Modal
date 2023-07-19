@@ -8,14 +8,14 @@ $id = $_GET["id"];
 
 require_once("../db_connect.php");
 
-$sqlCategories = "SELECT * FROM categories";
+$sqlCategories = "SELECT * FROM categories WHERE valid=1";
 $resultCategories = $conn->query($sqlCategories);
 $rowsCategories = $resultCategories->fetch_all(MYSQLI_ASSOC);
 
 $sql = "SELECT categories_item.*, categories.categories_name AS big_name
 FROM categories_item
 JOIN categories ON categories.categories_id=categories_item.categories_id
-WHERE items_id=$id";
+WHERE items_id=$id ";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 
