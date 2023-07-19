@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>建立新優惠卷</title>
+    <title>Create-Coupon</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -23,8 +23,9 @@
             <div id="content">
                 <?php include("modal/topbar.php") ?>
                 <!-- ↓↓放置內容↓↓-->
+                
+                <div class="container my-5">
                 <h1 class="text-center">建立新優惠卷</h1>
-                <div class="container">
                     <div class="py-2">
                         <a class="btn btn-warning" href="coupon-list.php">回優惠卷列表</a>
                     </div>

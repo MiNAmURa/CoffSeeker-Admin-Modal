@@ -28,7 +28,7 @@ if($_GET["name"] == ""){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>搜尋</title>
+    <title>Search-Category</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -50,10 +50,10 @@ if($_GET["name"] == ""){
 
             <!-- ↓↓放置內容↓↓-->
 
-            <h1 class="text-center" >放東西</h1>
-            <div class="container">
+            <div class="container my-5">
+                <h1 class="text-center" >搜尋大分類</h1>
         <div class="py-2">
-            <h2>搜尋大分類</h2>
+            
             <a class="btn btn-warning" href="category.php"><i class="fa-solid fa-arrow-left-long" style="color: #000000;"></i></a>
         </div>
         <!-- search bar -->

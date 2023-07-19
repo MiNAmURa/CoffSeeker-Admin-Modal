@@ -88,9 +88,9 @@ $coffusers = $getuser->fetch_assoc();
                 <?php include("modal/topbar.php") ?>
 
                 <!-- ↓↓放置內容↓↓-->
-                <div class="container-fluid">
+                <div class="container-fluid my-5">
 
-
+                <h1 class="text-center py-4">編輯會員資料</h1>
                     <div class="row justify-content-between align-content-center">
 
                         <div class="card col-6 my-3 d-flex align-content-center">

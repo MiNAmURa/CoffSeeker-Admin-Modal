@@ -194,12 +194,13 @@ $allGetString = http_build_query(array_filter($allGet));
 
                 <?php include("modal/topbar.php") ?>
 
-                <h1 class="text-center">Course-List</h1>
+                
             <!-- ↓↓放置內容↓↓-->
 <!-- 本體開始 -->
 <main>
         <!-- container 開始  -->
-        <div class="container">
+        <div class="container my-5">
+        <h1 class="text-center">課程列表</h1>
             <!-- 警告視窗 modal -->
             <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModal" aria-hidden="true">
                 <div class="modal-dialog modal-sm">

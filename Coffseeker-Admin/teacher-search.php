@@ -1,23 +1,21 @@
 <?php
 
-if(isset($_GET["name"])){
-    $name=$_GET["name"];
+if (isset($_GET["name"])) {
+    $name = $_GET["name"];
     require_once("../db_connect.php");
 
-    if(!empty($_GET["name"])){
-        $sql="SELECT * FROM coffseeker_teachers WHERE valid=1 AND teacher_name LIKE '%$name%'";
-        $result=$conn->query($sql);
-        $filteredAll=$result->num_rows;
-        $filterEach=$result->fetch_all(MYSQLI_ASSOC);
-    }else{
-        $filteredAll=0;
+    if (!empty($_GET["name"])) {
+        $sql = "SELECT * FROM coffseeker_teachers WHERE valid=1 AND teacher_name LIKE '%$name%'";
+        $result = $conn->query($sql);
+        $filteredAll = $result->num_rows;
+        $filterEach = $result->fetch_all(MYSQLI_ASSOC);
+    } else {
+        $filteredAll = 0;
     }
+}
 
 
-    }
-    
 
-    
 
 
 
@@ -35,7 +33,7 @@ if(isset($_GET["name"])){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>teacher-Search</title>
+    <title>Teacher-Search</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -57,66 +55,66 @@ if(isset($_GET["name"])){
 
                 <!-- ↓↓放置內容↓↓-->
 
-                <h1 class="text-center">教師清單</h1>
 
-                <div class="container">
-        <div class="py-2">
-            <a class="btn btn-info" href="teacher-list.php">回使用者列表</a>
-        </div>
-        <div class="py-2">
-            <form action="teacher-search.php">
-                <div class="row gx-2">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="搜尋使用者" name="name">
+                <div class="container my-5">
+                    <h1 class="text-center">搜尋教師</h1>
+                    <div class="py-2">
+                        <a class="btn btn-warning" href="teacher-list.php">回使用者列表</a>
                     </div>
-                    <div class="col-auto">
-                        <button class="btn btn-info" type="submit">搜尋姓名</button>
+                    <div class="py-2">
+                        <form action="teacher-search.php">
+                            <div class="row gx-2">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="搜尋使用者" name="name">
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn btn-warning" type="submit">搜尋姓名</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
+                    <div class="py-2 d-flex justify-content-between align-items-center">
+                        <?php if (isset($_GET["name"])) : ?>
+                            <div>
+                                搜尋 <?= $name ?> 的結果, 共有 <?= $filteredAll ?> 筆符合的資料
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <?php if ($filteredAll != 0) : ?>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>姓名</th>
+                                    <th>電話</th>
+                                    <th>性別</th>
+                                    <th>email</th>
+                                    <th>教師資格</th>
+                                    <th>教師年資</th>
+                                    <th>教師專長</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($filterEach as $row) : ?>
+                                    <tr>
+                                        <td><?= $row["teacher_id"] ?></td>
+                                        <td><?= $row["teacher_name"] ?></td>
+                                        <td><?= $row["teacher_phone"] ?></td>
+                                        <td><?= $row["teacher_gender"] ?></td>
+                                        <td><?= $row["teacher_mail"] ?></td>
+                                        <td><?= $row["teacher_qualification"] ?></td>
+                                        <td><?= $row["teacher_experience"] ?></td>
+                                        <td><?= $row["teacher_specialty"] ?></td>
+                                        <td>
+                                            <a href="teacher-detail.php?teacher_id=<?= $row["teacher_id"] ?>" class="btn btn-warning">顯示</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    <?php endif; ?>
                 </div>
-            </form>
-        </div>
-        <div class="py-2 d-flex justify-content-between align-items-center">
-            <?php if(isset($_GET["name"])): ?>
-            <div>
-                搜尋 <?=$name?> 的結果, 共有 <?= $filteredAll ?> 筆符合的資料
-            </div>
-            <?php endif; ?>
-        </div>
-        <?php if ($filteredAll != 0) : ?>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>姓名</th>
-                        <th>電話</th>
-                        <th>性別</th>
-                        <th>email</th>
-                        <th>教師資格</th>
-                        <th>教師年資</th>
-                        <th>教師專長</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($filterEach as $row) : ?>
-                        <tr>
-                            <td><?= $row["teacher_id"] ?></td>
-                            <td><?= $row["teacher_name"] ?></td>
-                            <td><?= $row["teacher_phone"] ?></td>
-                            <td><?= $row["teacher_gender"] ?></td>
-                            <td><?= $row["teacher_mail"] ?></td>
-                            <td><?= $row["teacher_qualification"] ?></td>
-                            <td><?= $row["teacher_experience"] ?></td>
-                            <td><?= $row["teacher_specialty"] ?></td>
-                            <td>
-                                <a href="teacher-detail.php?teacher_id=<?= $row["teacher_id"] ?>" class="btn btn-info">顯示</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        <?php endif; ?>
-    </div>
 
                 <!-- ↑↑放置內容↑↑ -->
             </div>

@@ -65,7 +65,7 @@ $result = $conn->query($sql);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>標題</title>
+    <title>Product-List</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -87,9 +87,9 @@ $result = $conn->query($sql);
 
                 <!-- ↓↓放置內容↓↓-->
 
-                <h1 class="text-center"></h1>
-                <div class="container">
-                    <h2 class="mt-3  text-center">商品列表</h2>
+
+                <div class="container my-5">
+                    <h1 class="text-center">商品列表</h1>
                     <div class="row mb-4 mt-4">
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <form class="form-inline" role="search" action="product-search.php" method="get">

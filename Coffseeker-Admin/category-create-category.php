@@ -49,8 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <!-- ↓↓放置內容↓↓-->
 
+                
+                <div class="container my-5">
                 <h1 class="text-center">新增分類</h1>
-                <div class="container">
                     <form action="action/category/doCreate.php" method="post" class="py-2">
                         <div class="mb-3 row">
                             <label for="" class="col-sm-2 col-form-label">分類名稱</label>

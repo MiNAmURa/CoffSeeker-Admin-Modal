@@ -52,10 +52,11 @@ $orders = $getOrder->fetch_assoc();
                 <?php include("modal/topbar.php") ?>
 
                 <!-- ↓↓放置內容↓↓-->
-                <h1 class="text-center py-2">Order_Detail</h1>
+                
 
                 <!--  -->
-                <div class="container-fluid d-flex justify-content-center">
+                <h1 class="text-center mt-5 py-4">訂單狀態更新</h1>
+                <div class="container-fluid d-flex justify-content-center mb-5">
                     <div class="d-flex justify-content-center">
                         <form action="action/orders/doUpdate.php" method="post">
                             <div class="card my-3">

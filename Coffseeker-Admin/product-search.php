@@ -25,7 +25,7 @@ if (isset($_GET["name"]) && !empty(trim($_GET["name"]))) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>標題</title>
+    <title>Product-Search</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -109,6 +109,16 @@ if (isset($_GET["name"]) && !empty(trim($_GET["name"]))) {
                         </div>
                     <?php endif; ?>
 
+            
+            <div class="container my-5">
+            <h1 class="text-center" >搜尋商品</h1>
+        <div class="py-2">
+            <a class="btn btn-warning" href="product-list.php">回商品列表</a>
+        </div>
+        <div class="py-2 d-flex justify-content-between align-items-center">
+            <?php if (isset($_GET["name"])) : ?>
+                <div class="mb-2">
+                    搜尋 <span class="fw-bold text-danger mb-2"><?= $name ?></span> 的結果, 共有 <span class="fw-bold text-danger"><?= $product_count ?></span> 筆符合的資料
                 </div>
 
 

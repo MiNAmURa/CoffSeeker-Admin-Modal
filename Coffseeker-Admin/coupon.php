@@ -21,7 +21,7 @@ $row = $result->fetch_assoc();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>優惠卷詳細內容</title>
+    <title>Coupon-Detail</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -36,8 +36,9 @@ $row = $result->fetch_assoc();
             <div id="content">
                 <?php include("modal/topbar.php") ?>
                 <!-- ↓↓放置內容↓↓-->
+                
+                <div class="container my-5">
                 <h1 class="text-center">優惠卷詳細內容</h1>
-                <div class="container">
                     <div class="py-2 mb-2">
                         <a class="btn btn-warning" href="Coupon-list.php">回優惠卷列表</a>
                     </div>

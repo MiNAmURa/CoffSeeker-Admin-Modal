@@ -74,7 +74,7 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
 
                 <?php include("modal/topbar.php") ?>
 
-                <div class="container-fluid mb-5">
+                <div class="container-fluid my-5">
 
                     <h1 class="text-center py-4">會員列表</h1>
 
