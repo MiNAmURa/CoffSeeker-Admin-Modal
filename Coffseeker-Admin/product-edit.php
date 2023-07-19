@@ -89,11 +89,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 <!-- ↓↓放置內容↓↓-->
 
-            <div class="container my-5" style="width:500px">
-        <h1 class="text-center">商品編輯</h1>
-        <form action="action/product/doUpdate.php" method="POST" enctype="multipart/form-data">
-            <div class="mb-3">
-                <input type="hidden" name="product_id" value="<?= $product_id ?>">
+                <div class="container my-5" style="width:500px">
+                    <h1 class="text-center">商品編輯</h1>
+                    <div class="py-2">
+                        <a class="btn btn-warning mb-3" href="product-list.php">回商品列表</a>
+                    </div>
+                    <form action="action/product/doUpdate.php" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <input type="hidden" name="product_id" value="<?= $product_id ?>">
 
                             <label for="product-name" class="form-label">商品名稱</label>
                             <input type="text" class="form-control" id="product-name" name="product_name" required value="<?= $product_name ?>">

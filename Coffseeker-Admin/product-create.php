@@ -34,6 +34,9 @@
 
                 <div class="container-sm my-5" style="width:500px">
                     <h1 class="text-center">新增商品</h1>
+                    <div class="py-2">
+                        <a class="btn btn-warning mb-3" href="product-list.php">回商品列表</a>
+                    </div>
                     <form action="action/product/doCreate.php" method="POST" enctype="multipart/form-data" id="product-form">
                         <div class="mb-3">
                             <label for="product-name" class="form-label">商品名稱</label>
