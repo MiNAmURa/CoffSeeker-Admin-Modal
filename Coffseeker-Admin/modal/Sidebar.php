@@ -30,15 +30,15 @@
 
 <?php include("orderbar.php"); ?>
 
-<?php include("couponbar.php"); ?>
+<?php include("categorybar.php"); ?>
 
 <?php include("productbar.php"); ?>
 
-<?php include("coursebar.php"); ?>
-
-<?php include("categorybar.php"); ?>
+<?php include("couponbar.php"); ?>
 
 <?php include("teacherbar.php"); ?>
+
+<?php include("coursebar.php"); ?>
 
 
 
