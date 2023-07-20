@@ -88,8 +88,8 @@ $row = $result->fetch_assoc();
 
                                 <!-- 添加隱藏的id 給予大分類id -->
                                 <input class="" type="number" name="big_id" value="<?= $row["categories_id"] ?>" hidden>
-
-                                <button class="btn btn-warning" type="submit">確認</button>
+                                <input class="" type="number" name="id" value="<?= $_GET["id"]?>" hidden>
+                                <button class="btn btn-warning" type ="submit ">確認</button>
                             </div>
                         </div>
 

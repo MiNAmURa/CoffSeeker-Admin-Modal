@@ -25,6 +25,10 @@ if ($type == 1) {
     $orderBy = "ORDER BY discount_type ASC";
 } elseif ($type == 9) {
     $orderBy = "ORDER BY discount_type DESC";
+} elseif ($type == 10) {
+    $orderBy = "ORDER BY updated_at ASC";
+} elseif ($type == 11) {
+    $orderBy = "ORDER BY updated_at DESC";
 } elseif ($type == 4) {
     $orderBy = "AND coupon_valid = 1";
 } elseif ($type == 5) {
@@ -52,7 +56,7 @@ $result = $conn->query($sql);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Coupon-List</title>
+    <title>所有優惠卷清單</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -120,11 +124,11 @@ $result = $conn->query($sql);
                                     <?php
                                     if ($type == 8) {
                                         echo '<a href="Coupon-list.php?page=' . $page . '&type=9" class="fw-bolder">';
-                                        echo '<i class="fa-solid fa-sort" style="color:#f6c23e"></i>';
+                                        echo '<i class="fa-solid fa-sort" style="color:#2e343d"></i>';
                                         echo '</a>';
                                     } else {
                                         echo '<a href="Coupon-list.php?page=' . $page . '&type=8" class="fw-bolder">';
-                                        echo '<i class="fa-solid fa-sort" style="color:#f6c23e"></i>';
+                                        echo '<i class="fa-solid fa-sort" style="color:#2e343d"></i>';
                                         echo '</a>';
                                     }
                                     ?>
@@ -132,31 +136,42 @@ $result = $conn->query($sql);
                                 <th>優惠卷面額</th>
                                 <th>開始日期
                                     <?php
-                                    if ($type == 6) {
-                                        echo '<a href="Coupon-list.php?page=' . $page . '&type=7" class="fw-bolder">';
-                                        echo '<i class="fa-solid fa-sort" style="color:#f6c23e"></i>';
+                                    if ($type == 7) {
+                                        echo '<a href="Coupon-list.php?page=' . $page . '&type=6" class="fw-bolder">';
+                                        echo '<i class="fa-solid fa-sort" style="color:#2e343d"></i>';
                                         echo '</a>';
                                     } else {
-                                        echo '<a href="Coupon-list.php?page=' . $page . '&type=6" class="fw-bolder">';
-                                        echo '<i class="fa-solid fa-sort" style="color:#f6c23e"></i>';
+                                        echo '<a href="Coupon-list.php?page=' . $page . '&type=7" class="fw-bolder">';
+                                        echo '<i class="fa-solid fa-sort" style="color:#2e343d"></i>';
                                         echo '</a>';
                                     }
                                     ?>
                                 </th>
                                 <th>到期日期
                                     <?php
-                                    if ($type == 2) {
-                                        echo '<a href="Coupon-list.php?page=' . $page . '&type=3" class="fw-bolder">';
-                                        echo '<i class="fa-solid fa-sort" style="color:#f6c23e"></i>';
+                                    if ($type == 3) {
+                                        echo '<a href="Coupon-list.php?page=' . $page . '&type=2" class="fw-bolder">';
+                                        echo '<i class="fa-solid fa-sort" style="color:#2e343d"></i>';
                                         echo '</a>';
                                     } else {
-                                        echo '<a href="Coupon-list.php?page=' . $page . '&type=2" class="fw-bolder">';
-                                        echo '<i class="fa-solid fa-sort" style="color:#f6c23e"></i>';
+                                        echo '<a href="Coupon-list.php?page=' . $page . '&type=3" class="fw-bolder">';
+                                        echo '<i class="fa-solid fa-sort" style="color:#2e343d"></i>';
                                         echo '</a>';
                                     }
                                     ?>
                                 </th>
-                                <th>最後更新</th>
+                                <th>最後更新                                     
+                                    <?php
+                                    if ($type == 11) {
+                                        echo '<a href="Coupon-list.php?page=' . $page . '&type=10" class="fw-bolder">';
+                                        echo '<i class="fa-solid fa-sort" style="color:#2e343d"></i>';
+                                        echo '</a>';
+                                    } else {
+                                        echo '<a href="Coupon-list.php?page=' . $page . '&type=11" class="fw-bolder">';
+                                        echo '<i class="fa-solid fa-sort" style="color:#2e343d"></i>';
+                                        echo '</a>';
+                                    }
+                                    ?></th>
                                 <th>可使用次數</th>
                                 <th>最低消費金額</th>
                                 <th>優惠卷使用條件</th>

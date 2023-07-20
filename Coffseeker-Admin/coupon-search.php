@@ -43,7 +43,7 @@ if (isset($_GET["coupon_name"])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Coupon-Search</title>
+    <title>搜尋優惠卷</title>
 
     <?php include("modal/template.php") ?>
 </head>
