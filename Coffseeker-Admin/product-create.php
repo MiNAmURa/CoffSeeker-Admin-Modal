@@ -32,7 +32,7 @@
                 <!-- ↓↓放置內容↓↓-->
 
 
-                <div class="container-sm my-5" style="width:500px">
+                <div class="container-sm" style="width:500px">
                     <h1 class="text-center">新增商品</h1>
                     <div class="py-2">
                         <a class="btn btn-warning mb-3" href="product-list.php">回商品列表</a>

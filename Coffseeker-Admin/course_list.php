@@ -18,6 +18,9 @@ if(isset($_GET["status"])){
     $now = date("Y-m-d");
     $status =$_GET["status"];
     switch ($status) {
+        case "signOff":
+            $whereClause .= "  AND sign_start_date > '$now' ";
+            break;
         case "signing":
             $whereClause .= "  AND sign_start_date <= '$now' AND sign_end_date >= '$now'";
             break;
@@ -103,6 +106,11 @@ $sqlAll = "SELECT * FROM course WHERE course_valid=$valid";
 $resultAll = $conn->query($sqlAll);
 $countAll = $resultAll->num_rows;
 $now = date("Y-m-d");
+//報名未開始
+$sqlSignOff = "SELECT * FROM course WHERE course_valid=$valid AND sign_start_date > '$now'";
+$resultSignOff = $conn->query($sqlSignOff);
+$countSignOff = $resultSignOff->num_rows;
+
 //報名開放中
 $sqlSigning = "SELECT * FROM course WHERE course_valid=$valid AND sign_start_date <= '$now' AND sign_end_date >= '$now'";
 $resultSigning = $conn->query($sqlSigning);
@@ -283,11 +291,12 @@ $allGetStringXV = http_build_query(array_filter($allGetXV));
                             <div class="d-flex  my-3">
                                 <!-- 課程狀態 -->
                                 <div class="">
-                                    <a class="btn btn-outline-secondary rounded-pill me-2 <?= $countAll== $totalResult ? "active" : "" ?> " href="course_list.php<?= isset($_GET["valid"]) ? "?valid=".$_GET["valid"] : "" ?>">全部課程<span class="badge rounded-pill text-bg-light ms-2 text-warning"><?= $countAll ?></span></a>
+                                    <a class="btn btn-outline-secondary rounded-pill me-2 <?= $countAll== $totalResult ? "active" : "" ?> " href="course_list.php<?= isset($_GET["valid"]) ? "?valid=".$_GET["valid"] : "" ?>">全部課程<span class="badge rounded-pill text-bg-light ms-2 "><?= $countAll ?></span></a>
 
-                                    <a class="btn btn-outline-secondary rounded-pill me-2 <?=isset($_GET["status"]) && $_GET["status"]=="signing"?"active":""?>" href="course_list.php?status=signing<?= isset($_GET["valid"]) ? "&valid=".$_GET["valid"] : "" ?>" >報名開放中<span class="badge rounded-pill text-bg-light ms-2 text-warning"><?= $countSigning ?></span></a>
-                                    <a class="btn btn-outline-secondary rounded-pill me-2 <?=isset($_GET["status"]) && $_GET["status"]=="courseOn" ? "active":""?>" href="course_list.php?status=courseOn<?= isset($_GET["valid"]) ? "&valid=".$_GET["valid"] : "" ?>" >課程進行中<span class="badge rounded-pill text-bg-light ms-2 text-warning"><?= $countCoursing ?></span></a>
-                                    <a class="btn btn-outline-secondary rounded-pill me-2 <?=isset($_GET["status"]) && $_GET["status"]=="courseOff"?"active":""?>" href="course_list.php?status=courseOff<?= isset($_GET["valid"]) ? "&valid=".$_GET["valid"] : "" ?>" >已結束課程<span class="badge rounded-pill text-bg-light ms-2 text-warning"><?= $countCourseEnd ?></span></a>
+                                    <a class="btn btn-outline-secondary rounded-pill me-2 <?=isset($_GET["status"]) && $_GET["status"]=="signOff"?"active":""?>" href="course_list.php?status=signOff<?= isset($_GET["valid"]) ? "&valid=".$_GET["valid"] : "" ?>" >報名未開放<span class="badge rounded-pill text-bg-light ms-2 "><?= $countSignOff ?></span></a>
+                                    <a class="btn btn-outline-secondary rounded-pill me-2 <?=isset($_GET["status"]) && $_GET["status"]=="signing"?"active":""?>" href="course_list.php?status=signing<?= isset($_GET["valid"]) ? "&valid=".$_GET["valid"] : "" ?>" >報名開放中<span class="badge rounded-pill text-bg-light ms-2 "><?= $countSigning ?></span></a>
+                                    <a class="btn btn-outline-secondary rounded-pill me-2 <?=isset($_GET["status"]) && $_GET["status"]=="courseOn" ? "active":""?>" href="course_list.php?status=courseOn<?= isset($_GET["valid"]) ? "&valid=".$_GET["valid"] : "" ?>" >課程進行中<span class="badge rounded-pill text-bg-light ms-2 "><?= $countCoursing ?></span></a>
+                                    <a class="btn btn-outline-secondary rounded-pill me-2 <?=isset($_GET["status"]) && $_GET["status"]=="courseOff"?"active":""?>" href="course_list.php?status=courseOff<?= isset($_GET["valid"]) ? "&valid=".$_GET["valid"] : "" ?>" >已結束課程<span class="badge rounded-pill text-bg-light ms-2 "><?= $countCourseEnd ?></span></a>
 
                                 </div>
                                 <?php
@@ -451,7 +460,7 @@ $allGetStringXV = http_build_query(array_filter($allGetXV));
                                                 <td><?= isset($course["course_level_name"]) ? $course["course_level_name"] : "待定" ?></td>
                                                 <td><?= isset($course["teacher_id"]) ? $course["teacher_name"] : "待定" ?></td>
                                                 <td><i class="fa-solid fa-dollar-sign me-1 text-secondary"></i><?= isset($course["course_price"]) && $course["course_price"] != 0 ? $course["course_price"] : "待定" ?></td>
-                                                <td><?= isset($course["course_capacity"]) && $course["course_capacity"] != 0 ? $course["course_capacity"] : "待定" ?><i class="fa-solid fa-people-roof ms-2 text-secondary"></i></td>
+                                                <td><?= isset($course["course_capacity"]) && $course["course_capacity"] != 0 ? $course["course_capacity"] : "待定" ?> 人</td>
                                                 <td><?= isset($course["course_location_name"]) ? $course["course_location_name"] : "待定" ?></td>
                                                 <td><?= isset($course["sign_start_date"]) && $course["sign_start_date"] != "0000-00-00" ? $course["sign_start_date"] : "待定" ?><br>
                                                     <?= isset($course["sign_end_date"]) && $course["sign_end_date"] != "0000-00-00" ? $course["sign_end_date"] : "待定" ?></td>
@@ -479,7 +488,7 @@ $allGetStringXV = http_build_query(array_filter($allGetXV));
                                     </tbody>
                                 </table>
                                 <div class="">
-                                    <p class="text-center">
+                                    <p class="text-center text-secondary">
                                         共 <?= $totalResult ?> 筆，第 <?= $page ?> 頁，共 <?= $totalPage ?> 頁
                                     </p>
                                 </div>
@@ -487,7 +496,7 @@ $allGetStringXV = http_build_query(array_filter($allGetXV));
                             </div><!-- 課程list end-->
 
                             <!-- 頁碼 -->
-                            <div class="">
+                            <div class="mb-3">
                                 <nav aria-label="Page-navigation" class=" d-flex justify-content-center">
                                     <div class="btn-group  ">
 
@@ -826,7 +835,7 @@ $allGetStringXV = http_build_query(array_filter($allGetXV));
                     } else if (dateFromValue) {
                         redirectUrl = `course_list.php?<?= preg_replace('/(dateFrom=[^&]+)/', '', $allGetString) ?>&dateFrom=${dateFromValue}`;
                     } else if (dateToValue) {
-                        redirectUrl = `course_list.php?<?= preg_replace('/(dateTo=[^&]+)/', '', $allGetStringNoDate) ?>&dateTo=${dateFromValue}`
+                        redirectUrl = `course_list.php?<?= preg_replace('/(dateTo=[^&]+)/', '', $allGetStringNoDate) ?>&dateTo=${dateToValue}`
                     }
                     window.location.href = redirectUrl;
 

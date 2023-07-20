@@ -62,12 +62,6 @@ $row = $result->fetch_assoc();
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
-                                    <th>分類編號</th>
-                                    <td>
-                                        <input type="text" readonly class="form-control-plaintext" value="<?= $row["items_id"] ?>" name="id">
-                                    </td>
-                                </tr>
-                                <tr>
                                     <th>所屬大分類</th>
                                     <td>
                                         <select class="form-select" aria-label="Default select example" name="categories_id">

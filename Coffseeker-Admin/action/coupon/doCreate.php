@@ -13,19 +13,31 @@ $value = $_POST["discount_value"];
 $max = $_POST["max_usage"];
 $times = $_POST["used_times"];
 $now = date('Y-m-d H:i:s');
-$expries = $_POST["expires_at"];
+$expires = $_POST["expires_at"];
 $restrict = $_POST["usage_restriction"];
+$start = $_POST["start_at"];
+$min = $_POST["price_min"];
 
-$description = ""; 
+$description = "";
 
 if ($valid == 1) {
     $description = "可使用";
 } else if ($valid == -1) {
     $description = "已停用";
+} else if ($valid == 0) {
+    $description = "已刪除";
+}
+
+if (strtotime($start) < strtotime($now)) {
+    $valid = -1;
+    $description = "已停用";
+} else {
+    $valid = 1; 
+    $description = "可使用";
 }
 
 
-$sql = "INSERT INTO coupon (coupon_name,coupon_code,discount_type,discount_value,coupon_valid,created_at,expires_at,updated_at,max_usage,used_times,usage_restriction,valid_description) VALUES ('$name', '$code', '$type','$value','$valid','$now','$expries','$now','$max', 0, '$restrict','$description')";
+$sql = "INSERT INTO coupon (coupon_name,coupon_code,discount_type,discount_value,coupon_valid,created_at,expires_at,start_at,updated_at,max_usage,used_times,usage_restriction,valid_description,price_min) VALUES ('$name', '$code', '$type','$value','$valid','$now','$expires','$start','$now','$max', 0, '$restrict','$description','$min')";
 
 
 if ($conn->query($sql) === TRUE) {

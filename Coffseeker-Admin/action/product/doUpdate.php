@@ -12,6 +12,12 @@ if (isset($_POST["product_id"])) {
     $product_description = $_POST["product_description"];
     $current_time = date("Y-m-d H:i:s");
 
+    // 取得該商品原本的圖片路徑
+    $sql_select_image = "SELECT product_image FROM product WHERE product_id='$product_id'";
+    $result_image = $conn->query($sql_select_image);
+    $row_image = $result_image->fetch_assoc();
+    $original_product_image = $row_image["product_image"];
+
     // 檢查是否有上傳新的商品圖片
     if ($_FILES["product_image"]["name"]) {
         // 取得上傳的檔案資訊
@@ -23,9 +29,16 @@ if (isset($_POST["product_id"])) {
         // 移動上傳的圖片到指定資料夾
         if (move_uploaded_file($file_tmp, $upload_dir . $file_name)) {
             $product_image = $new_file_path;
+            // 刪除原本的圖片
+            if ($original_product_image && file_exists($original_product_image)) {
+                unlink($original_product_image);
+            }
         } else {
             echo "圖片上傳失敗。";
         }
+    } else {
+        // 沒有換照片，保留原本的圖片路徑
+        $product_image = $original_product_image;
     }
 
     // 執行更新
@@ -41,4 +54,3 @@ if (isset($_POST["product_id"])) {
     header("location: ../../404.php");
     exit();
 }
-?>

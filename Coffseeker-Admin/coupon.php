@@ -21,7 +21,7 @@ $row = $result->fetch_assoc();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Coupon-Detail</title>
+    <title>優惠卷詳細內容</title>
 
     <?php include("modal/template.php") ?>
 </head>
@@ -44,6 +44,10 @@ $row = $result->fetch_assoc();
                     </div>
                     <table class="table table-bordered ">
                         <tr>
+                            <th>優惠卷ID</th>
+                            <td><?= $row["coupon_id"] ?></td>
+                        </tr>
+                        <tr>
                             <th>優惠卷名稱</th>
                             <td><?= $row["coupon_name"] ?></td>
                         </tr>
@@ -64,12 +68,16 @@ $row = $result->fetch_assoc();
                             <td><?= $row["discount_value"] ?></td>
                         </tr>
                         <tr>
-                            <th>登錄時間</th>
-                            <td><?= $row["created_at"] ?></td>
+                            <th>開始日期</th>
+                            <td><?= $row["start_at"] ?></td>
                         </tr>
                         <tr>
-                            <th>到期日</th>
+                            <th>到期日期</th>
                             <td><?= $row["expires_at"] ?></td>
+                        </tr>
+                        <tr>
+                            <th>登陸時間</th>
+                            <td><?= $row["created_at"] ?></td>
                         </tr>
                         <tr>
                             <th>最後更新</th>
@@ -78,6 +86,10 @@ $row = $result->fetch_assoc();
                         <tr>
                             <th>可使用次數</th>
                             <td><?= $row["max_usage"] ?></td>
+                        </tr>
+                        <tr>
+                            <th>最低消費金額</th>
+                            <td><?= $row["price_min"] ?></td>
                         </tr>
                         <tr>
                             <th>優惠券使用條件</th>

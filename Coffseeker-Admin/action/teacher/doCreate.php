@@ -28,6 +28,7 @@ if ($length >= 1) {
   die("請填入相關資訊");
 }
 
+
 $duplication = "SELECT * FROM coffseeker_teachers WHERE teacher_mail='$mail' OR teacher_phone='$phone'";
 $result = mysqli_query($conn, $duplication);
 
@@ -38,12 +39,18 @@ if (mysqli_num_rows($result) > 0) {
 // 頭像圖片處理
 if ($_FILES["teacher_img"]["error"] == 0) {
   move_uploaded_file($_FILES["teacher_img"]["tmp_name"], $path . $imgFile);
+  $sql = "INSERT INTO coffseeker_teachers (teacher_name, teacher_phone, teacher_gender, teacher_mail, teacher_experience, teacher_specialty, teacher_img, created_at, valid, teacher_qualification) 
+        VALUES ('$name', '$phone', '$gender', '$mail', '$experience', '$specialty', '$imgFile', '$now', 1, '$qualification_str')";
+
 } else {
-  $imgFile = ""; // 若未上傳頭像圖片，設置為空值或自行處理
+  $preset = "preset-icon.png"; // 若未上傳頭像圖片，設置為空值或自行處理
+  $sql = "INSERT INTO coffseeker_teachers (teacher_name, teacher_phone, teacher_gender, teacher_mail, teacher_experience, teacher_specialty, teacher_img, created_at, valid, teacher_qualification) 
+        VALUES ('$name', '$phone', '$gender', '$mail', '$experience', '$specialty', '$preset', '$now', 1, '$qualification_str')";
+
 }
 
-$sql = "INSERT INTO coffseeker_teachers (teacher_name, teacher_phone, teacher_gender, teacher_mail, teacher_experience, teacher_specialty, teacher_img, created_at, valid, teacher_qualification) 
-        VALUES ('$name', '$phone', '$gender', '$mail', '$experience', '$specialty', '$imgFile', '$now', 1, '$qualification_str')";
+// $sql = "INSERT INTO coffseeker_teachers (teacher_name, teacher_phone, teacher_gender, teacher_mail, teacher_experience, teacher_specialty, teacher_img, created_at, valid, teacher_qualification) 
+//         VALUES ('$name', '$phone', '$gender', '$mail', '$experience', '$specialty', '$imgFile', '$now', 1, '$qualification_str')";
 
 if ($conn->query($sql) === TRUE) {
   $latestId = $conn->insert_id;
