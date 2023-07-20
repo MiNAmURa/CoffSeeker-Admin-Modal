@@ -98,7 +98,7 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
                                     <a class="btn btn-warning" href="order-list.php"><i class="fa-solid fa-reply"></i></a>
                                 </div>
                                 <div class="col-auto">
-                                    <select class="form-select form-control" aria-label="Grade" name="select">
+                                    <select class="form-select form-control" aria-label="Grade" name="select" id="select">
                                         <option value="order_id" <?php if($select == 'order_id') echo "selected"; ?>>訂單編號</option>
                                         <option value="order_products"<?php if($select == 'order_products') echo "selected"; ?>>購買商品</option>
                                         <option value="order_created_at"<?php if($select == 'order_created_at') echo "selected"; ?>>訂單成立時間</option>
@@ -260,6 +260,15 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
     </div>
     <!-- End of Page Wrapper -->
 
+    <script>
+        const select = document.querySelector("#select")
+
+        select.addEventListener("change" , function(){
+            let selectedUrl = `order-search.php?select=${select.value}&keyword=`
+            window.location.href = selectedUrl;
+        })
+        // user-search.php?select=user_name&keyword=
+    </script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
