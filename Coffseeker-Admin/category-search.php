@@ -62,6 +62,7 @@ if($_GET["name"] == ""){
                 <div class="row gx-2">
                     <div class="col">
                         <input type="text" class="form-control" placeholder="輸入關鍵字" name="name">
+                        <input  type="number" class="form-control d-none" name="id" value="<?=$id?>">
                     </div>
                     <div class="col-auto">
                         <button class="btn btn-warning" type="submit">搜尋</button>
