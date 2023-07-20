@@ -86,8 +86,8 @@ if ($_GET["name"] == "") {
                     </div>
                     <!-- 結果表單 -->
                     <?php if ($count != 0) : ?>
-                        <table class="table table-bordered">
-                            <thead>
+                        <table class="table table-striped text-center table-hover table-bordered">
+                        <thead class="table-secondary">
                                 <tr>
                                     <th>名稱</th>
                                     <th>編輯</th>

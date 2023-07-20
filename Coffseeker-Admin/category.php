@@ -105,8 +105,8 @@ $rows = $result->fetch_all(MYSQLI_ASSOC); //fetch_all()查詢所有結果行，�
                         </div>
                     </div>
                     <!--table content -->
-                    <table class="table table-bordered">
-                        <thead>
+                    <table class="table table-striped text-center table-hover table-bordered">
+                        <thead class="table-secondary">
                             <tr>
                                 <th>編號</th>
                                 <th>名稱</th>

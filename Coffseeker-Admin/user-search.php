@@ -92,7 +92,7 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
                                     <a class="btn btn-warning" href="user-list.php"><i class="fa-solid fa-reply"></i></a>
                                 </div>
                                 <div class="col-1">
-                                    <select class="form-select form-control" aria-label="Grade" name="select">
+                                    <select class="form-select form-control" aria-label="Grade" name="select" id="select">
                                         <option value="id" <?php if($select == 'id') echo "selected"; ?>>
                                             ID
                                         </option>
@@ -175,8 +175,8 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
 
 
                     <!--  -->
-                    <table class="table table-striped">
-                        <thead>
+                    <table class="table table-striped text-center table-hover">
+                        <thead class="table-secondary">
                             <tr>
                                 <th>ID</th>
                                 <th>名稱</th>
@@ -278,7 +278,15 @@ $coffusers = $getuser->fetch_all(MYSQLI_ASSOC);
 
     </div>
     <!-- End of Page Wrapper -->
+    <script>
+        const select = document.querySelector("#select")
 
+        select.addEventListener("change" , function(){
+            let selectedUrl = `user-search.php?select=${select.value}&keyword=`
+            window.location.href = selectedUrl;
+        })
+        // user-search.php?select=user_name&keyword=
+    </script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

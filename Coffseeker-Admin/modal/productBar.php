@@ -3,7 +3,7 @@
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Productbar"
         aria-expanded="true" aria-controls="collapseTwo">
         <!-- fontawesome -->
-        <i class="fa-brands fa-shopify"></i>
+        <i class="fa-brands fa-shopify sideicon"></i>
         <span>商品管理</span>
     </a>
     <!-- id 要對應 上面的 data-target  -->

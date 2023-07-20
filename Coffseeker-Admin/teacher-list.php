@@ -104,8 +104,8 @@ $result = $conn->query($idPerPageLimit);
                     // var_dump($rows);
                     // exit;
                     ?>
-                    <table class="table table-bordered">
-                        <thead>
+                    <table class="table table-striped text-center table-hover">
+                        <thead class="table-secondary">
                             <tr>
                                 <th>ID</th>
                                 <th>姓名</th>
@@ -115,6 +115,7 @@ $result = $conn->query($idPerPageLimit);
                                 <th>教師資格</th>
                                 <th>教師年資</th>
                                 <th>教師專長</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>

@@ -109,8 +109,8 @@ $result = $conn->query($sql);
                     <?php
                     $rows = $result->fetch_all(MYSQLI_ASSOC);
                     ?>
-                    <table class="table table-bordered align-middle text-center">
-                        <thead>
+                    <table class="table table-striped text-center table-hover table-bordered">
+                        <thead class="table-secondary">
                             <tr>
                                 <th>ID</th>
                                 <th>優惠卷名稱</th>

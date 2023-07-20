@@ -101,8 +101,8 @@ if (isset($_GET["coupon_name"])) {
                         </div>
                     </div>
                     <?php if ($coupon_count != 0) : ?>
-                        <table class="table table-bordered">
-                            <thead>
+                        <table class="table table-striped text-center table-hover table-bordered">
+                        <thead class="table-secondary">
                                 <tr>
                                     <th>ID</th>
                                     <th>優惠卷名稱</th>

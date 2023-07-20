@@ -3,7 +3,7 @@
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#coursebar"
         aria-expanded="true" aria-controls="collapseTwo">
         <!-- fontawesome -->
-        <i class="fa-solid fa-book"></i>
+        <i class="fa-solid fa-book sideicon"></i>
         <span>課程管理</span>
     </a>
     <!-- id 要對應 上面的 data-target  -->

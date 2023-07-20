@@ -3,7 +3,7 @@
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#hungry"
         aria-expanded="true" aria-controls="collapseTwo">
         <!-- fontawesome -->
-        <i class="fa-solid fa-cart-shopping"></i>
+        <i class="fa-solid fa-cart-shopping sideicon"></i>
         <span>訂單管理</span>
     </a>
     <!-- id 要對應 上面的 data-target  -->

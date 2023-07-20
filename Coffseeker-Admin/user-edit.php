@@ -55,7 +55,7 @@ $coffusers = $getuser->fetch_assoc();
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-center flex-column align-items-center">
-                    <h1><i class="fa-solid fa-triangle-exclamation fa-beat" style="color: #ff0000;"></i></h1>
+                <h1><i class="fa-solid fa-triangle-exclamation fa-beat" style="color: #ff0000;"></i></h1>
                     <h1 class="modal-title fs-5 text-center text-danger" id="">警告</h1>
                 </div>
                 <div class="modal-body text-center text-dark">

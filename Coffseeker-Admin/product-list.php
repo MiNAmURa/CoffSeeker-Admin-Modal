@@ -164,8 +164,8 @@ $result = $conn->query($sql);
                             共 <?= $totalProduct ?> 件商品，第 <?= $page ?> 頁
                         </div>
                     </div>
-                    <table class="table table-bordered">
-                        <thead class="">
+                    <table class="table table-striped table-bordered text-center table-hover">
+                        <thead class="table-secondary">
                             <tr class="text-center">
                                 <th class="text-nowrap text-center">編號</th>
                                 <th class="text-center">圖片</th>

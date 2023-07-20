@@ -3,7 +3,7 @@
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Categorybar"
         aria-expanded="true" aria-controls="collapseTwo">
         <!-- fontawesome -->
-        <i class="fa-solid fa-bookmark"></i>
+        <i class="fa-solid fa-bookmark sideicon"></i>
         <span>分類管理</span>
     </a>
     <!-- id 要對應 上面的 data-target  -->

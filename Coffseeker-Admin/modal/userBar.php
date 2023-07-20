@@ -3,7 +3,7 @@
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Userbar"
         aria-expanded="true" aria-controls="collapseTwo">
         <!-- fontawesome -->
-        <i class="fa-solid fa-users"></i>
+        <i class="fa-solid fa-users sideicon"></i>
         <span>會員管理</span>
     </a>
     <!-- id 要對應 上面的 data-target  -->

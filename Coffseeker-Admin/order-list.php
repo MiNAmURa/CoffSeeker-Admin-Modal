@@ -80,7 +80,7 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
                         <form action="order-search.php" method="get">
                             <div class="row gx-2">
                                 <div class="col-auto">
-                                    <select class="form-select form-control" aria-label="Grade" name="select">
+                                    <select class="form-select form-control" aria-label="Grade" name="select" id="select">
                                         <option value="order_id" selected>訂單編號</option>
                                         <option value="order_products">購買商品</option>
                                         <option value="order_created_at">訂單成立時間</option>
@@ -152,8 +152,8 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
 
 
                     <!--  -->
-                    <table class="table table-striped">
-                        <thead>
+                    <table class="table table-striped text-center table-hover">
+                        <thead class="table-secondary">
                             <tr>
                                 <th class="col-1">訂單編號</th>
                                 <th class="col-4">購買商品</th>
@@ -242,6 +242,15 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
     </div>
     <!-- End of Page Wrapper -->
 
+    <script>
+        const select = document.querySelector("#select")
+
+        select.addEventListener("change" , function(){
+            let selectedUrl = `order-search.php?select=${select.value}&keyword=`
+            window.location.href = selectedUrl;
+        })
+        // user-search.php?select=user_name&keyword=
+    </script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

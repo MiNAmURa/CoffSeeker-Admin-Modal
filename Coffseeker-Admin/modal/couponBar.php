@@ -2,7 +2,7 @@
     <!-- data-target 要對應 下面的id   -->
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Couponbar" aria-expanded="true" aria-controls="collapseTwo">
         <!-- fontawesome -->
-        <i class="fa-solid fa-ticket"></i>
+        <i class="fa-solid fa-ticket sideicon"></i>
         <span>優惠券管理</span>
     </a>
     <!-- id 要對應 上面的 data-target  -->

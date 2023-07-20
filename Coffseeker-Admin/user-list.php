@@ -117,7 +117,7 @@ try{
                         <form action="user-search.php" method="get">
                             <div class="row gx-2">
                                 <div class="col-1">
-                                    <select class="form-select form-control" aria-label="Grade" name="select">
+                                    <select class="form-select form-control" aria-label="Grade" name="select" id="select">
                                         <option value="id" selected>ID</option>
                                         <option value="user_name">名稱</option>
                                         <option value="user_grade_id">等級</option>
@@ -190,8 +190,8 @@ try{
 
 
                     <!--  -->
-                    <table class="table table-striped">
-                        <thead>
+                    <table class="table table-striped text-center table-hover">
+                        <thead class="table-secondary">
                             <tr>
                                 <th>ID</th>
                                 <th>名稱</th>
@@ -281,10 +281,6 @@ try{
                     </div>
                 </div>
                     
-                        
-
-
-
             </div>
             <!-- End of Main Content -->
 
@@ -295,6 +291,19 @@ try{
 
     </div>
     <!-- End of Page Wrapper -->
+
+                                    
+
+
+    <script>
+        const select = document.querySelector("#select")
+
+        select.addEventListener("change" , function(){
+            let selectedUrl = `user-search.php?select=${select.value}&keyword=`
+            window.location.href = selectedUrl;
+        })
+        // user-search.php?select=user_name&keyword=
+    </script>
 
 
     <!-- Bootstrap core JavaScript-->

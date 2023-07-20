@@ -170,8 +170,8 @@ $orders = $getOrder->fetch_all(MYSQLI_ASSOC);
 
 
                     <!--  -->
-                    <table class="table table-striped">
-                        <thead>
+                    <table class="table table-striped text-center table-hover">
+                        <thead class="table-secondary">
                             <tr>
                                 <th class="col-1">訂單編號</th>
                                 <th class="col-4">購買商品</th>
